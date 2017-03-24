@@ -31,6 +31,18 @@
                         </li>
                                             <li class="toctree-l1 ">
                             <a class="reference internal "
+                               href="https://agco-sa.github.io/conta.html">
+                                Solicitando uma conta
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="https://agco-sa.github.io/1introddi.html">
+                                Dealer Data Integration
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
                                href="https://agco-sa.github.io/2configddi.html">
                                 Configuração
                             </a>
@@ -51,6 +63,18 @@
                             <a class="reference internal "
                                href="https://agco-sa.github.io/5recursosoperddi.html">
                                 Recursos DDI
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="https://agco-sa.github.io/">
+                                
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="https://agco-sa.github.io/politicas.html">
+                                Políticas
                             </a>
                         </li>
                                     </ul>
@@ -101,10 +125,10 @@ Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, con
      },
      "emit": {
        "CNPJ": "92028224000391",
-       "xNome": "SOTRIMA AGRICOLA LTDA",
-       "xFant": "SOTRIMA AGRICOLA LTDA",
+       "xNome": "CONCESSIONARIA X",
+       "xFant": "CONCESSIONARIA X",
        "enderEmit": {
-         "xMun": "CAXIAS DO SUL",
+         "xMun": "SANTANA DO LIVRAMENTO",
          "UF": "RS",
          "xPais": "BRASIL"
        }
@@ -112,10 +136,10 @@ Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, con
      "dest": {
        "CPF": "23518456091",
        "CNPJ": "",
-       "xNome": "ABRELINO ANTONIO DANELLI",
+       "xNome": "MARCOS DA SILVA",
        "enderDest": {
          "cMun": 4305108,
-         "xMun": "CAXIAS DO SUL",
+         "xMun": "BAGE",
          "UF": "RS",
          "cPais": 1058
        }
@@ -146,7 +170,7 @@ Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, con
    "tipoOp": 1,
    "vend": {
      "CPF": "68037503020",
-     "xNome": "MARCELO ORESTES TOSS",
+     "xNome": "FRANCISCO DA SILVA",
      "telefone": "5499999999"
    },
    "prodDet": [
@@ -166,260 +190,260 @@ Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, con
 <table>
 <thead>
 <tr>
-<th>TAG PAI</th>
-<th>TAG</th>
-<th>TIPO</th>
-<th>DESCRIÇÃO</th>
-<th>OBRIGATÓRIO</th>
-<th>EXEMPLO</th>
+<th style="text-align: left;">TAG PAI</th>
+<th style="text-align: left;">TAG</th>
+<th style="text-align: left;">TIPO</th>
+<th style="text-align: left;">DESCRIÇÃO</th>
+<th style="text-align: left;">OBRIGATÓRIO</th>
+<th style="text-align: left;">EXEMPLO</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td><strong>versão</strong></td>
-<td>numeric(4,2)</td>
-<td>Versão do layout</td>
-<td>Sim</td>
-<td>&quot;versao&quot;: 2.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>versão</strong></td>
+<td style="text-align: left;">numeric(4,2)</td>
+<td style="text-align: left;">Versão do layout</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;versao&quot;: 2.00</td>
 </tr>
 <tr>
-<td></td>
-<td><strong>id</strong></td>
-<td>varchar(47)</td>
-<td>Identificador da TAG a ser assinada. <em>(informar a chave de acesso da NF-e precedida do literal ‘NFe’, acrescentada a validação do formato)</em></td>
-<td>Sim</td>
-<td>&quot;Id&quot;: &quot; NFe43150395437281000312550030000296371002180066&quot;</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>id</strong></td>
+<td style="text-align: left;">varchar(47)</td>
+<td style="text-align: left;">Identificador da TAG a ser assinada. <em>(informar a chave de acesso da NF-e precedida do literal ‘NFe’, acrescentada a validação do formato)</em></td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;Id&quot;: &quot; NFe43150395437281000312550030000296371002180066&quot;</td>
 </tr>
 <tr>
-<td>ide</td>
-<td><strong>natOp</strong></td>
-<td>varchar(60)</td>
-<td>Descrição da Natureza da Operação</td>
-<td>Sim</td>
-<td>“natOp”: “TRANSFERENCIA ENTRE FILIAIS”</td>
+<td style="text-align: left;">ide</td>
+<td style="text-align: left;"><strong>natOp</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Descrição da Natureza da Operação</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">“natOp”: “TRANSFERENCIA ENTRE FILIAIS”</td>
 </tr>
 <tr>
-<td>ide</td>
-<td><strong>mod</strong></td>
-<td>varchar(2)</td>
-<td>Código do modelo da nota. <em>(utilizar código 55 para identificação da NF-e, emitida em substituição ao modelo 1 ou 1A)</em></td>
-<td>Sim</td>
-<td>&quot;mod&quot;:&quot;55&quot;</td>
+<td style="text-align: left;">ide</td>
+<td style="text-align: left;"><strong>mod</strong></td>
+<td style="text-align: left;">varchar(2)</td>
+<td style="text-align: left;">Código do modelo da nota. <em>(utilizar código 55 para identificação da NF-e, emitida em substituição ao modelo 1 ou 1A)</em></td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;mod&quot;:&quot;55&quot;</td>
 </tr>
 <tr>
-<td>ide</td>
-<td><strong>serie</strong></td>
-<td>int</td>
-<td>Série da nota. <em>(preencher com zeros na hipótese de a NF-e não possuir série)</em></td>
-<td>Sim</td>
-<td>&quot;serie&quot;: 3</td>
+<td style="text-align: left;">ide</td>
+<td style="text-align: left;"><strong>serie</strong></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Série da nota. <em>(preencher com zeros na hipótese de a NF-e não possuir série)</em></td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;serie&quot;: 3</td>
 </tr>
 <tr>
-<td>ide</td>
-<td><strong>nNF</strong></td>
-<td>int</td>
-<td>Número da nota</td>
-<td>Sim</td>
-<td>&quot;nNF&quot;: 29637</td>
+<td style="text-align: left;">ide</td>
+<td style="text-align: left;"><strong>nNF</strong></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Número da nota</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;nNF&quot;: 29637</td>
 </tr>
 <tr>
-<td>ide</td>
-<td><strong>dhEmi</strong></td>
-<td>datetime</td>
-<td>Data de emissão da nota. *(formato&quot; <strong><em>yyyy-MM-dd'T'HH:mm:ssX</em></strong>&quot;)*</td>
-<td>Sim</td>
-<td>&quot;dhEmi&quot;: &quot;2015-03-30T03:00:00-03:00&quot;</td>
+<td style="text-align: left;">ide</td>
+<td style="text-align: left;"><strong>dhEmi</strong></td>
+<td style="text-align: left;">datetime</td>
+<td style="text-align: left;">Data de emissão da nota. *(formato&quot; <strong><em>yyyy-MM-dd'T'HH:mm:ssX</em></strong>&quot;)*</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;dhEmi&quot;: &quot;2015-03-30T03:00:00-03:00&quot;</td>
 </tr>
 <tr>
-<td>ide</td>
-<td><strong>dhSaiEnt</strong></td>
-<td>datetime</td>
-<td>Data de Saída ou da Entradada Mercadoria/Produto. *(formato&quot;<strong><em>yyyy-MM-dd'T'HH:mm:ssX</em></strong>&quot;)*</td>
+<td style="text-align: left;">ide</td>
+<td style="text-align: left;"><strong>dhSaiEnt</strong></td>
+<td style="text-align: left;">datetime</td>
+<td style="text-align: left;">Data de Saída ou da Entradada Mercadoria/Produto. *(formato&quot;<strong><em>yyyy-MM-dd'T'HH:mm:ssX</em></strong>&quot;)*</td>
 </tr>
 <tr>
-<td>ide</td>
-<td><strong>tpNF</strong></td>
-<td>int</td>
-<td>Tipo de operação. (0 = entrada, 1 = saída)</td>
-<td>Sim</td>
-<td>&quot;tpNF&quot;: 1</td>
+<td style="text-align: left;">ide</td>
+<td style="text-align: left;"><strong>tpNF</strong></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Tipo de operação. (0 = entrada, 1 = saída)</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;tpNF&quot;: 1</td>
 </tr>
 <tr>
-<td>emit</td>
-<td><strong>CNPJ</strong></td>
-<td>varchar(14)</td>
-<td>CNPJ do emitente</td>
-<td>*</td>
-<td>&quot;CNPJ&quot;: &quot;95437281000312&quot;</td>
+<td style="text-align: left;">emit</td>
+<td style="text-align: left;"><strong>CNPJ</strong></td>
+<td style="text-align: left;">varchar(14)</td>
+<td style="text-align: left;">CNPJ do emitente</td>
+<td style="text-align: left;">*</td>
+<td style="text-align: left;">&quot;CNPJ&quot;: &quot;95437281000312&quot;</td>
 </tr>
 <tr>
-<td>emit</td>
-<td><strong>CPF</strong></td>
-<td>varchar(11)</td>
-<td>CPF do emitente</td>
-<td>*</td>
-<td>&quot;CPF&quot;: &quot;29895508087&quot;</td>
+<td style="text-align: left;">emit</td>
+<td style="text-align: left;"><strong>CPF</strong></td>
+<td style="text-align: left;">varchar(11)</td>
+<td style="text-align: left;">CPF do emitente</td>
+<td style="text-align: left;">*</td>
+<td style="text-align: left;">&quot;CPF&quot;: &quot;29895508087&quot;</td>
 </tr>
 <tr>
-<td>emit</td>
-<td><strong>xNome</strong></td>
-<td>varchar(60)</td>
-<td>Razão social ou nome do emitente</td>
-<td>Sim</td>
-<td>&quot;xNome&quot;: &quot;EXEMPLO EMIT&quot;</td>
+<td style="text-align: left;">emit</td>
+<td style="text-align: left;"><strong>xNome</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Razão social ou nome do emitente</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;xNome&quot;: &quot;EXEMPLO EMIT&quot;</td>
 </tr>
 <tr>
-<td>emit</td>
-<td><strong>xFant</strong></td>
-<td>varchar(60)</td>
-<td>Nome fantasia do emitente</td>
-<td>Não</td>
-<td>&quot;xFant&quot;: &quot;EXEMPLO FANT EMIT&quot;</td>
+<td style="text-align: left;">emit</td>
+<td style="text-align: left;"><strong>xFant</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Nome fantasia do emitente</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;xFant&quot;: &quot;EXEMPLO FANT EMIT&quot;</td>
 </tr>
 <tr>
-<td>emitenderEmit</td>
-<td><strong>xMun</strong></td>
-<td>varchar(60)</td>
-<td>Nome do município do emitente</td>
-<td>Sim</td>
-<td>&quot;xFant&quot;: &quot;EXEMPLO FANT EMIT&quot;</td>
+<td style="text-align: left;">emitenderEmit</td>
+<td style="text-align: left;"><strong>xMun</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Nome do município do emitente</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;xFant&quot;: &quot;EXEMPLO FANT EMIT&quot;</td>
 </tr>
 <tr>
-<td>emitenderEmit</td>
-<td><strong>UF</strong></td>
-<td>varchar(2)</td>
-<td>Sigla da UF do emitente</td>
-<td>Sim</td>
-<td>&quot;UF&quot;: &quot;RS&quot;</td>
+<td style="text-align: left;">emitenderEmit</td>
+<td style="text-align: left;"><strong>UF</strong></td>
+<td style="text-align: left;">varchar(2)</td>
+<td style="text-align: left;">Sigla da UF do emitente</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;UF&quot;: &quot;RS&quot;</td>
 </tr>
 <tr>
-<td>emitenderEmit</td>
-<td><strong>xPais</strong></td>
-<td>varchar(60)</td>
-<td>Nome do País do emitente</td>
-<td>Não</td>
-<td>&quot;xPais&quot;: &quot;BRASIL&quot;</td>
+<td style="text-align: left;">emitenderEmit</td>
+<td style="text-align: left;"><strong>xPais</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Nome do País do emitente</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;xPais&quot;: &quot;BRASIL&quot;</td>
 </tr>
 <tr>
-<td>dest</td>
-<td><strong>CNPJ</strong></td>
-<td>varchar(14)</td>
-<td>CNPJ do destinatário</td>
-<td>/*</td>
-<td>&quot;CNPJ&quot;: &quot;95485281000312&quot;</td>
+<td style="text-align: left;">dest</td>
+<td style="text-align: left;"><strong>CNPJ</strong></td>
+<td style="text-align: left;">varchar(14)</td>
+<td style="text-align: left;">CNPJ do destinatário</td>
+<td style="text-align: left;">/*</td>
+<td style="text-align: left;">&quot;CNPJ&quot;: &quot;95485281000312&quot;</td>
 </tr>
 <tr>
-<td>dest</td>
-<td><strong>CPF</strong></td>
-<td>varchar(11)</td>
-<td>CPF do destinatário</td>
-<td>/*</td>
-<td>&quot;CPF&quot;: &quot;29896908087&quot;</td>
+<td style="text-align: left;">dest</td>
+<td style="text-align: left;"><strong>CPF</strong></td>
+<td style="text-align: left;">varchar(11)</td>
+<td style="text-align: left;">CPF do destinatário</td>
+<td style="text-align: left;">/*</td>
+<td style="text-align: left;">&quot;CPF&quot;: &quot;29896908087&quot;</td>
 </tr>
 <tr>
-<td>dest</td>
-<td><strong>xNome</strong></td>
-<td>varchar(60)</td>
-<td>Razão social ou nome do destinatário</td>
-<td>Sim</td>
-<td>&quot;xNome&quot;: &quot;ANTONIO WELTER&quot;</td>
+<td style="text-align: left;">dest</td>
+<td style="text-align: left;"><strong>xNome</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Razão social ou nome do destinatário</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;xNome&quot;: &quot;ANTONIO DA SILVA&quot;</td>
 </tr>
 <tr>
-<td>destenderDest</td>
-<td><strong>cMun</strong></td>
-<td>int</td>
-<td>Código do município</td>
-<td>Sim</td>
-<td>&quot;cMun&quot;: 4306205</td>
+<td style="text-align: left;">destenderDest</td>
+<td style="text-align: left;"><strong>cMun</strong></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Código do município</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;cMun&quot;: 4306205</td>
 </tr>
 <tr>
-<td>destenderDest</td>
-<td><strong>xMun</strong></td>
-<td>varchar(60)</td>
-<td>Nome do município do destinatário</td>
-<td>Sim</td>
-<td>&quot;xMun&quot;: &quot;CRUZEIRO DO SUL&quot;</td>
+<td style="text-align: left;">destenderDest</td>
+<td style="text-align: left;"><strong>xMun</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Nome do município do destinatário</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;xMun&quot;: &quot;CRUZEIRO DO SUL&quot;</td>
 </tr>
 <tr>
-<td>destenderDest</td>
-<td><strong>UF</strong></td>
-<td>varchar(2)</td>
-<td>Sigla da UF do destinatário</td>
-<td>Sim</td>
-<td>&quot;UF&quot;: &quot;RS&quot;</td>
+<td style="text-align: left;">destenderDest</td>
+<td style="text-align: left;"><strong>UF</strong></td>
+<td style="text-align: left;">varchar(2)</td>
+<td style="text-align: left;">Sigla da UF do destinatário</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;UF&quot;: &quot;RS&quot;</td>
 </tr>
 <tr>
-<td>destenderDest</td>
-<td><strong>cPais</strong></td>
-<td>int</td>
-<td>Código do País</td>
-<td>Não</td>
-<td>&quot;cPais&quot;: 1058</td>
+<td style="text-align: left;">destenderDest</td>
+<td style="text-align: left;"><strong>cPais</strong></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Código do País</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;cPais&quot;: 1058</td>
 </tr>
 <tr>
-<td>destenderDest</td>
-<td><strong>xPais</strong></td>
-<td>varchar(60)</td>
-<td>Nome do País do destinatário</td>
-<td>Não</td>
-<td>&quot;xPais&quot;: &quot;BRASIL&quot;</td>
+<td style="text-align: left;">destenderDest</td>
+<td style="text-align: left;"><strong>xPais</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Nome do País do destinatário</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;xPais&quot;: &quot;BRASIL&quot;</td>
 </tr>
 <tr>
-<td>det</td>
-<td><strong>nItem</strong></td>
-<td>int</td>
-<td>Índice do item na nota</td>
-<td>Sim</td>
-<td>&quot;nItem&quot;: 1</td>
+<td style="text-align: left;">det</td>
+<td style="text-align: left;"><strong>nItem</strong></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Índice do item na nota</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;nItem&quot;: 1</td>
 </tr>
 <tr>
-<td>detprod</td>
-<td><strong>cProd</strong></td>
-<td>varchar(60)</td>
-<td>Código do produto</td>
-<td>Sim</td>
-<td>&quot;cProd&quot;: &quot;5650MHCL876/409489&quot;</td>
+<td style="text-align: left;">detprod</td>
+<td style="text-align: left;"><strong>cProd</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Código do produto</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;cProd&quot;: &quot;5650MHCL876/409489&quot;</td>
 </tr>
 <tr>
-<td>detprod</td>
-<td><strong>xProd</strong></td>
-<td>varchar(120)</td>
-<td>Descrição do produto</td>
-<td>Sim</td>
-<td>&quot;xProd&quot;: &quot;COLHEITADEIRA&quot;</td>
+<td style="text-align: left;">detprod</td>
+<td style="text-align: left;"><strong>xProd</strong></td>
+<td style="text-align: left;">varchar(120)</td>
+<td style="text-align: left;">Descrição do produto</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;xProd&quot;: &quot;COLHEITADEIRA&quot;</td>
 </tr>
 <tr>
-<td>detprod</td>
-<td><strong>qCom</strong></td>
-<td>numeric(15,4)</td>
-<td>Quantidadecomercial</td>
-<td>Sim</td>
-<td>&quot;qCom&quot;: 1.0000</td>
+<td style="text-align: left;">detprod</td>
+<td style="text-align: left;"><strong>qCom</strong></td>
+<td style="text-align: left;">numeric(15,4)</td>
+<td style="text-align: left;">Quantidadecomercial</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;qCom&quot;: 1.0000</td>
 </tr>
 <tr>
-<td>detprod</td>
-<td><strong>vUnCom</strong></td>
-<td>numeric(21,10)</td>
-<td>Valor UnitáriodeComercialização</td>
-<td>Sim</td>
-<td>&quot;vUnCom&quot;: 287000.00</td>
+<td style="text-align: left;">detprod</td>
+<td style="text-align: left;"><strong>vUnCom</strong></td>
+<td style="text-align: left;">numeric(21,10)</td>
+<td style="text-align: left;">Valor UnitáriodeComercialização</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;vUnCom&quot;: 287000.00</td>
 </tr>
 <tr>
-<td>detprod</td>
-<td><strong>vProd</strong></td>
-<td>numeric(15,2)</td>
-<td>Valor total bruto dos produtos</td>
-<td>Sim</td>
-<td>&quot;vProd&quot;: 287000.00</td>
+<td style="text-align: left;">detprod</td>
+<td style="text-align: left;"><strong>vProd</strong></td>
+<td style="text-align: left;">numeric(15,2)</td>
+<td style="text-align: left;">Valor total bruto dos produtos</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;vProd&quot;: 287000.00</td>
 </tr>
 <tr>
-<td>totalICMSTot</td>
-<td><strong>vNF</strong></td>
-<td>numeric(15,2)</td>
-<td>Valor Total da NF-e</td>
-<td>Sim</td>
-<td>&quot;vNF&quot;: 287000.00</td>
+<td style="text-align: left;">totalICMSTot</td>
+<td style="text-align: left;"><strong>vNF</strong></td>
+<td style="text-align: left;">numeric(15,2)</td>
+<td style="text-align: left;">Valor Total da NF-e</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;vNF&quot;: 287000.00</td>
 </tr>
 </tbody>
 </table>
@@ -427,94 +451,94 @@ Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, con
 <table>
 <thead>
 <tr>
-<th>TAG PAI</th>
-<th>TAG</th>
-<th>TIPO</th>
-<th>DESCRIÇÃO</th>
-<th>OBRIGATÓRIO</th>
-<th>EXEMPLO</th>
+<th style="text-align: left;">TAG PAI</th>
+<th style="text-align: left;">TAG</th>
+<th style="text-align: left;">TIPO</th>
+<th style="text-align: left;">DESCRIÇÃO</th>
+<th style="text-align: left;">OBRIGATÓRIO</th>
+<th style="text-align: left;">EXEMPLO</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td><strong>tipoOp</strong></td>
-<td>int</td>
-<td>Código do tipo de operação *( <strong><em>1</em></strong>=venda, <strong><em>4</em></strong>=devolução, <strong><em>5</em></strong>=transferência)*</td>
-<td>Sim</td>
-<td>&quot;tipoOp&quot;: 1</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>tipoOp</strong></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Código do tipo de operação *( <strong><em>1</em></strong>=venda, <strong><em>4</em></strong>=devolução, <strong><em>5</em></strong>=transferência)*</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;tipoOp&quot;: 1</td>
 </tr>
 <tr>
-<td>vend</td>
-<td><strong>CPF</strong></td>
-<td>varchar(11)</td>
-<td>CPF do Vendedor</td>
-<td>Não</td>
-<td>&quot;CPF&quot;: &quot;29896908085&quot;</td>
+<td style="text-align: left;">vend</td>
+<td style="text-align: left;"><strong>CPF</strong></td>
+<td style="text-align: left;">varchar(11)</td>
+<td style="text-align: left;">CPF do Vendedor</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;CPF&quot;: &quot;29896908085&quot;</td>
 </tr>
 <tr>
-<td>vend</td>
-<td><strong>xNome</strong></td>
-<td>varchar(60)</td>
-<td>Nome completo do Vendedor</td>
-<td>Não</td>
-<td>&quot;xNome&quot;: &quot;NOME VENDEDOR&quot;</td>
+<td style="text-align: left;">vend</td>
+<td style="text-align: left;"><strong>xNome</strong></td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Nome completo do Vendedor</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;xNome&quot;: &quot;NOME VENDEDOR&quot;</td>
 </tr>
 <tr>
-<td>vend</td>
-<td><strong>telefone</strong></td>
-<td>varchar(15)</td>
-<td>Número do telefone celular do Vendedor</td>
-<td>Não</td>
-<td>&quot;telefone&quot;: &quot;5199999999&quot;</td>
+<td style="text-align: left;">vend</td>
+<td style="text-align: left;"><strong>telefone</strong></td>
+<td style="text-align: left;">varchar(15)</td>
+<td style="text-align: left;">Número do telefone celular do Vendedor</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;telefone&quot;: &quot;5199999999&quot;</td>
 </tr>
 <tr>
-<td>prodDet</td>
-<td><strong>nItem</strong></td>
-<td>int</td>
-<td>Índice do item na nota</td>
-<td>Sim</td>
-<td>&quot;nItem&quot;: 1</td>
+<td style="text-align: left;">prodDet</td>
+<td style="text-align: left;"><strong>nItem</strong></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Índice do item na nota</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;nItem&quot;: 1</td>
 </tr>
 <tr>
-<td>prodDetprod</td>
-<td><strong>codigoItem</strong></td>
-<td>varchar(25)</td>
-<td>Código do Item - AGCO</td>
-<td>Sim</td>
-<td>&quot;codigoItem&quot;: &quot;42754F0913D&quot;</td>
+<td style="text-align: left;">prodDetprod</td>
+<td style="text-align: left;"><strong>codigoItem</strong></td>
+<td style="text-align: left;">varchar(25)</td>
+<td style="text-align: left;">Código do Item - AGCO</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;codigoItem&quot;: &quot;42754F0913D&quot;</td>
 </tr>
 <tr>
-<td>prodDetprod</td>
-<td><strong>serieComercial</strong></td>
-<td>varchar(20)</td>
-<td>Código da Série Comercial - AGCO</td>
-<td>Sim</td>
-<td>&quot;serieComercial&quot;: &quot;4275344889&quot;</td>
+<td style="text-align: left;">prodDetprod</td>
+<td style="text-align: left;"><strong>serieComercial</strong></td>
+<td style="text-align: left;">varchar(20)</td>
+<td style="text-align: left;">Código da Série Comercial - AGCO</td>
+<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">&quot;serieComercial&quot;: &quot;4275344889&quot;</td>
 </tr>
 <tr>
-<td>prodDetprod</td>
-<td><strong>monobloco</strong></td>
-<td>varchar(30)</td>
-<td>Número do monobloco - AGCO</td>
-<td>Não</td>
-<td>&quot;monobloco&quot;: &quot; AAAT0012PCC002382&quot;</td>
+<td style="text-align: left;">prodDetprod</td>
+<td style="text-align: left;"><strong>monobloco</strong></td>
+<td style="text-align: left;">varchar(30)</td>
+<td style="text-align: left;">Número do monobloco - AGCO</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;monobloco&quot;: &quot; AAAT0012PCC002382&quot;</td>
 </tr>
 <tr>
-<td>prodDetprod</td>
-<td><strong>tipoProd</strong></td>
-<td>varchar(3)</td>
-<td>Tipo de produto AGCO, onde: Trator = “TA”, Colheitadeira = “CO”, Pulverizador: “PU”</td>
-<td>Não</td>
-<td>&quot;tipoProd&quot;: &quot;TA&quot;</td>
+<td style="text-align: left;">prodDetprod</td>
+<td style="text-align: left;"><strong>tipoProd</strong></td>
+<td style="text-align: left;">varchar(3)</td>
+<td style="text-align: left;">Tipo de produto AGCO, onde: Trator = “TA”, Colheitadeira = “CO”, Pulverizador: “PU”</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;tipoProd&quot;: &quot;TA&quot;</td>
 </tr>
 <tr>
-<td>prodDetprod</td>
-<td><strong>cPrograma</strong></td>
-<td>int</td>
-<td>Controle do Programa Mais Alimentos. (0 = Não, 1 = Sim)</td>
-<td>Não</td>
-<td>&quot;cPrograma&quot;: 0</td>
+<td style="text-align: left;">prodDetprod</td>
+<td style="text-align: left;"><strong>cPrograma</strong></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Controle do Programa Mais Alimentos. (0 = Não, 1 = Sim)</td>
+<td style="text-align: left;">Não</td>
+<td style="text-align: left;">&quot;cPrograma&quot;: 0</td>
 </tr>
 </tbody>
 </table>
