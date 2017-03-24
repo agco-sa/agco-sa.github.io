@@ -80,88 +80,88 @@ No DMS a seleção de dados deverá atendar a duas premissas importantes:</p>
 <li>Considerar as notas fiscais de entrada (devoluções), saída e transferência aptas a ser integradas e que contenham produtos a serem integrados conforme definido no cadastro de produto.</li>
 <li>Somente para notas transmitidas e autorizadas pela SEFAZ, após o prazo máximo definido para o cancelamento – não está previsto nenhum tratamento sobre o cancelamento de notas.
 <ul>
-<li>Recomenda-se a adoção de um parâmetro padrão que defini o tempo máximo para cancelamento da nota fiscal na SEFAZ para validar as notas aptas a integração DMS x AGCO.
-A estrutura JSON contendo os dados é enviada no corpo da chamada.
-Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, contendo todas as TAGs do schema.</li>
+<li>Recomenda-se a adoção de um parâmetro padrão que defini o tempo máximo para cancelamento da nota fiscal na SEFAZ para validar as notas aptas a integração DMS x AGCO.</li>
 </ul></li>
 </ul>
-<p>{
-&quot;NFe&quot;: {
-&quot;infNFe&quot;: {
-&quot;versao&quot;: 3.1,
-&quot;id&quot;: &quot;&quot;,
-&quot;ide&quot;: {
-&quot;natOp&quot;: &quot;5102 VENDA DE MERCADORIA&quot;,
-&quot;mod&quot;: &quot;55&quot;,
-&quot;serie&quot;: 10,
-&quot;nNF&quot;: 445512,
-&quot;dhEmi&quot;: &quot;2015-08-18T03:00:00.000Z&quot;,
-&quot;dhSaiEnt&quot;: &quot;2015-08-20T03:00:00.000Z&quot;,
-&quot;tpNF&quot;: 1
-},
-&quot;emit&quot;: {
-&quot;CNPJ&quot;: &quot;92028224000391&quot;,
-&quot;xNome&quot;: &quot;SOTRIMA AGRICOLA LTDA&quot;,
-&quot;xFant&quot;: &quot;SOTRIMA AGRICOLA LTDA&quot;,
-&quot;enderEmit&quot;: {
-&quot;xMun&quot;: &quot;CAXIAS DO SUL&quot;,
-&quot;UF&quot;: &quot;RS&quot;,
-&quot;xPais&quot;: &quot;BRASIL&quot;
-}
-},
-&quot;dest&quot;: {
-&quot;CPF&quot;: &quot;23518456091&quot;,
-&quot;CNPJ&quot;: &quot;&quot;,
-&quot;xNome&quot;: &quot;ABRELINO ANTONIO DANELLI&quot;,
-&quot;enderDest&quot;: {
-&quot;cMun&quot;: 4305108,
-&quot;xMun&quot;: &quot;CAXIAS DO SUL&quot;,
-&quot;UF&quot;: &quot;RS&quot;,
-&quot;cPais&quot;: 1058
-}
-},
-&quot;det&quot;: [
-{
-&quot;nItem&quot;: 1,
-&quot;prod&quot;: {
-&quot;cProd&quot;: &quot;42654F01338&quot;,
-&quot;xProd&quot;: &quot;TRATOR AGRICOLA MF4265 4RM&quot;,
-&quot;qCom&quot;: 1,
-&quot;vUnCom&quot;: 86064.35,
-&quot;vProd&quot;: 86064.35
-}
-}
-],
-&quot;total&quot;: {
-&quot;ICMSTot&quot;: {
-&quot;vNF&quot;: 86064.35
-}
-},
-&quot;infAdic&quot;: {
-&quot;infCpl&quot;: &quot;&quot;
-}
-}
-},
-&quot;ddi&quot;: {
-&quot;tipoOp&quot;: 1,
-&quot;vend&quot;: {
-&quot;CPF&quot;: &quot;68037503020&quot;,
-&quot;xNome&quot;: &quot;MARCELO ORESTES TOSS&quot;,
-&quot;telefone&quot;: &quot;5499999999&quot;
-},
-&quot;prodDet&quot;: [
-{
-&quot;nItem&quot;: 1,
-&quot;prod&quot;: {
-&quot;modelo&quot;: &quot;42654F&quot;,
-&quot;codigoItem&quot;: &quot;42654F01338&quot;,
-&quot;serieComercial&quot;: &quot;4265395723&quot;,
-&quot;monobloco&quot;: &quot;AAAT0011CEC001305&quot;
-}
-}
-]
-}
-}</p>
+<p>A estrutura JSON contendo os dados é enviada no corpo da chamada.
+Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, contendo todas as TAGs do schema.</p>
+<pre><code>{
+ "NFe": {
+   "infNFe": {
+     "versao": 3.1,
+     "id": "",
+     "ide": {
+       "natOp": "5102 VENDA DE MERCADORIA",
+       "mod": "55",
+       "serie": 10,
+       "nNF": 445512,
+       "dhEmi": "2015-08-18T03:00:00.000Z",
+       "dhSaiEnt": "2015-08-20T03:00:00.000Z",
+       "tpNF": 1
+     },
+     "emit": {
+       "CNPJ": "92028224000391",
+       "xNome": "SOTRIMA AGRICOLA LTDA",
+       "xFant": "SOTRIMA AGRICOLA LTDA",
+       "enderEmit": {
+         "xMun": "CAXIAS DO SUL",
+         "UF": "RS",
+         "xPais": "BRASIL"
+       }
+     },
+     "dest": {
+       "CPF": "23518456091",
+       "CNPJ": "",
+       "xNome": "ABRELINO ANTONIO DANELLI",
+       "enderDest": {
+         "cMun": 4305108,
+         "xMun": "CAXIAS DO SUL",
+         "UF": "RS",
+         "cPais": 1058
+       }
+     },
+     "det": [
+       {
+         "nItem": 1,
+         "prod": {
+           "cProd": "42654F01338",
+           "xProd": "TRATOR AGRICOLA MF4265 4RM",
+           "qCom": 1,
+           "vUnCom": 86064.35,
+           "vProd": 86064.35
+         }
+       }
+     ],
+     "total": {
+       "ICMSTot": {
+         "vNF": 86064.35
+       }
+     },
+     "infAdic": {
+       "infCpl": ""
+     }
+   }
+ },
+ "ddi": {
+   "tipoOp": 1,
+   "vend": {
+     "CPF": "68037503020",
+     "xNome": "MARCELO ORESTES TOSS",
+     "telefone": "5499999999"
+   },
+   "prodDet": [
+     {
+       "nItem": 1,
+       "prod": {
+         "modelo": "42654F",
+         "codigoItem": "42654F01338",
+         "serieComercial": "4265395723",
+         "monobloco": "AAAT0011CEC001305"
+       }
+     }
+   ]
+ }
+}</code></pre>
 <h3 id="especificao-dos-atributos-grupo-quotnfequot">Especificação dos atributos (grupo &quot;NFe&quot;)</h3>
 <table>
 <thead>
@@ -250,7 +250,7 @@ Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, con
 <td><strong>CNPJ</strong></td>
 <td>varchar(14)</td>
 <td>CNPJ do emitente</td>
-<td>/*</td>
+<td>*</td>
 <td>&quot;CNPJ&quot;: &quot;95437281000312&quot;</td>
 </tr>
 <tr>
@@ -258,7 +258,7 @@ Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, con
 <td><strong>CPF</strong></td>
 <td>varchar(11)</td>
 <td>CPF do emitente</td>
-<td>/*</td>
+<td>*</td>
 <td>&quot;CPF&quot;: &quot;29895508087&quot;</td>
 </tr>
 <tr>
