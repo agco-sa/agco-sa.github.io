@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGCO South America APIs</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic'
+          rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="http://agco-sa.github.io/css/theme.css" type="text/css"/>
+    <link rel="stylesheet" href="http://agco-sa.github.io/css/theme-fixes.css" type="text/css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+</head>
+<body class="wy-body-for-nav">
+
+    <div class="wy-grid-for-nav">
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-nav-search">
+                <a href="http://agco-sa.github.io/" class="fa fa-home"> AGCO South America APIs</a>
+            </div>
+
+            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="http://agco-sa.github.io/1IntroDDI.html">
+                                Introdução
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="http://agco-sa.github.io/2ConfigDDI.html">
+                                Configuração
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="http://agco-sa.github.io/3SegurancaDDI.html">
+                                Segurança
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="http://agco-sa.github.io/4CodRetornoDDI.html">
+                                Códigos de retorno
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="http://agco-sa.github.io/5RecursosOperDDI.html">
+                                Recursos DDI
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+            &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+                        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                <a href="http://agco-sa.github.io/">AGCO South America APIs</a>
+            </nav>
+
+
+                        <div class="wy-nav-content">
+                <div class="rst-content">
+                    <div role="main" class="document">
+                        <p><img src="http://www.agco.com.br/content/agcocorp/pt_BR/_jcr_content/footermainparsys/footer/footerlogoimage.img.png/1485893878104.png" alt="AGCO_logo" /></p>
+<h1 id="dealer-data-integration">Dealer Data Integration</h1>
+<h2 id="recursos-e-operaes">Recursos e operações</h2>
+<p>A API é composta de uma lista de recursos com possibilidade de diferentes operações dependendo do verbo HTTP utilizado, do caminho e dos parâmetros.</p>
+<h3 id="1-post-ddidealernfe">1. POST /ddi/DealerNFe</h3>
+<p>Envia para a AGCO de informações de venda da revenda ao cliente final.
+No DMS a seleção de dados deverá atendar a duas premissas importantes:</p>
+<ul>
+<li>Considerar as notas fiscais de entrada (devoluções), saída e transferência aptas a ser integradas e que contenham produtos a serem integrados conforme definido no cadastro de produto.</li>
+<li>Somente para notas transmitidas e autorizadas pela SEFAZ, após o prazo máximo definido para o cancelamento – não está previsto nenhum tratamento sobre o cancelamento de notas.
+<ul>
+<li>Recomenda-se a adoção de um parâmetro padrão que defini o tempo máximo para cancelamento da nota fiscal na SEFAZ para validar as notas aptas a integração DMS x AGCO.
+A estrutura JSON contendo os dados é enviada no corpo da chamada.
+Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, contendo todas as TAGs do schema.</li>
+</ul></li>
+</ul>
+<p>{
+&quot;NFe&quot;: {
+&quot;infNFe&quot;: {
+&quot;versao&quot;: 3.1,
+&quot;id&quot;: &quot;&quot;,
+&quot;ide&quot;: {
+&quot;natOp&quot;: &quot;5102 VENDA DE MERCADORIA&quot;,
+&quot;mod&quot;: &quot;55&quot;,
+&quot;serie&quot;: 10,
+&quot;nNF&quot;: 445512,
+&quot;dhEmi&quot;: &quot;2015-08-18T03:00:00.000Z&quot;,
+&quot;dhSaiEnt&quot;: &quot;2015-08-20T03:00:00.000Z&quot;,
+&quot;tpNF&quot;: 1
+},
+&quot;emit&quot;: {
+&quot;CNPJ&quot;: &quot;92028224000391&quot;,
+&quot;xNome&quot;: &quot;SOTRIMA AGRICOLA LTDA&quot;,
+&quot;xFant&quot;: &quot;SOTRIMA AGRICOLA LTDA&quot;,
+&quot;enderEmit&quot;: {
+&quot;xMun&quot;: &quot;CAXIAS DO SUL&quot;,
+&quot;UF&quot;: &quot;RS&quot;,
+&quot;xPais&quot;: &quot;BRASIL&quot;
+}
+},
+&quot;dest&quot;: {
+&quot;CPF&quot;: &quot;23518456091&quot;,
+&quot;CNPJ&quot;: &quot;&quot;,
+&quot;xNome&quot;: &quot;ABRELINO ANTONIO DANELLI&quot;,
+&quot;enderDest&quot;: {
+&quot;cMun&quot;: 4305108,
+&quot;xMun&quot;: &quot;CAXIAS DO SUL&quot;,
+&quot;UF&quot;: &quot;RS&quot;,
+&quot;cPais&quot;: 1058
+}
+},
+&quot;det&quot;: [
+{
+&quot;nItem&quot;: 1,
+&quot;prod&quot;: {
+&quot;cProd&quot;: &quot;42654F01338&quot;,
+&quot;xProd&quot;: &quot;TRATOR AGRICOLA MF4265 4RM&quot;,
+&quot;qCom&quot;: 1,
+&quot;vUnCom&quot;: 86064.35,
+&quot;vProd&quot;: 86064.35
+}
+}
+],
+&quot;total&quot;: {
+&quot;ICMSTot&quot;: {
+&quot;vNF&quot;: 86064.35
+}
+},
+&quot;infAdic&quot;: {
+&quot;infCpl&quot;: &quot;&quot;
+}
+}
+},
+&quot;ddi&quot;: {
+&quot;tipoOp&quot;: 1,
+&quot;vend&quot;: {
+&quot;CPF&quot;: &quot;68037503020&quot;,
+&quot;xNome&quot;: &quot;MARCELO ORESTES TOSS&quot;,
+&quot;telefone&quot;: &quot;5499999999&quot;
+},
+&quot;prodDet&quot;: [
+{
+&quot;nItem&quot;: 1,
+&quot;prod&quot;: {
+&quot;modelo&quot;: &quot;42654F&quot;,
+&quot;codigoItem&quot;: &quot;42654F01338&quot;,
+&quot;serieComercial&quot;: &quot;4265395723&quot;,
+&quot;monobloco&quot;: &quot;AAAT0011CEC001305&quot;
+}
+}
+]
+}
+}</p>
+<h3 id="especificao-dos-atributos-grupo-quotnfequot">Especificação dos atributos (grupo &quot;NFe&quot;)</h3>
+<table>
+<thead>
+<tr>
+<th>TAG PAI</th>
+<th>TAG</th>
+<th>TIPO</th>
+<th>DESCRIÇÃO</th>
+<th>OBRIGATÓRIO</th>
+<th>EXEMPLO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong>versão</strong></td>
+<td>numeric(4,2)</td>
+<td>Versão do layout</td>
+<td>Sim</td>
+<td>&quot;versao&quot;: 2.00</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>id</strong></td>
+<td>varchar(47)</td>
+<td>Identificador da TAG a ser assinada. <em>(informar a chave de acesso da NF-e precedida do literal ‘NFe’, acrescentada a validação do formato)</em></td>
+<td>Sim</td>
+<td>&quot;Id&quot;: &quot; NFe43150395437281000312550030000296371002180066&quot;</td>
+</tr>
+<tr>
+<td>ide</td>
+<td><strong>natOp</strong></td>
+<td>varchar(60)</td>
+<td>Descrição da Natureza da Operação</td>
+<td>Sim</td>
+<td>“natOp”: “TRANSFERENCIA ENTRE FILIAIS”</td>
+</tr>
+<tr>
+<td>ide</td>
+<td><strong>mod</strong></td>
+<td>varchar(2)</td>
+<td>Código do modelo da nota. <em>(utilizar código 55 para identificação da NF-e, emitida em substituição ao modelo 1 ou 1A)</em></td>
+<td>Sim</td>
+<td>&quot;mod&quot;:&quot;55&quot;</td>
+</tr>
+<tr>
+<td>ide</td>
+<td><strong>serie</strong></td>
+<td>int</td>
+<td>Série da nota. <em>(preencher com zeros na hipótese de a NF-e não possuir série)</em></td>
+<td>Sim</td>
+<td>&quot;serie&quot;: 3</td>
+</tr>
+<tr>
+<td>ide</td>
+<td><strong>nNF</strong></td>
+<td>int</td>
+<td>Número da nota</td>
+<td>Sim</td>
+<td>&quot;nNF&quot;: 29637</td>
+</tr>
+<tr>
+<td>ide</td>
+<td><strong>dhEmi</strong></td>
+<td>datetime</td>
+<td>Data de emissão da nota. *(formato&quot; <strong><em>yyyy-MM-dd'T'HH:mm:ssX</em></strong>&quot;)*</td>
+<td>Sim</td>
+<td>&quot;dhEmi&quot;: &quot;2015-03-30T03:00:00-03:00&quot;</td>
+</tr>
+<tr>
+<td>ide</td>
+<td><strong>dhSaiEnt</strong></td>
+<td>datetime</td>
+<td>Data de Saída ou da Entradada Mercadoria/Produto. *(formato&quot;<strong><em>yyyy-MM-dd'T'HH:mm:ssX</em></strong>&quot;)*</td>
+</tr>
+<tr>
+<td>ide</td>
+<td><strong>tpNF</strong></td>
+<td>int</td>
+<td>Tipo de operação. (0 = entrada, 1 = saída)</td>
+<td>Sim</td>
+<td>&quot;tpNF&quot;: 1</td>
+</tr>
+<tr>
+<td>emit</td>
+<td><strong>CNPJ</strong></td>
+<td>varchar(14)</td>
+<td>CNPJ do emitente</td>
+<td>/*</td>
+<td>&quot;CNPJ&quot;: &quot;95437281000312&quot;</td>
+</tr>
+<tr>
+<td>emit</td>
+<td><strong>CPF</strong></td>
+<td>varchar(11)</td>
+<td>CPF do emitente</td>
+<td>/*</td>
+<td>&quot;CPF&quot;: &quot;29895508087&quot;</td>
+</tr>
+<tr>
+<td>emit</td>
+<td><strong>xNome</strong></td>
+<td>varchar(60)</td>
+<td>Razão social ou nome do emitente</td>
+<td>Sim</td>
+<td>&quot;xNome&quot;: &quot;EXEMPLO EMIT&quot;</td>
+</tr>
+<tr>
+<td>emit</td>
+<td><strong>xFant</strong></td>
+<td>varchar(60)</td>
+<td>Nome fantasia do emitente</td>
+<td>Não</td>
+<td>&quot;xFant&quot;: &quot;EXEMPLO FANT EMIT&quot;</td>
+</tr>
+<tr>
+<td>emitenderEmit</td>
+<td><strong>xMun</strong></td>
+<td>varchar(60)</td>
+<td>Nome do município do emitente</td>
+<td>Sim</td>
+<td>&quot;xFant&quot;: &quot;EXEMPLO FANT EMIT&quot;</td>
+</tr>
+<tr>
+<td>emitenderEmit</td>
+<td><strong>UF</strong></td>
+<td>varchar(2)</td>
+<td>Sigla da UF do emitente</td>
+<td>Sim</td>
+<td>&quot;UF&quot;: &quot;RS&quot;</td>
+</tr>
+<tr>
+<td>emitenderEmit</td>
+<td><strong>xPais</strong></td>
+<td>varchar(60)</td>
+<td>Nome do País do emitente</td>
+<td>Não</td>
+<td>&quot;xPais&quot;: &quot;BRASIL&quot;</td>
+</tr>
+<tr>
+<td>dest</td>
+<td><strong>CNPJ</strong></td>
+<td>varchar(14)</td>
+<td>CNPJ do destinatário</td>
+<td>/*</td>
+<td>&quot;CNPJ&quot;: &quot;95485281000312&quot;</td>
+</tr>
+<tr>
+<td>dest</td>
+<td><strong>CPF</strong></td>
+<td>varchar(11)</td>
+<td>CPF do destinatário</td>
+<td>/*</td>
+<td>&quot;CPF&quot;: &quot;29896908087&quot;</td>
+</tr>
+<tr>
+<td>dest</td>
+<td><strong>xNome</strong></td>
+<td>varchar(60)</td>
+<td>Razão social ou nome do destinatário</td>
+<td>Sim</td>
+<td>&quot;xNome&quot;: &quot;ANTONIO WELTER&quot;</td>
+</tr>
+<tr>
+<td>destenderDest</td>
+<td><strong>cMun</strong></td>
+<td>int</td>
+<td>Código do município</td>
+<td>Sim</td>
+<td>&quot;cMun&quot;: 4306205</td>
+</tr>
+<tr>
+<td>destenderDest</td>
+<td><strong>xMun</strong></td>
+<td>varchar(60)</td>
+<td>Nome do município do destinatário</td>
+<td>Sim</td>
+<td>&quot;xMun&quot;: &quot;CRUZEIRO DO SUL&quot;</td>
+</tr>
+<tr>
+<td>destenderDest</td>
+<td><strong>UF</strong></td>
+<td>varchar(2)</td>
+<td>Sigla da UF do destinatário</td>
+<td>Sim</td>
+<td>&quot;UF&quot;: &quot;RS&quot;</td>
+</tr>
+<tr>
+<td>destenderDest</td>
+<td><strong>cPais</strong></td>
+<td>int</td>
+<td>Código do País</td>
+<td>Não</td>
+<td>&quot;cPais&quot;: 1058</td>
+</tr>
+<tr>
+<td>destenderDest</td>
+<td><strong>xPais</strong></td>
+<td>varchar(60)</td>
+<td>Nome do País do destinatário</td>
+<td>Não</td>
+<td>&quot;xPais&quot;: &quot;BRASIL&quot;</td>
+</tr>
+<tr>
+<td>det</td>
+<td><strong>nItem</strong></td>
+<td>int</td>
+<td>Índice do item na nota</td>
+<td>Sim</td>
+<td>&quot;nItem&quot;: 1</td>
+</tr>
+<tr>
+<td>detprod</td>
+<td><strong>cProd</strong></td>
+<td>varchar(60)</td>
+<td>Código do produto</td>
+<td>Sim</td>
+<td>&quot;cProd&quot;: &quot;5650MHCL876/409489&quot;</td>
+</tr>
+<tr>
+<td>detprod</td>
+<td><strong>xProd</strong></td>
+<td>varchar(120)</td>
+<td>Descrição do produto</td>
+<td>Sim</td>
+<td>&quot;xProd&quot;: &quot;COLHEITADEIRA&quot;</td>
+</tr>
+<tr>
+<td>detprod</td>
+<td><strong>qCom</strong></td>
+<td>numeric(15,4)</td>
+<td>Quantidadecomercial</td>
+<td>Sim</td>
+<td>&quot;qCom&quot;: 1.0000</td>
+</tr>
+<tr>
+<td>detprod</td>
+<td><strong>vUnCom</strong></td>
+<td>numeric(21,10)</td>
+<td>Valor UnitáriodeComercialização</td>
+<td>Sim</td>
+<td>&quot;vUnCom&quot;: 287000.00</td>
+</tr>
+<tr>
+<td>detprod</td>
+<td><strong>vProd</strong></td>
+<td>numeric(15,2)</td>
+<td>Valor total bruto dos produtos</td>
+<td>Sim</td>
+<td>&quot;vProd&quot;: 287000.00</td>
+</tr>
+<tr>
+<td>totalICMSTot</td>
+<td><strong>vNF</strong></td>
+<td>numeric(15,2)</td>
+<td>Valor Total da NF-e</td>
+<td>Sim</td>
+<td>&quot;vNF&quot;: 287000.00</td>
+</tr>
+</tbody>
+</table>
+<h3 id="especificao-dos-atributos-grupo-ddi">Especificação dos atributos (grupo “ddi”)</h3>
+<table>
+<thead>
+<tr>
+<th>TAG PAI</th>
+<th>TAG</th>
+<th>TIPO</th>
+<th>DESCRIÇÃO</th>
+<th>OBRIGATÓRIO</th>
+<th>EXEMPLO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong>tipoOp</strong></td>
+<td>int</td>
+<td>Código do tipo de operação *( <strong><em>1</em></strong>=venda, <strong><em>4</em></strong>=devolução, <strong><em>5</em></strong>=transferência)*</td>
+<td>Sim</td>
+<td>&quot;tipoOp&quot;: 1</td>
+</tr>
+<tr>
+<td>vend</td>
+<td><strong>CPF</strong></td>
+<td>varchar(11)</td>
+<td>CPF do Vendedor</td>
+<td>Não</td>
+<td>&quot;CPF&quot;: &quot;29896908085&quot;</td>
+</tr>
+<tr>
+<td>vend</td>
+<td><strong>xNome</strong></td>
+<td>varchar(60)</td>
+<td>Nome completo do Vendedor</td>
+<td>Não</td>
+<td>&quot;xNome&quot;: &quot;NOME VENDEDOR&quot;</td>
+</tr>
+<tr>
+<td>vend</td>
+<td><strong>telefone</strong></td>
+<td>varchar(15)</td>
+<td>Número do telefone celular do Vendedor</td>
+<td>Não</td>
+<td>&quot;telefone&quot;: &quot;5199999999&quot;</td>
+</tr>
+<tr>
+<td>prodDet</td>
+<td><strong>nItem</strong></td>
+<td>int</td>
+<td>Índice do item na nota</td>
+<td>Sim</td>
+<td>&quot;nItem&quot;: 1</td>
+</tr>
+<tr>
+<td>prodDetprod</td>
+<td><strong>codigoItem</strong></td>
+<td>varchar(25)</td>
+<td>Código do Item - AGCO</td>
+<td>Sim</td>
+<td>&quot;codigoItem&quot;: &quot;42754F0913D&quot;</td>
+</tr>
+<tr>
+<td>prodDetprod</td>
+<td><strong>serieComercial</strong></td>
+<td>varchar(20)</td>
+<td>Código da Série Comercial - AGCO</td>
+<td>Sim</td>
+<td>&quot;serieComercial&quot;: &quot;4275344889&quot;</td>
+</tr>
+<tr>
+<td>prodDetprod</td>
+<td><strong>monobloco</strong></td>
+<td>varchar(30)</td>
+<td>Número do monobloco - AGCO</td>
+<td>Não</td>
+<td>&quot;monobloco&quot;: &quot; AAAT0012PCC002382&quot;</td>
+</tr>
+<tr>
+<td>prodDetprod</td>
+<td><strong>tipoProd</strong></td>
+<td>varchar(3)</td>
+<td>Tipo de produto AGCO, onde: Trator = “TA”, Colheitadeira = “CO”, Pulverizador: “PU”</td>
+<td>Não</td>
+<td>&quot;tipoProd&quot;: &quot;TA&quot;</td>
+</tr>
+<tr>
+<td>prodDetprod</td>
+<td><strong>cPrograma</strong></td>
+<td>int</td>
+<td>Controle do Programa Mais Alimentos. (0 = Não, 1 = Sim)</td>
+<td>Não</td>
+<td>&quot;cPrograma&quot;: 0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>* Se existir a informação de CPF o campo CNPJ deve vir vazio. O mesmo acontece para o caso contrário.</strong></p>
+                    </div>
+
+                    <footer>
+                        <hr/>
+                                                    <div role="contentinfo">
+                                <p>
+                                    Find AGCO South America APIs on <a href="https://github.com/eduardobobsin/agco-sa">GitHub</a>.
+                                </p>
+                            </div>
+                                                Built with <a href="http://couscous.io/">Couscous</a> using a <a href="https://github.com/CouscousPHP/Template-ReadTheDocs">theme</a> based on <a href="https://readthedocs.org/">Read the Docs</a>.
+                    </footer>
+
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="http://agco-sa.github.io/js/theme.js"></script>
+
+    <script>
+        $(function() {
+            // Syntax highlighting
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+
+</body>
+</html>
