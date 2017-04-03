@@ -108,173 +108,173 @@
 <table>
 <thead>
 <tr>
-<th style="text-align: left;"><strong>Especificação dos atributos</strong></th>
-<th style="text-align: left;"><strong>ID</strong></th>
-<th style="text-align: left;"><strong>Campo</strong></th>
-<th style="text-align: left;"><strong>Pai</strong></th>
-<th style="text-align: left;"><strong>Tipo</strong></th>
-<th style="text-align: left;"><strong>Descrição</strong></th>
-<th style="text-align: left;"><strong>Obrigatório</strong></th>
-<th style="text-align: left;"><strong>Regra</strong></th>
+<th><strong>Especificação dos atributos</strong></th>
+<th><strong>ID</strong></th>
+<th><strong>Campo</strong></th>
+<th><strong>Pai</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Regra</strong></th>
 <th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">A01</td>
-<td style="text-align: left;">data</td>
-<td style="text-align: left;">Raiz</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">TAG raiz da mensagem</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;"></td>
+<td>A01</td>
+<td>data</td>
+<td>Raiz</td>
+<td></td>
+<td>TAG raiz da mensagem</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td></td>
 </tr>
 <tr>
-<td style="text-align: left;">A02</td>
-<td style="text-align: left;">dealerLegalNumber</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">varchar(50)</td>
-<td style="text-align: left;">CNPJ da concessionária</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;">&quot;99.999.999/0001-99&quot;</td>
+<td>A02</td>
+<td>dealerLegalNumber</td>
+<td></td>
+<td>varchar(50)</td>
+<td>CNPJ da concessionária</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td>&quot;99.999.999/0001-99&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">A03</td>
-<td style="text-align: left;">extractionDateTime</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">timestamp</td>
-<td style="text-align: left;">Data da extração dos dados da mensagem</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;">P001</td>
-<td style="text-align: left;">&quot;2016-11-23T10:45:00+03:00&quot;</td>
+<td>A03</td>
+<td>extractionDateTime</td>
+<td></td>
+<td>timestamp</td>
+<td>Data da extração dos dados da mensagem</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td>P001</td>
+<td>&quot;2016-11-23T10:45:00+03:00&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">parts</td>
-<td style="text-align: left;">A01</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Grupo que contém as informações de peças</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td>A04</td>
+<td>parts</td>
+<td>A01</td>
+<td></td>
+<td>Grupo que contém as informações de peças</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td style="text-align: left;">A05</td>
-<td style="text-align: left;">partsNumber</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">varchar(50)</td>
-<td style="text-align: left;">Código do item vendido pela concessionária.Código original da concessionária</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">&quot;1444437P&quot;</td>
+<td>A05</td>
+<td>partsNumber</td>
+<td>A04</td>
+<td>varchar(50)</td>
+<td>Código do item vendido pela concessionária.Código original da concessionária</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td></td>
+<td>&quot;1444437P&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">A06</td>
-<td style="text-align: left;">availableQuantity</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">number(10,2)</td>
-<td style="text-align: left;">Quantidade de itens disponíveis no estoque para venda</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">20</td>
+<td>A06</td>
+<td>availableQuantity</td>
+<td>A04</td>
+<td>number(10,2)</td>
+<td>Quantidade de itens disponíveis no estoque para venda</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td></td>
+<td>20</td>
 </tr>
 <tr>
-<td style="text-align: left;">- Excluir desse número peças que estão reservadas para ordens de serviços e que ainda não foram contadas como venda.</td>
+<td>- Excluir desse número peças que estão reservadas para ordens de serviços e que ainda não foram contadas como venda.</td>
 </tr>
 <tr>
-<td style="text-align: left;">- Excluir desse número peças que estão reservadas para atender pedidos de venda.</td>
+<td>- Excluir desse número peças que estão reservadas para atender pedidos de venda.</td>
 </tr>
 <tr>
-<td style="text-align: left;">- Excluir desse número peças pendentes de transferências</td>
+<td>- Excluir desse número peças pendentes de transferências</td>
 </tr>
 <tr>
-<td style="text-align: left;">A07</td>
-<td style="text-align: left;">onOrderQuantity</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">number(10,2)</td>
-<td style="text-align: left;">Quantidade de itens com pedidos de compras em aberto ou transferências entre filiais pendentes e que não foram baixados no estoque.</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;">15</td>
+<td>A07</td>
+<td>onOrderQuantity</td>
+<td>A04</td>
+<td>number(10,2)</td>
+<td>Quantidade de itens com pedidos de compras em aberto ou transferências entre filiais pendentes e que não foram baixados no estoque.</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td>15</td>
 </tr>
 <tr>
-<td style="text-align: left;">1.1 Pedidos</td>
+<td>1.1 Pedidos</td>
 </tr>
 <tr>
-<td style="text-align: left;">- Contar todas as peças em pedidos de compra, independente do tipo de pedido (emergência, estoque, etc), tirando os de compras realizados especificamente para um cliente.</td>
+<td>- Contar todas as peças em pedidos de compra, independente do tipo de pedido (emergência, estoque, etc), tirando os de compras realizados especificamente para um cliente.</td>
 </tr>
 <tr>
-<td style="text-align: left;">1.2 Transferências</td>
+<td>1.2 Transferências</td>
 </tr>
 <tr>
-<td style="text-align: left;">- Contar todos os pedidos pendentes de transferências internas, tirando os itens que já estão alocados para um cliente específico, assim como itens que estão em pedidos de balcão ou oficina</td>
+<td>- Contar todos os pedidos pendentes de transferências internas, tirando os itens que já estão alocados para um cliente específico, assim como itens que estão em pedidos de balcão ou oficina</td>
 </tr>
 <tr>
-<td style="text-align: left;">A08</td>
-<td style="text-align: left;">reservedQuantityWorkOrders</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">number(10,2)</td>
-<td style="text-align: left;">Itens reservados para ordens de serviços abertas na oficina e que ainda não foram contados como venda.</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;">1.5</td>
+<td>A08</td>
+<td>reservedQuantityWorkOrders</td>
+<td>A04</td>
+<td>number(10,2)</td>
+<td>Itens reservados para ordens de serviços abertas na oficina e que ainda não foram contados como venda.</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td>1.5</td>
 </tr>
 <tr>
-<td style="text-align: left;">A09</td>
-<td style="text-align: left;">reservedQuantityPartTickets</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">number(10,2)</td>
-<td style="text-align: left;">Itens reservados para pedidos de balcão e que ainda não foram contados como venda.</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">1.5</td>
+<td>A09</td>
+<td>reservedQuantityPartTickets</td>
+<td>A04</td>
+<td>number(10,2)</td>
+<td>Itens reservados para pedidos de balcão e que ainda não foram contados como venda.</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td></td>
+<td>1.5</td>
 </tr>
 <tr>
-<td style="text-align: left;">A10</td>
-<td style="text-align: left;">openCustomerOrders</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">number(10,2)</td>
-<td style="text-align: left;">Soma de itens em pedidos em aberto para cliente final.</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/error.png?raw=true" alt="error" /></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">1.5</td>
+<td>A10</td>
+<td>openCustomerOrders</td>
+<td>A04</td>
+<td>number(10,2)</td>
+<td>Soma de itens em pedidos em aberto para cliente final.</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/error.png?raw=true" alt="error" /></td>
+<td></td>
+<td>1.5</td>
 </tr>
 <tr>
-<td style="text-align: left;">A11</td>
-<td style="text-align: left;">quantityReturnedByDealer</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">number(10,2)</td>
-<td style="text-align: left;">Itens retornados da concessionária para a AGCO.</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;">10</td>
+<td>A11</td>
+<td>quantityReturnedByDealer</td>
+<td>A04</td>
+<td>number(10,2)</td>
+<td>Itens retornados da concessionária para a AGCO.</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td>10</td>
 </tr>
 <tr>
-<td style="text-align: left;">A12</td>
-<td style="text-align: left;">quantityReturnedByCustomerCounter</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">number(10,2)</td>
-<td style="text-align: left;">Itens retornados por pedidos de balcão para a concessionária.</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">1.5</td>
+<td>A12</td>
+<td>quantityReturnedByCustomerCounter</td>
+<td>A04</td>
+<td>number(10,2)</td>
+<td>Itens retornados por pedidos de balcão para a concessionária.</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td></td>
+<td>1.5</td>
 </tr>
 <tr>
-<td style="text-align: left;">A13</td>
-<td style="text-align: left;">quantityReturnedByCustomerShop</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">number(10,2)</td>
-<td style="text-align: left;">Itens retornados por pedidos de oficina para a concessionária.</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">1.5</td>
+<td>A13</td>
+<td>quantityReturnedByCustomerShop</td>
+<td>A04</td>
+<td>number(10,2)</td>
+<td>Itens retornados por pedidos de oficina para a concessionária.</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td></td>
+<td>1.5</td>
 </tr>
 <tr>
-<td style="text-align: left;">A14</td>
-<td style="text-align: left;">quantityReturnedTotal</td>
-<td style="text-align: left;">A04</td>
-<td style="text-align: left;">number(10,2)</td>
-<td style="text-align: left;">Soma de itens retornados por pedidos de oficina e balcão para a concessionária.</td>
-<td style="text-align: left;"><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">1.5</td>
+<td>A14</td>
+<td>quantityReturnedTotal</td>
+<td>A04</td>
+<td>number(10,2)</td>
+<td>Soma de itens retornados por pedidos de oficina e balcão para a concessionária.</td>
+<td><img src="https://github.com/agco-sa/site-md-src/blob/master/check.png?raw=true" alt="check" /></td>
+<td></td>
+<td>1.5</td>
 </tr>
 </tbody>
 </table>
