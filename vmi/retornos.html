@@ -51,8 +51,8 @@
                         </li>
                         
                                         
-                                            <li class="toctree-l1 current">
-                            <a class="reference internal current"
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
                                href="https://agco-sa.github.io/vmi/index.html">
                                 VMI
                             </a>
@@ -94,12 +94,14 @@
                     </li>
 
                     
-                                        <li class="">
+                                        <li class="active">
                         <a href="https://agco-sa.github.io/vmi/retornos.html">
                             Códigos de Retorno
                         </a>
                     </li>
 
+                                        <ul class="submenu nav nav-stacked nav-pills">
+                                            </ul>
                     
                                     </ul>
                                         
@@ -129,7 +131,171 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="integrao-vmi">Integração VMI</h1>
-<p>O escopo do processo visa a integração de informações de cadastro, estoque, venda e compra de peças.</p>
+<h2 id="cdigos-de-retorno">Códigos de Retorno</h2>
+<p>Ao enviar uma mensagem para o serviço, será retornado um código que varia de acordo com o resultado do processamento da mensagem na AGCO. A lista de possíveis retornos, assim como as ações a serem tomadas em cada caso de erro, são descritas na tabela a seguir.</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Status</th>
+<th>Descrição</th>
+<th>Ação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+<td>Dados atualizados com sucesso</td>
+<td>-</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Sucesso</td>
+<td>Dados inseridos com sucesso</td>
+<td>-</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Sucesso</td>
+<td>Mensagem descartada devido a dados já presentes no banco</td>
+<td>-</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Erro</td>
+<td>Requisição inválida</td>
+<td>Rever formato dos dados enviados <em>(header incompleto, formato JSON incorreto, campos obrigatórios faltando, etc)</em></td>
+</tr>
+<tr>
+<td>401</td>
+<td>Erro</td>
+<td>Usuário não autenticado</td>
+<td>Verificar usuário e senha</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Erro</td>
+<td>Usuário não autorizado</td>
+<td>Usuário não tem acesso aos dados ou token expirado</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Erro</td>
+<td>Endereço não encontrado</td>
+<td>Revisar url de acesso ao serviço.</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Erro</td>
+<td>Conflito no banco de dados</td>
+<td>Rever dados enviados.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Erro</td>
+<td>Dados inválidos</td>
+<td>Rever dados enviados.<em>(as validações realizadas pelo sistema estão na sessão 4.1)</em></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Erro</td>
+<td>Erro inesperado</td>
+<td>Entrar em contato com o DSS.</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Erro</td>
+<td>Problema de comunicação entre proxy e aplicação</td>
+<td>Entrar em contato com o DSS.</td>
+</tr>
+</tbody>
+</table>
+<p>Referência: <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a></p>
+<h3 id="1-validao-de-dados">1. Validação de dados</h3>
+<p>Todos os dados enviados devem passar pela validação abaixo. Caso os critérios não sejam atendidos será retornado um erro <strong>422</strong>.
+Neste caso, os dados incorretos devem ser corrigidos antes de serem re-enviados.</p>
+<table>
+<thead>
+<tr>
+<th>Erro</th>
+<th>Descrição</th>
+<th>Mensagem de erro</th>
+<th>Exemplo de valor enviado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>Tipo de dado não está correto</td>
+<td>Status: &quot;422&quot; – expected type: <tipo esperado>, found: <tipo recebido></td>
+</tr>
+<tr>
+<td>002</td>
+<td>Formato da mensagem JSON enviada está incorreto</td>
+<td>Status: &quot;422&quot; – Invalid JSON Format</td>
+</tr>
+<tr>
+<td>003</td>
+<td>A data enviada não está de acordo com o padrão definido P001</td>
+<td>Status: &quot;422&quot; – string <data enviada> does not match pattern ^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$</td>
+<td>2005/10/30</td>
+</tr>
+<tr>
+<td>004</td>
+<td>Formato do número enviado não está correto</td>
+<td>Status: &quot;422&quot; – <valor recebido> is not a multiple of 0.01</td>
+<td>123.4512</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Valor negativo enviado em campo que aceita apenas números positivos</td>
+<td>Status: &quot;422&quot; – <valor recebido> is not higher or equal to 0</td>
+<td>-123.45</td>
+</tr>
+<tr>
+<td>006</td>
+<td>Valor enviado com tamanho maior do que o esperado</td>
+<td>Status: &quot;422&quot; – <campo> expected maxLength: &lt;tamanho máximo esperado&gt;, actual: &lt;tamanho máximo enviado&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>007</td>
+<td>CNPJ do dealer não existe na base da AGCO ou está inativo</td>
+<td>Status: &quot;422&quot; –  Invalid dealerLegalNumber provided. Dealer not found or is not currently active</td>
+<td></td>
+</tr>
+<tr>
+<td>008</td>
+<td>Campo obrigatório não foi enviado na mensagem</td>
+<td>Status: &quot;422&quot; – required key <campo> not found</td>
+<td></td>
+</tr>
+<tr>
+<td>009</td>
+<td>Não foi atendida a regra R001</td>
+<td>Status: &quot;422&quot; – <campo> is required when firstPurchase is true</td>
+<td></td>
+</tr>
+<tr>
+<td>010</td>
+<td>O valor enviado não está de acordo com a lista de valores aceitos. Conforme item 5.2</td>
+<td>Status: &quot;422&quot; – <valor recebido> is not a valid enum value&quot;</td>
+<td>usd</td>
+</tr>
+<tr>
+<td>011</td>
+<td>O CNPJ enviado não é válido</td>
+<td>Status: &quot;422&quot; – <campo> is an invalid legal number</td>
+</tr>
+<tr>
+<td>012</td>
+<td>Não foi atendida a regra R002</td>
+<td>Status: &quot;422&quot; – <campo> is required when lineStatus is CLOSED</td>
+<td></td>
+</tr>
+</tbody>
+</table>
                     </div>
 
                     <footer>
