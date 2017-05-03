@@ -127,7 +127,26 @@
 <p>A fim de garantir a segurança das informações transmitidas, todas as chamadas devem ser feitas com SSL.
 Além da criptografia da comunicação, o uso da API exige que as chamadas sejam autenticadas através de token utilizando-se do padrão OAuth2.</p>
 <h3 id="1-como-gerar-o-token">1. Como gerar o token</h3>
-<p>Para gerar o token deve-se enviar uma requisição POST para a URL <a href="https://appsqa.agcoonline.com.br/SecurityApi/Token">https://appsqa.agcoonline.com.br/SecurityApi/Token</a> com as seguintes informações no cabeçalho:</p>
+<p>Para gerar o token deve-se enviar uma requisição POST para a URL:</p>
+<table>
+<thead>
+<tr>
+<th>Ambiente</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teste</td>
+<td><a href="https://appsqa.agcoonline.com.br/SecurityApi/Token">https://appsqa.agcoonline.com.br/SecurityApi/Token</a></td>
+</tr>
+<tr>
+<td>Produção</td>
+<td><a href="https://apps.agcoonline.com.br/SecurityApi/Token">https://apps.agcoonline.com.br/SecurityApi/Token</a></td>
+</tr>
+</tbody>
+</table>
+<p>Com as seguintes informações no cabeçalho:</p>
 <table>
 <thead>
 <tr>
