@@ -51,18 +51,23 @@
                         </li>
                         
                                 <ul class="submenu nav nav-stacked nav-pills">
-                                        <li class="active">
-                        <a href="https://agco-sa.github.io/vmi/endpoints.html">
-                            Endpoints
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/config.html">
+                            Configuração
                         </a>
                     </li>
 
-                                        <ul class="submenu nav nav-stacked nav-pills">
-                                            </ul>
                     
                                         <li class="">
                         <a href="https://agco-sa.github.io/vmi/seguranca.html">
                             Segurança
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/retornos.html">
+                            Códigos de Retorno
                         </a>
                     </li>
 
@@ -75,22 +80,31 @@
 
                     
                                         <li class="">
-                        <a href="https://agco-sa.github.io/vmi/config.html">
-                            Configuração
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
                         <a href="https://agco-sa.github.io/vmi/regrasprocesso.html">
                             Regras e Processos
                         </a>
                     </li>
 
                     
+                                        <li class="active">
+                        <a href="https://agco-sa.github.io/vmi/endpoints.html">
+                            Endpoints
+                        </a>
+                    </li>
+
+                                        <ul class="submenu nav nav-stacked nav-pills">
+                                            </ul>
+                    
                                         <li class="">
-                        <a href="https://agco-sa.github.io/vmi/retornos.html">
-                            Códigos de Retorno
+                        <a href="https://agco-sa.github.io/vmi/telasrelatorios.html">
+                            Telas e Relatórios
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/historico.html">
+                            Histórico
                         </a>
                     </li>
 
@@ -123,9 +137,9 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="vendor-management-inventory-integration">Vendor Management Inventory Integration</h1>
-<h2 id="recursos-e-operaes">Recursos e operações</h2>
+<h2 id="7-recursos-e-operaes">7. Recursos e operações</h2>
 <p>Essa sessão contém os campos e regras das interfaces disponibilizadas para capturar informações de peças das concessionárias.</p>
-<h3 id="1-interface-inventory-data">1. Interface Inventory Data</h3>
+<h3 id="71-interface-inventory-data">7.1. Interface Inventory Data</h3>
 <p>Exemplo de JSON para a interface Inventory Data</p>
 <pre><code>    {
       "data": {
@@ -215,87 +229,20 @@
 <td>availableQuantity</td>
 <td>A04</td>
 <td>number(10,2)</td>
-<td>Quantidade de itens disponíveis no estoque para venda</td>
+<td>Quantidade de itens disponíveis no estoque para venda<br/>- Excluir desse número peças que estão reservadas para ordens de serviços e que ainda não foram contadas como venda.<br/>- Excluir desse número peças que estão reservadas para atender pedidos de venda. <br/>- Excluir desse número peças pendentes de transferências</td>
 <td><img src="/images/check.png" alt="check" /></td>
 <td></td>
 <td>20</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>- Excluir desse número peças que estão reservadas para ordens de serviços e que ainda não foram contadas como venda.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>- Excluir desse número peças que estão reservadas para atender pedidos de venda.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>- Excluir desse número peças pendentes de transferências</td>
 </tr>
 <tr>
 <td>A07</td>
 <td>onOrderQuantity</td>
 <td>A04</td>
 <td>number(10,2)</td>
-<td>Quantidade de itens com pedidos de compras em aberto ou transferências entre filiais pendentes e que não foram baixados no estoque.</td>
+<td>Quantidade de itens com pedidos de compras em aberto ou transferências entre filiais pendentes e que não foram baixados no estoque.<br/>1.1 Pedidos<br/>- Contar todas as peças em pedidos de compra, independente do tipo de pedido (emergência, estoque, etc), tirando os de compras realizados especificamente para um cliente.<br/>1.2 Transferências<br/>- Contar todos os pedidos pendentes de transferências internas, tirando os itens que já estão alocados para um cliente específico, assim como itens que estão em pedidos de balcão ou oficina</td>
 <td><img src="/images/check.png" alt="check" /></td>
 <td></td>
 <td>15</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>1.1 Pedidos</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>- Contar todas as peças em pedidos de compra, independente do tipo de pedido (emergência, estoque, etc), tirando os de compras realizados especificamente para um cliente.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>1.2 Transferências</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>- Contar todos os pedidos pendentes de transferências internas, tirando os itens que já estão alocados para um cliente específico, assim como itens que estão em pedidos de balcão ou oficina</td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>A08</td>
@@ -369,7 +316,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="2-interface-parts-data">2. Interface Parts Data</h3>
+<h3 id="72-interface-parts-data">7.2. Interface Parts Data</h3>
 <p>Exemplo de JSON para a interface Parts Data</p>
 <pre><code>    {
       "data": {
@@ -577,7 +524,7 @@
 <td>B04</td>
 <td>varchar(50)</td>
 <td>CNPJ do fornecedor do item</td>
-<td><img src="/images/check.png" alt="check" /></td>
+<td>R001</td>
 <td></td>
 <td>&quot;00.000.000/0001-00&quot;</td>
 </tr>
@@ -655,7 +602,7 @@
 <td>B24</td>
 <td>openPurchaseOrders</td>
 <td>B04</td>
-<td>number</td>
+<td>number(14,2)</td>
 <td>Quantidade de itens em pedidos de compras abertos</td>
 <td><img src="/images/check.png" alt="check" /></td>
 <td></td>
@@ -716,7 +663,7 @@
 <td>firstAvailableDate</td>
 <td>B04</td>
 <td>date</td>
-<td>Data da primeira movimentação do item na filial. Opção 1: enviar a data que a peça foi recebida pela primeira vez no estoque. Opção 2: se não tiver a informação da opção 1 enviar a data que a peça foi solicita pela primeira vez pela oficina. Opção 3: se não tiver a informação das opções 1 e 2 enviar a data que a peça foi adicionada pela primeira vez no estoque. Opção 4: se não tiver a informação das opções 1, 2 e 3 enviar a data 1900-01-01</td>
+<td>Data da primeira movimentação do item na filial.<br/> Opção 1: enviar a data que a peça foi recebida pela primeira vez no estoque.<br/> Opção 2: se não tiver a informação da opção 1 enviar a data que a peça foi solicita pela primeira vez pela oficina.<br/> Opção 3: se não tiver a informação das opções 1 e 2 enviar a data que a peça foi adicionada pela primeira vez no estoque.<br/> Opção 4: se não tiver a informação das opções 1, 2 e 3 enviar a data 1900-01-01</td>
 <td><img src="/images/check.png" alt="check" /></td>
 <td></td>
 <td>&quot;2016-11-23&quot;</td>
@@ -733,7 +680,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="3-interface-purchase-order">3. Interface Purchase Order</h3>
+<h3 id="73-interface-purchase-order">7.3. Interface Purchase Order</h3>
 <p>Exemplo de JSON para a interface Purchase Order</p>
 <pre><code>{
   "data": {
@@ -1034,7 +981,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="4-interface-sales-order">4. Interface Sales Order</h3>
+<h3 id="74-interface-sales-order">7.4. Interface Sales Order</h3>
 <p>Exemplo de JSON para a interface Sales Order</p>
 <pre><code>{
   "data": {
@@ -1355,9 +1302,19 @@
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td>D28</td>
+<td>unusualSale</td>
+<td>D13</td>
+<td>boolean</td>
+<td>Identifica se o item foi uma venda atípica</td>
+<td><img src="/images/error.png" alt="error" /></td>
+<td>V011</td>
+<td></td>
+</tr>
 </tbody>
 </table>
-<h3 id="5-interface-lost-sales">5. Interface Lost Sales</h3>
+<h3 id="75-interface-lost-sales">7.5. Interface Lost Sales</h3>
 <p>Exemplo de JSON para a interface Lost Sales</p>
 <pre><code>{
   "data": {
@@ -1479,7 +1436,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="6-interface-customer">6. Interface Customer</h3>
+<h3 id="76-interface-customer">7.6. Interface Customer</h3>
 <p>Exemplo de JSON para a interface Customer</p>
 <pre><code>{
   "data": {
