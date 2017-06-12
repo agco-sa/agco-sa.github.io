@@ -52,8 +52,8 @@
                         
                                 <ul class="submenu nav nav-stacked nav-pills">
                                         <li class="">
-                        <a href="https://agco-sa.github.io/vmi/endpoints.html">
-                            Endpoints
+                        <a href="https://agco-sa.github.io/vmi/config.html">
+                            Configuração
                         </a>
                     </li>
 
@@ -68,15 +68,15 @@
                                             </ul>
                     
                                         <li class="">
-                        <a href="https://agco-sa.github.io/vmi/padroeslistas.html">
-                            Padrões e Listas
+                        <a href="https://agco-sa.github.io/vmi/retornos.html">
+                            Códigos de Retorno
                         </a>
                     </li>
 
                     
                                         <li class="">
-                        <a href="https://agco-sa.github.io/vmi/config.html">
-                            Configuração
+                        <a href="https://agco-sa.github.io/vmi/padroeslistas.html">
+                            Padrões e Listas
                         </a>
                     </li>
 
@@ -89,8 +89,22 @@
 
                     
                                         <li class="">
-                        <a href="https://agco-sa.github.io/vmi/retornos.html">
-                            Códigos de Retorno
+                        <a href="https://agco-sa.github.io/vmi/endpoints.html">
+                            Endpoints
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/telasrelatorios.html">
+                            Telas e Relatórios
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/historico.html">
+                            Histórico
                         </a>
                     </li>
 
@@ -123,11 +137,30 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="vendor-management-inventory-integration">Vendor Management Inventory Integration</h1>
-<h2 id="segurana">Segurança</h2>
-<p>A fim de garantir a segurança das informações transmitidas, todas as chamadas devem ser feitas com SSL.
+<h2 id="3-segurana">3. Segurança</h2>
+<p>A fim de garantir a segurança das informações transmitidas, todas as chamadas devem ser feitas com SSL.<br/>
 Além da criptografia da comunicação, o uso da API exige que as chamadas sejam autenticadas através de token utilizando-se do padrão OAuth2.</p>
-<h3 id="1-como-gerar-o-token">1. Como gerar o token</h3>
-<p>Para gerar o token deve-se enviar uma requisição POST para a URL <a href="https://appsqa.agcoonline.com.br/SecurityApi/Token">https://appsqa.agcoonline.com.br/SecurityApi/Token</a> com as seguintes informações no cabeçalho:</p>
+<h3 id="31-como-gerar-o-token">3.1. Como gerar o token</h3>
+<p>Para gerar o token deve-se enviar uma requisição POST para a URL:</p>
+<table>
+<thead>
+<tr>
+<th>Ambiente</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teste</td>
+<td><a href="https://appsqa.agcoonline.com.br/SecurityApi/Token">https://appsqa.agcoonline.com.br/SecurityApi/Token</a></td>
+</tr>
+<tr>
+<td>Produção</td>
+<td><a href="https://apps.agcoonline.com.br/SecurityApi/Token">https://apps.agcoonline.com.br/SecurityApi/Token</a></td>
+</tr>
+</tbody>
+</table>
+<p>Com as seguintes informações no cabeçalho:</p>
 <table>
 <thead>
 <tr>
@@ -151,7 +184,7 @@ Além da criptografia da comunicação, o uso da API exige que as chamadas sejam
   "tokenId": "&lt;TOKEN&gt;",
   "successUrl": ""
 }</code></pre>
-<p>Caso contrário o servidor irá responder com um código HTTP 400 (Bad Request) ou 401 (Unauthorized), sem corpo na resposta.
+<p>Caso contrário o servidor irá responder com um código HTTP 400 (Bad Request) ou 401 (Unauthorized), sem corpo na resposta.<br/>
 Após o recebimento do token, o mesmo deverá ser enviado em todas as requisições para o serviço do VMI através do seguinte cabeçalho:</p>
 <table>
 <thead>
@@ -163,7 +196,7 @@ Após o recebimento do token, o mesmo deverá ser enviado em todas as requisiç�
 <tbody>
 <tr>
 <td>Authorization</td>
-<td>Bearer <TOKEN></td>
+<td>Bearer &lt;TOKEN></td>
 </tr>
 <tr>
 <td>Content-Type</td>
@@ -171,7 +204,7 @@ Após o recebimento do token, o mesmo deverá ser enviado em todas as requisiç�
 </tr>
 </tbody>
 </table>
-<h3 id="2-observaes">2. Observações</h3>
+<h3 id="32-observaes">3.2. Observações</h3>
 <p>O token gerado poderá ser invalidado conforme regras internas, como tempo de ociosidade (tempo após o último uso). Caso isso aconteça, é responsabilidade da aplicação cliente gerar um novo token e continuar com o processo. O código de resposta que será enviado pela aplicação VMI caso o token tenha sido invalidado será o código HTTP 401 (Unauthorized).</p>
                     </div>
 

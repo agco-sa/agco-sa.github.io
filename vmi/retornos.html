@@ -52,27 +52,6 @@
                         
                                 <ul class="submenu nav nav-stacked nav-pills">
                                         <li class="">
-                        <a href="https://agco-sa.github.io/vmi/endpoints.html">
-                            Endpoints
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/seguranca.html">
-                            Segurança
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/padroeslistas.html">
-                            Padrões e Listas
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
                         <a href="https://agco-sa.github.io/vmi/config.html">
                             Configuração
                         </a>
@@ -80,8 +59,8 @@
 
                     
                                         <li class="">
-                        <a href="https://agco-sa.github.io/vmi/regrasprocesso.html">
-                            Regras e Processos
+                        <a href="https://agco-sa.github.io/vmi/seguranca.html">
+                            Segurança
                         </a>
                     </li>
 
@@ -94,6 +73,41 @@
 
                                         <ul class="submenu nav nav-stacked nav-pills">
                                             </ul>
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/padroeslistas.html">
+                            Padrões e Listas
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/regrasprocesso.html">
+                            Regras e Processos
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/endpoints.html">
+                            Endpoints
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/telasrelatorios.html">
+                            Telas e Relatórios
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/vmi/historico.html">
+                            Histórico
+                        </a>
+                    </li>
+
                     
                                     </ul>
                                         
@@ -123,7 +137,7 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="vendor-management-inventory-integration">Vendor Management Inventory Integration</h1>
-<h2 id="cdigos-de-retorno">Códigos de Retorno</h2>
+<h2 id="4-cdigos-de-retorno">4. Códigos de Retorno</h2>
 <p>Ao enviar uma mensagem para o serviço, será retornado um código que varia de acordo com o resultado do processamento da mensagem na AGCO. A lista de possíveis retornos, assim como as ações a serem tomadas em cada caso de erro, são descritas na tabela a seguir.</p>
 <table>
 <thead>
@@ -157,7 +171,7 @@
 <td>400</td>
 <td>Erro</td>
 <td>Requisição inválida</td>
-<td>Rever formato dos dados enviados <em>(header incompleto, formato JSON incorreto, campos obrigatórios faltando, etc)</em></td>
+<td>Rever formato dos dados enviados<br/><br/><em>(header incompleto, formato JSON incorreto, campos obrigatórios faltando, etc)</em></td>
 </tr>
 <tr>
 <td>401</td>
@@ -187,7 +201,7 @@
 <td>422</td>
 <td>Erro</td>
 <td>Dados inválidos</td>
-<td>Rever dados enviados.<em>(as validações realizadas pelo sistema estão na sessão 4.1)</em></td>
+<td>Rever dados enviados.<br/><br/><em>(as validações realizadas pelo sistema estão na sessão 4.1)</em></td>
 </tr>
 <tr>
 <td>500</td>
@@ -204,7 +218,7 @@
 </tbody>
 </table>
 <p>Referência: <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a></p>
-<h3 id="1-validao-de-dados">1. Validação de dados</h3>
+<h3 id="41-validao-de-dados">4.1. Validação de dados</h3>
 <p>Todos os dados enviados devem passar pela validação abaixo. Caso os critérios não sejam atendidos será retornado um erro <strong>422</strong>.
 Neste caso, os dados incorretos devem ser corrigidos antes de serem re-enviados.</p>
 <table>
@@ -220,35 +234,37 @@ Neste caso, os dados incorretos devem ser corrigidos antes de serem re-enviados.
 <tr>
 <td>001</td>
 <td>Tipo de dado não está correto</td>
-<td>Status: &quot;422&quot; – expected type: <tipo esperado>, found: <tipo recebido></td>
+<td>Status: &quot;422&quot; – expected type: &lt;tipo esperado>, found: &lt;tipo recebido></td>
+<td></td>
 </tr>
 <tr>
 <td>002</td>
 <td>Formato da mensagem JSON enviada está incorreto</td>
 <td>Status: &quot;422&quot; – Invalid JSON Format</td>
+<td></td>
 </tr>
 <tr>
 <td>003</td>
 <td>A data enviada não está de acordo com o padrão definido P001</td>
-<td>Status: &quot;422&quot; – string <data enviada> does not match pattern ^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$</td>
+<td>Status: &quot;422&quot; – string &lt;data enviada> does not match pattern ^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$</td>
 <td>2005/10/30</td>
 </tr>
 <tr>
 <td>004</td>
 <td>Formato do número enviado não está correto</td>
-<td>Status: &quot;422&quot; – <valor recebido> is not a multiple of 0.01</td>
+<td>Status: &quot;422&quot; – &lt;valor recebido> is not a multiple of 0.01</td>
 <td>123.4512</td>
 </tr>
 <tr>
 <td>005</td>
 <td>Valor negativo enviado em campo que aceita apenas números positivos</td>
-<td>Status: &quot;422&quot; – <valor recebido> is not higher or equal to 0</td>
+<td>Status: &quot;422&quot; – &lt;valor recebido> is not higher or equal to 0</td>
 <td>-123.45</td>
 </tr>
 <tr>
 <td>006</td>
 <td>Valor enviado com tamanho maior do que o esperado</td>
-<td>Status: &quot;422&quot; – <campo> expected maxLength: &lt;tamanho máximo esperado&gt;, actual: &lt;tamanho máximo enviado&gt;</td>
+<td>Status: &quot;422&quot; – &lt;campo> expected maxLength: &lt;tamanho máximo esperado/&gt;, actual: &lt;tamanho máximo enviado></td>
 <td></td>
 </tr>
 <tr>
@@ -260,30 +276,31 @@ Neste caso, os dados incorretos devem ser corrigidos antes de serem re-enviados.
 <tr>
 <td>008</td>
 <td>Campo obrigatório não foi enviado na mensagem</td>
-<td>Status: &quot;422&quot; – required key <campo> not found</td>
+<td>Status: &quot;422&quot; – required key &lt;campo> not found</td>
 <td></td>
 </tr>
 <tr>
 <td>009</td>
 <td>Não foi atendida a regra R001</td>
-<td>Status: &quot;422&quot; – <campo> is required when firstPurchase is true</td>
+<td>Status: &quot;422&quot; – &lt;campo> is required when firstPurchase is false</td>
 <td></td>
 </tr>
 <tr>
 <td>010</td>
 <td>O valor enviado não está de acordo com a lista de valores aceitos. Conforme item 5.2</td>
-<td>Status: &quot;422&quot; – <valor recebido> is not a valid enum value&quot;</td>
+<td>Status: &quot;422&quot; – &lt;valor recebido> is not a valid enum value&quot;</td>
 <td>usd</td>
 </tr>
 <tr>
 <td>011</td>
 <td>O CNPJ enviado não é válido</td>
-<td>Status: &quot;422&quot; – <campo> is an invalid legal number</td>
+<td>Status: &quot;422&quot; – &lt;campo> is an invalid legal number</td>
+<td></td>
 </tr>
 <tr>
 <td>012</td>
 <td>Não foi atendida a regra R002</td>
-<td>Status: &quot;422&quot; – <campo> is required when lineStatus is CLOSED</td>
+<td>Status: &quot;422&quot; – &lt;campo> is required when lineStatus is CLOSED</td>
 <td></td>
 </tr>
 </tbody>
