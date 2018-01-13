@@ -43,18 +43,9 @@
                         </li>
                         
                                 <ul class="submenu nav nav-stacked nav-pills">
-                                        <li class="active">
-                        <a href="https://agco-sa.github.io/ddi/endpoints.html">
-                            Endpoints
-                        </a>
-                    </li>
-
-                                        <ul class="submenu nav nav-stacked nav-pills">
-                                            </ul>
-                    
                                         <li class="">
-                        <a href="https://agco-sa.github.io/ddi/codretorno.html">
-                            Códigos de retorno
+                        <a href="https://agco-sa.github.io/ddi/config.html">
+                            Configuração
                         </a>
                     </li>
 
@@ -67,8 +58,31 @@
 
                     
                                         <li class="">
-                        <a href="https://agco-sa.github.io/ddi/config.html">
-                            Configuração
+                        <a href="https://agco-sa.github.io/ddi/codretorno.html">
+                            Códigos de retorno
+                        </a>
+                    </li>
+
+                    
+                                        <li class="active">
+                        <a href="https://agco-sa.github.io/ddi/endpoints.html">
+                            Endpoints
+                        </a>
+                    </li>
+
+                                        <ul class="submenu nav nav-stacked nav-pills">
+                                            </ul>
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/ddi/regrasProcesso.html">
+                            Regras e Processos
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/ddi/releasenotes18122017.html">
+                            Release Notes 18/12/2017
                         </a>
                     </li>
 
@@ -109,454 +123,713 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="dealer-data-integration">Dealer Data Integration</h1>
-<h2 id="recursos-e-operaes">Recursos e operações</h2>
-<p>A API é composta de uma lista de recursos com possibilidade de diferentes operações dependendo do verbo HTTP utilizado, do caminho e dos parâmetros.</p>
-<h3 id="1-post-ddidealernfe">1. POST /ddi/DealerNFe</h3>
-<p>Envia para a AGCO de informações de venda da revenda ao cliente final.
-No DMS a seleção de dados deverá atendar a duas premissas importantes:</p>
+<h2 id="5-recursos-e-operaes">5. Recursos e operações</h2>
+<p>Essa sessão contém os campos e regras das interfaces disponibilizadas para capturar informações de peças das concessionárias.
+A API é composta de uma lista de recursos com possibilidade de diferentes operações dependendo do verbo HTTP utilizado, do caminho e dos parâmetros.</p>
+<h3 id="51-interface-dealernfe">5.1. Interface DealerNFe</h3>
+<p>Envia para a AGCO as informações de venda da revenda ao cliente final. no DMS a seleção de dados deverá atender a duas premissas importantes:</p>
 <ul>
-<li>Considerar as notas fiscais de entrada (devoluções), saída e transferência aptas a ser integradas e que contenham produtos a serem integrados conforme definido no cadastro de produto.</li>
-<li>Somente para notas transmitidas e autorizadas pela SEFAZ, após o prazo máximo definido para o cancelamento – não está previsto nenhum tratamento sobre o cancelamento de notas.
-<ul>
-<li>Recomenda-se a adoção de um parâmetro padrão que defini o tempo máximo para cancelamento da nota fiscal na SEFAZ para validar as notas aptas a integração DMS x AGCO.</li>
-</ul></li>
+<li>Considerar as notas fiscais de Devolução(entrada), Saída e Transferência aptas a serem integradas e que contenham produtos a serem integrados conforme definido no cadastro de produto.</li>
+<li>Somente para as notas transmitidas e autorizadas pela SEFAZ, após o prazo máximo definido pelo cancelamento - não está previsto nenhum tratamento sobre o cancelamento de notas.
+Recomenda-se a adoção de um parâmetro padrão que define o tempo máximo pra cancelamento da nota fiscal SEFAZ para validar as notas aptas a integração DMS x AGCO.
+A estrutura JSON contendo os dados é enviada no corpo da chamada. Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, contendo TAGS do schema.</li>
 </ul>
-<p>A estrutura JSON contendo os dados é enviada no corpo da chamada.
-Segue um exemplo do corpo de uma mensagem válida, no padrão JSON esperado, contendo todas as TAGs do schema.</p>
+<p>Exemplo de JSON para interface DealerNFe:</p>
 <pre><code>{
- "NFe": {
-   "infNFe": {
-     "versao": 3.1,
-     "id": "",
-     "ide": {
-       "natOp": "5102 VENDA DE MERCADORIA",
-       "mod": "55",
-       "serie": 10,
-       "nNF": 445512,
-       "dhEmi": "2015-08-18T03:00:00.000Z",
-       "dhSaiEnt": "2015-08-20T03:00:00.000Z",
-       "tpNF": 1
-     },
-     "emit": {
-       "CNPJ": "92028224000399",
-       "xNome": "CONCESSIONARIA X",
-       "xFant": "CONCESSIONARIA X",
-       "enderEmit": {
-         "xMun": "SANTANA DO LIVRAMENTO",
-         "UF": "RS",
-         "xPais": "BRASIL"
-       }
-     },
-     "dest": {
-       "CPF": "23518456099",
-       "CNPJ": "",
-       "xNome": "MARCOS DA SILVA",
-       "enderDest": {
-         "cMun": 4305108,
-         "xMun": "BAGE",
-         "UF": "RS",
-         "cPais": 1058
-       }
-     },
-     "det": [
-       {
-         "nItem": 1,
-         "prod": {
-           "cProd": "42654F01338",
-           "xProd": "TRATOR AGRICOLA MF4265 4RM",
-           "qCom": 1,
-           "vUnCom": 86064.35,
-           "vProd": 86064.35
-         }
-       }
-     ],
-     "total": {
-       "ICMSTot": {
-         "vNF": 86064.35
-       }
-     },
-     "infAdic": {
-       "infCpl": ""
-     }
-   }
- },
- "ddi": {
-   "tipoOp": 1,
-   "vend": {
-     "CPF": "68037503029",
-     "xNome": "FRANCISCO DA SILVA",
-     "telefone": "5499999999"
-   },
-   "prodDet": [
-     {
-       "nItem": 1,
-       "prod": {
-         "modelo": "42654F",
-         "codigoItem": "42654F01338",
-         "serieComercial": "4265395723",
-         "monobloco": "AAAT0011CEC001305"
-       }
-     }
-   ]
- }
+"NFe": {
+    "infNFe": {
+        "dest": {
+            "CNPJ": "",
+            "CPF": "29896908087",
+            "enderDest": {
+                "UF": "RS",
+                "cMun": 4307807,
+                "cPais": 1058,
+                "xMun": "ESTRELA"
+            },
+            "xNome": "ANTONIO WELTER"
+        },
+        "det": [
+            {
+                "nItem": 1,
+                "prod": {
+                    "cProd": "EN02219",
+                    "qCom": 1,
+                    "vProd": 287000,
+                    "vUnCom": 287000,
+                    "xProd": "COLHEITADEIRA AGRIC. MF 5650 MHC"
+                }
+            }
+        ],
+        "emit": {
+            "CNPJ": "91495457000170",
+            "enderEmit": {
+                "UF": "RS",
+                "xMun": "SANTANA DO LIVRAMENTO",
+                "xPais": "BRASIL"
+            },
+            "xFant": "CONCESSIONARIA X",
+            "xNome": "CONCESSIONARIA X"
+        },
+        "id": "NFe43150495437281000312550030000301351002205802",
+        "ide": {
+            "dhEmi": "2017-11-27T03:00:00.000Z",
+            "dhSaiEnt": "2017-11-27T03:00:00.000Z",
+            "mod": "55",
+            "nNF": 30283,
+            "natOp": "5102 VENDA DE MERCADORIA",
+            "serie": 3,
+            "tpNF": 1
+        },
+        "infAdic": {
+            "infCpl": ""
+        },
+        "total": {
+            "ICMSTot": {
+                "vNF": 2700
+            }
+        },
+        "versao": 3
+    }
+},
+"XMLFile": {
+    "base64": "",
+    "filename": "43150495437281000312550030000301351002205802-nfe.xml",
+    "filesize": 8013,
+    "filetype": "text/xml"
+},
+"ddi": {
+    "campaign": {
+        "active": true,
+        "beginDate": "2017-11-23",
+        "brand": "MF",
+        "endDate": "2017-12-28",
+        "id": 43,
+        "market": "I",
+        "models": [
+            {
+                "id": 107,
+                "idWholegoodsCampaign": 43,
+                "model": "71804K",
+                "updaDate": null,
+                "userLogin": "loginuser"
+            }
+        ],
+        "name": "Teste_Aug",
+        "productType": "TA"
+    },
+    "prodDet": [
+        {
+            "nItem": 1,
+            "prod": {
+                "codigoItem": "71804KH467A",
+                "modelo": "71804K",
+                "monobloco": "AAAT0017VGC004107",
+                "serieComercial": "7180466020"
+            }
+        }
+    ],
+    "tipoOp": 1,
+    "vend": {
+        "CPF": "99999999900",
+        "telefone": "",
+        "xNome": "Nome Vendedor"
+    }
 }</code></pre>
-<h3 id="especificao-dos-atributos-grupo-quotnfequot">Especificação dos atributos (grupo &quot;NFe&quot;)</h3>
+<h4 id="511-especificao-de-atributos-grupo-nfe">5.1.1. Especificação de atributos grupo “nfe”</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">TAG PAI</th>
 <th style="text-align: left;">TAG</th>
-<th style="text-align: left;">TIPO</th>
-<th style="text-align: left;">DESCRIÇÃO</th>
-<th style="text-align: left;">OBRIGATÓRIO</th>
-<th style="text-align: left;">EXEMPLO</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Regra</th>
+<th style="text-align: left;">Obrig.</th>
+<th style="text-align: left;">Exemplo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>versão</strong></td>
 <td style="text-align: left;">numeric(4,2)</td>
 <td style="text-align: left;">Versão do layout</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;versao&quot;: 2.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;versao&quot;: 3.00</td>
 </tr>
 <tr>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>id</strong></td>
 <td style="text-align: left;">varchar(47)</td>
-<td style="text-align: left;">Identificador da TAG a ser assinada. <em>(informar a chave de acesso da NF-e precedida do literal ‘NFe’, acrescentada a validação do formato)</em></td>
-<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">Identificador da TAG a ser assinada</td>
+<td style="text-align: left;">Informar a chave de acesso da NFe precedida do literal ‘NFe’, acrescentada a validação do formato</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
 <td style="text-align: left;">&quot;Id&quot;: &quot; NFe43150395437281000312550030000296371002180066&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">ide</td>
-<td style="text-align: left;"><strong>natOp</strong></td>
+<td style="text-align: left;">infNFe/dest/CNPJdest</td>
+<td style="text-align: left;">varchar(14)</td>
+<td style="text-align: left;">CNPJ do destinatário</td>
+<td style="text-align: left;">Se existir a informação de CPF o campo CNPJ deve vir vazio.</td>
+<td style="text-align: left;">*</td>
+<td style="text-align: left;">&quot;CNPJ&quot;: &quot;95485281000312&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/dest/CPF</td>
+<td style="text-align: left;">varchar(11)</td>
+<td style="text-align: left;">CPF do destinatário</td>
+<td style="text-align: left;">Se existir a informação de CPF o campo CNPJ deve vir vazio.</td>
+<td style="text-align: left;">*</td>
+<td style="text-align: left;">&quot;CPF&quot;: &quot;29896908087&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/dest/xNome</td>
 <td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Descrição da Natureza da Operação</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">“natOp”: “TRANSFERENCIA ENTRE FILIAIS”</td>
+<td style="text-align: left;">Razão social ou nome do destinatário</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;xNome&quot;: &quot;ANTONIO DA SILVA&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">ide</td>
-<td style="text-align: left;"><strong>mod</strong></td>
+<td style="text-align: left;">infNFe/dest/enderDest/UF</td>
 <td style="text-align: left;">varchar(2)</td>
-<td style="text-align: left;">Código do modelo da nota. <em>(utilizar código 55 para identificação da NF-e, emitida em substituição ao modelo 1 ou 1A)</em></td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;mod&quot;:&quot;55&quot;</td>
+<td style="text-align: left;">Sigla UF do destinatário</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;UF&quot;: &quot;RS&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">ide</td>
-<td style="text-align: left;"><strong>serie</strong></td>
+<td style="text-align: left;">infNFe/dest/enderDest/cMun</td>
 <td style="text-align: left;">int</td>
-<td style="text-align: left;">Série da nota. <em>(preencher com zeros na hipótese de a NF-e não possuir série)</em></td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;serie&quot;: 3</td>
+<td style="text-align: left;">Código do Município</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;cMun&quot;: 4306205</td>
 </tr>
 <tr>
-<td style="text-align: left;">ide</td>
-<td style="text-align: left;"><strong>nNF</strong></td>
+<td style="text-align: left;">infNFe/dest/enderDest/xMun</td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Nome do Município</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;xMun&quot;: &quot;CRUZEIRO DO SUL&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/dest/enderDest/cPais</td>
 <td style="text-align: left;">int</td>
-<td style="text-align: left;">Número da nota</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;nNF&quot;: 29637</td>
+<td style="text-align: left;">Código do País do destinatário</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
+<td style="text-align: left;">&quot;cPais&quot;: 1058</td>
 </tr>
 <tr>
-<td style="text-align: left;">ide</td>
-<td style="text-align: left;"><strong>dhEmi</strong></td>
-<td style="text-align: left;">datetime</td>
-<td style="text-align: left;">Data de emissão da nota. *(formato&quot; <strong><em>yyyy-MM-dd'T'HH:mm:ssX</em></strong>&quot;)*</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;dhEmi&quot;: &quot;2015-03-30T03:00:00-03:00&quot;</td>
+<td style="text-align: left;">infNFe/dest/enderDest/xPais</td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Nome do País do destinatário</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
+<td style="text-align: left;">&quot;xPais&quot;: &quot;BRASIL&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">ide</td>
-<td style="text-align: left;"><strong>dhSaiEnt</strong></td>
-<td style="text-align: left;">datetime</td>
-<td style="text-align: left;">Data de Saída ou da Entradada Mercadoria/Produto. *(formato&quot;<strong><em>yyyy-MM-dd'T'HH:mm:ssX</em></strong>&quot;)*</td>
-</tr>
-<tr>
-<td style="text-align: left;">ide</td>
-<td style="text-align: left;"><strong>tpNF</strong></td>
+<td style="text-align: left;">infNFe/det/nItem</td>
 <td style="text-align: left;">int</td>
-<td style="text-align: left;">Tipo de operação. (0 = entrada, 1 = saída)</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;tpNF&quot;: 1</td>
+<td style="text-align: left;">Índice do item na nota</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;nItem&quot;: 1</td>
 </tr>
 <tr>
-<td style="text-align: left;">emit</td>
-<td style="text-align: left;"><strong>CNPJ</strong></td>
+<td style="text-align: left;">infNFe/det/prod/cProd</td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Código do produto</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;cProd&quot;: &quot;5650MHCL876/409489&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/det/prod/qCom</td>
+<td style="text-align: left;">numeric(15,4)</td>
+<td style="text-align: left;">Quantidadecomercial</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;qCom&quot;: 1.0000</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/det/prod/vProd</td>
+<td style="text-align: left;">numeric(15,2)</td>
+<td style="text-align: left;">Valor total bruto dos produtos</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;vProd&quot;: 287000.00</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/det/prod/vUnCom</td>
+<td style="text-align: left;">numeric(15,4)</td>
+<td style="text-align: left;">Quantidadecomercial</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;qCom&quot;: 1.0000</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/det/prod/xProd</td>
+<td style="text-align: left;">varchar(120)</td>
+<td style="text-align: left;">Descrição do produto</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;xProd&quot;: &quot;COLHEITADEIRA&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/emit/CNPJ</td>
 <td style="text-align: left;">varchar(14)</td>
 <td style="text-align: left;">CNPJ do emitente</td>
+<td style="text-align: left;">Se existir a informação de CPF o campo CNPJ deve vir vazio.</td>
 <td style="text-align: left;">*</td>
 <td style="text-align: left;">&quot;CNPJ&quot;: &quot;95437281000312&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">emit</td>
-<td style="text-align: left;"><strong>CPF</strong></td>
+<td style="text-align: left;">infNFe/emit/CPF</td>
 <td style="text-align: left;">varchar(11)</td>
 <td style="text-align: left;">CPF do emitente</td>
+<td style="text-align: left;">Se existir a informação de CNPJ o campo CPF deve vir vazio.</td>
 <td style="text-align: left;">*</td>
 <td style="text-align: left;">&quot;CPF&quot;: &quot;29895508087&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">emit</td>
-<td style="text-align: left;"><strong>xNome</strong></td>
+<td style="text-align: left;">infNFe/emit/xFant</td>
 <td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Razão social ou nome do emitente</td>
-<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">Nome fantasia do emitente</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
+<td style="text-align: left;">&quot;xFant&quot;: &quot;EXEMPLO FANT EMIT&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/emit/xNome</td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Razão Social ou nome do emitente</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
 <td style="text-align: left;">&quot;xNome&quot;: &quot;EXEMPLO EMIT&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">emit</td>
-<td style="text-align: left;"><strong>xFant</strong></td>
-<td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Nome fantasia do emitente</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">&quot;xFant&quot;: &quot;EXEMPLO FANT EMIT&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">emitenderEmit</td>
-<td style="text-align: left;"><strong>xMun</strong></td>
-<td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Nome do município do emitente</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;xFant&quot;: &quot;EXEMPLO FANT EMIT&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">emitenderEmit</td>
-<td style="text-align: left;"><strong>UF</strong></td>
+<td style="text-align: left;">infNFe/emit/enderEmit/UF</td>
 <td style="text-align: left;">varchar(2)</td>
 <td style="text-align: left;">Sigla da UF do emitente</td>
-<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
 <td style="text-align: left;">&quot;UF&quot;: &quot;RS&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">emitenderEmit</td>
-<td style="text-align: left;"><strong>xPais</strong></td>
+<td style="text-align: left;">infNFe/emit/enderEmit/xMun</td>
 <td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Nome do País do emitente</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">&quot;xPais&quot;: &quot;BRASIL&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">dest</td>
-<td style="text-align: left;"><strong>CNPJ</strong></td>
-<td style="text-align: left;">varchar(14)</td>
-<td style="text-align: left;">CNPJ do destinatário</td>
-<td style="text-align: left;">/*</td>
-<td style="text-align: left;">&quot;CNPJ&quot;: &quot;95485281000312&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">dest</td>
-<td style="text-align: left;"><strong>CPF</strong></td>
-<td style="text-align: left;">varchar(11)</td>
-<td style="text-align: left;">CPF do destinatário</td>
-<td style="text-align: left;">/*</td>
-<td style="text-align: left;">&quot;CPF&quot;: &quot;29896908087&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">dest</td>
-<td style="text-align: left;"><strong>xNome</strong></td>
-<td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Razão social ou nome do destinatário</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;xNome&quot;: &quot;ANTONIO DA SILVA&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">destenderDest</td>
-<td style="text-align: left;"><strong>cMun</strong></td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">Código do município</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;cMun&quot;: 4306205</td>
-</tr>
-<tr>
-<td style="text-align: left;">destenderDest</td>
-<td style="text-align: left;"><strong>xMun</strong></td>
-<td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Nome do município do destinatário</td>
-<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">Nome do município do emitente</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
 <td style="text-align: left;">&quot;xMun&quot;: &quot;CRUZEIRO DO SUL&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">destenderDest</td>
-<td style="text-align: left;"><strong>UF</strong></td>
-<td style="text-align: left;">varchar(2)</td>
-<td style="text-align: left;">Sigla da UF do destinatário</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;UF&quot;: &quot;RS&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">destenderDest</td>
-<td style="text-align: left;"><strong>cPais</strong></td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">Código do País</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">&quot;cPais&quot;: 1058</td>
-</tr>
-<tr>
-<td style="text-align: left;">destenderDest</td>
-<td style="text-align: left;"><strong>xPais</strong></td>
+<td style="text-align: left;">infNFe/emit/enderEmit/xPais</td>
 <td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Nome do País do destinatário</td>
-<td style="text-align: left;">Não</td>
+<td style="text-align: left;">Nome do País do emitente</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
 <td style="text-align: left;">&quot;xPais&quot;: &quot;BRASIL&quot;</td>
 </tr>
 <tr>
-<td style="text-align: left;">det</td>
-<td style="text-align: left;"><strong>nItem</strong></td>
+<td style="text-align: left;">infNFe/id/</td>
+<td style="text-align: left;">varchar(47)</td>
+<td style="text-align: left;">Identificador da TAG a ser assinada. (informar a chave de acesso da NF-e precedida do literal ‘NFe’, acrescentada a validação do formato)</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;Id&quot;: &quot; NFe43150395437281000312550030000296371002180066&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/ide/dhEmi</td>
+<td style="text-align: left;">datetime</td>
+<td style="text-align: left;">Data de emissão da nota. <em>(formato&quot; yyyy-MM-dd'T'HH:mm:ssX&quot;)</em></td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;dhEmi&quot;: &quot;2015-03-30T03:00:00-03:00&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/ide/dhSaiEnt</td>
+<td style="text-align: left;">datetime</td>
+<td style="text-align: left;">Data de Saída ou da Entradada Mercadoria/Produto. <em>(formato&quot;yyyy-MM-dd'T'HH:mm:ssX&quot;)</em></td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;dhSaiEnt&quot;: &quot;2015-03-30T03:00:00-03:00&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/ide/mod</td>
+<td style="text-align: left;">varchar(2)</td>
+<td style="text-align: left;">Código do modelo da nota. (utilizar código 55 para identificação da NF-e, emitida em substituição ao modelo 1 ou 1A)</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;mod&quot;:&quot;55&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNFe/ide/nNf</td>
 <td style="text-align: left;">int</td>
-<td style="text-align: left;">Índice do item na nota</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;nItem&quot;: 1</td>
+<td style="text-align: left;">Número da nota</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;nNF&quot;: 29637</td>
 </tr>
 <tr>
-<td style="text-align: left;">detprod</td>
-<td style="text-align: left;"><strong>cProd</strong></td>
+<td style="text-align: left;">infNFe/ide/natOp</td>
 <td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Código do produto</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;cProd&quot;: &quot;5650MHCL876/409489&quot;</td>
+<td style="text-align: left;">Descrição da Natureza da Operação</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">“natOp”: “TRANSFERENCIA ENTRE FILIAIS”</td>
 </tr>
 <tr>
-<td style="text-align: left;">detprod</td>
-<td style="text-align: left;"><strong>xProd</strong></td>
-<td style="text-align: left;">varchar(120)</td>
-<td style="text-align: left;">Descrição do produto</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;xProd&quot;: &quot;COLHEITADEIRA&quot;</td>
+<td style="text-align: left;">infNFe/ide/serie</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Série da nota</td>
+<td style="text-align: left;">Preencher com zeros na hipótese de a NF-e não possuir série</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;serie&quot;: 3</td>
 </tr>
 <tr>
-<td style="text-align: left;">detprod</td>
-<td style="text-align: left;"><strong>qCom</strong></td>
-<td style="text-align: left;">numeric(15,4)</td>
-<td style="text-align: left;">Quantidadecomercial</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;qCom&quot;: 1.0000</td>
+<td style="text-align: left;">infNFe/ide/tpNF</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Tipo de operação. (0 = entrada, 1 = saída)</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;tpNF&quot;: 1</td>
 </tr>
 <tr>
-<td style="text-align: left;">detprod</td>
-<td style="text-align: left;"><strong>vUnCom</strong></td>
-<td style="text-align: left;">numeric(21,10)</td>
-<td style="text-align: left;">Valor UnitáriodeComercialização</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;vUnCom&quot;: 287000.00</td>
+<td style="text-align: left;">infNFe/infAdic/infCpl</td>
+<td style="text-align: left;">Varchar(5000)</td>
+<td style="text-align: left;">Informações complementares da NF</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">“infCpl”:  “Informações complementares sobre a NF”</td>
 </tr>
 <tr>
-<td style="text-align: left;">detprod</td>
-<td style="text-align: left;"><strong>vProd</strong></td>
-<td style="text-align: left;">numeric(15,2)</td>
-<td style="text-align: left;">Valor total bruto dos produtos</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;vProd&quot;: 287000.00</td>
-</tr>
-<tr>
-<td style="text-align: left;">totalICMSTot</td>
-<td style="text-align: left;"><strong>vNF</strong></td>
+<td style="text-align: left;">infNFe/total/ICMSTot/vNF</td>
 <td style="text-align: left;">numeric(15,2)</td>
 <td style="text-align: left;">Valor Total da NF-e</td>
-<td style="text-align: left;">Sim</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
 <td style="text-align: left;">&quot;vNF&quot;: 287000.00</td>
+</tr>
+<tr>
+<td style="text-align: left;">infNfe/versao</td>
+<td style="text-align: left;">numeric(4,2)</td>
+<td style="text-align: left;">Versão do layout</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;versao&quot;: 2.00</td>
 </tr>
 </tbody>
 </table>
-<h3 id="especificao-dos-atributos-grupo-ddi">Especificação dos atributos (grupo “ddi”)</h3>
+<h4 id="512-especificao-de-atributos-grupo-xmlfile">5.1.2. Especificação de atributos grupo “XMLFile”</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">TAG PAI</th>
 <th style="text-align: left;">TAG</th>
-<th style="text-align: left;">TIPO</th>
-<th style="text-align: left;">DESCRIÇÃO</th>
-<th style="text-align: left;">OBRIGATÓRIO</th>
-<th style="text-align: left;">EXEMPLO</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Regra</th>
+<th style="text-align: left;">Obrig.</th>
+<th style="text-align: left;">Exemplo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">/base64</td>
+<td style="text-align: left;">Byte array</td>
+<td style="text-align: left;">Arquivo XML em bytes</td>
+<td style="text-align: left;">O XML da NF é obrigatório ao informar uma campanha. O valor da nota é obrigatório ao informar uma campanha.</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>tipoOp</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">/filename</td>
+<td style="text-align: left;">varchar</td>
+<td style="text-align: left;">Nome do arquivo</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">“filename “ : “NFe43170492197540000125550030000587641000818289.xml”</td>
+</tr>
+<tr>
+<td style="text-align: left;">/filesize</td>
 <td style="text-align: left;">int</td>
-<td style="text-align: left;">Código do tipo de operação *( <strong><em>1</em></strong>=venda, <strong><em>4</em></strong>=devolução, <strong><em>5</em></strong>=transferência)*</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;tipoOp&quot;: 1</td>
+<td style="text-align: left;">Tamanho do arquivo em bytes</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">“filesize” : 9765</td>
 </tr>
 <tr>
-<td style="text-align: left;">vend</td>
-<td style="text-align: left;"><strong>CPF</strong></td>
-<td style="text-align: left;">varchar(11)</td>
-<td style="text-align: left;">CPF do Vendedor</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">&quot;CPF&quot;: &quot;29896908085&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">vend</td>
-<td style="text-align: left;"><strong>xNome</strong></td>
-<td style="text-align: left;">varchar(60)</td>
-<td style="text-align: left;">Nome completo do Vendedor</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">&quot;xNome&quot;: &quot;NOME VENDEDOR&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">vend</td>
-<td style="text-align: left;"><strong>telefone</strong></td>
-<td style="text-align: left;">varchar(15)</td>
-<td style="text-align: left;">Número do telefone celular do Vendedor</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">&quot;telefone&quot;: &quot;5199999999&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">prodDet</td>
-<td style="text-align: left;"><strong>nItem</strong></td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">Índice do item na nota</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;nItem&quot;: 1</td>
-</tr>
-<tr>
-<td style="text-align: left;">prodDetprod</td>
-<td style="text-align: left;"><strong>codigoItem</strong></td>
-<td style="text-align: left;">varchar(25)</td>
-<td style="text-align: left;">Código do Item - AGCO</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;codigoItem&quot;: &quot;42754F0913D&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">prodDetprod</td>
-<td style="text-align: left;"><strong>serieComercial</strong></td>
-<td style="text-align: left;">varchar(20)</td>
-<td style="text-align: left;">Código da Série Comercial - AGCO</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">&quot;serieComercial&quot;: &quot;4275344889&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">prodDetprod</td>
-<td style="text-align: left;"><strong>monobloco</strong></td>
-<td style="text-align: left;">varchar(30)</td>
-<td style="text-align: left;">Número do monobloco - AGCO</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">&quot;monobloco&quot;: &quot; AAAT0012PCC002382&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">prodDetprod</td>
-<td style="text-align: left;"><strong>tipoProd</strong></td>
-<td style="text-align: left;">varchar(3)</td>
-<td style="text-align: left;">Tipo de produto AGCO, onde: Trator = “TA”, Colheitadeira = “CO”, Pulverizador: “PU”</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">&quot;tipoProd&quot;: &quot;TA&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left;">prodDetprod</td>
-<td style="text-align: left;"><strong>cPrograma</strong></td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">Controle do Programa Mais Alimentos. (0 = Não, 1 = Sim)</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">&quot;cPrograma&quot;: 0</td>
+<td style="text-align: left;">/filetype</td>
+<td style="text-align: left;">varchar</td>
+<td style="text-align: left;">Tipo de arquivo</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">“filetype” : “text/xml”</td>
 </tr>
 </tbody>
 </table>
-<p><strong>* Se existir a informação de CPF o campo CNPJ deve vir vazio. O mesmo acontece para o caso contrário.</strong></p>
+<h4 id="513-especificao-de-atributos-grupo-ddi">5.1.3. Especificação de atributos grupo “ddi”</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TAG</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Regra</th>
+<th style="text-align: left;">Obrig.</th>
+<th style="text-align: left;">Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">/campaign/active</td>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;">Campo booleano informa se a campanha está ativa ou não padrão false caso não informado</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;active&quot;: true</td>
+</tr>
+<tr>
+<td style="text-align: left;">/campaign/beginDate/</td>
+<td style="text-align: left;">Datetime</td>
+<td style="text-align: left;">Data de inicio da campanha</td>
+<td style="text-align: left;">Pattern yyyy-MM-dd'T'HH:mm:ss.SSS'Z'</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;beginDate&quot;: &quot;2017-12-20T09:44:48.416Z&quot;,</td>
+</tr>
+<tr>
+<td style="text-align: left;">/campaign/brand/</td>
+<td style="text-align: left;">varchar(4)</td>
+<td style="text-align: left;">Marca dos tratores</td>
+<td style="text-align: left;">Brand must not be Empty or null.</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">/campaign/endDate/</td>
+<td style="text-align: left;">Datetime</td>
+<td style="text-align: left;">Data final da campanha</td>
+<td style="text-align: left;">Pattern yyyy-MM-dd'T'HH:mm:ss.SSS'Z'</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;endDate&quot;: &quot;2017-12-20T09:44:48.417Z&quot;,</td>
+</tr>
+<tr>
+<td style="text-align: left;">/campaign/id/</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Identificador da campanha</td>
+<td style="text-align: left;">ID must not be Empty or null</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;id&quot;: 0,</td>
+</tr>
+<tr>
+<td style="text-align: left;">/campaign/market/</td>
+<td style="text-align: left;">varchar(2)</td>
+<td style="text-align: left;">Informa o tipo de mercado interno. I = Interno, E = Externo.</td>
+<td style="text-align: left;">Market must not be Empty or null</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;market&quot;: &quot;string&quot;,</td>
+</tr>
+<tr>
+<td style="text-align: left;">/campaign/models</td>
+<td style="text-align: left;">Grupo</td>
+<td style="text-align: left;">Campanhas envelope do grupo de Campanhas</td>
+<td style="text-align: left;">Modelmust not be Empty or null.</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;models&quot;:[{&quot;id&quot;: 0, &quot;idWholegoodsCampaign&quot;: 0, &quot;model&quot;: &quot;string&quot;, &quot;updateDate&quot;: &quot;2017-12-19T10:55:21.256Z&quot;, &quot;userLogin&quot;: &quot;string&quot;}],</td>
+</tr>
+<tr>
+<td style="text-align: left;">/campaign/models/model/</td>
+<td style="text-align: left;">varchar(250)</td>
+<td style="text-align: left;">Modelo da campanha</td>
+<td style="text-align: left;">Não pode ser vazio ou null.</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;model&quot;: &quot;string&quot;,</td>
+</tr>
+<tr>
+<td style="text-align: left;">/campaign/name/</td>
+<td style="text-align: left;">varchar(50)</td>
+<td style="text-align: left;">Nome da campanha</td>
+<td style="text-align: left;">Não pode ser vazio ou null. Tamanho min = 1 and max = 12</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;name&quot;: &quot;string&quot;,</td>
+</tr>
+<tr>
+<td style="text-align: left;">/campaign/productType/</td>
+<td style="text-align: left;">varchar(4)</td>
+<td style="text-align: left;">Tipo do produto</td>
+<td style="text-align: left;">ProductType must not be Empty or null</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;productType&quot;: &quot;string&quot;,</td>
+</tr>
+<tr>
+<td style="text-align: left;">/prodDet/nItem/</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">Índice do item na nota</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;nItem&quot;: 1</td>
+</tr>
+<tr>
+<td style="text-align: left;">/prodDet/prod/codigoItem/</td>
+<td style="text-align: left;">varchar(25)</td>
+<td style="text-align: left;">Código do item - AGCO</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;codigoItem&quot;: &quot;42754F0913D&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">/prodDet/prod/modelo/</td>
+<td style="text-align: left;">varchar(2)</td>
+<td style="text-align: left;">Código do modelo da nota</td>
+<td style="text-align: left;">Utilizar código 55 para identificação da NF-e, emitida em substituição ao modelo 1 ou 1A</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">&quot;modelo&quot;: &quot;MF&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">/prodDet/prod/TipoProd varchar(3)</td>
+<td style="text-align: left;">Tipo de produto AGCO, onde: Trator = “TA”, Colheitadeira = “CO”, Pulverizador: “PU”</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
+<td style="text-align: left;">&quot;tipoProd&quot;: &quot;TA&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">/prodDet/prod/monobloco/</td>
+<td style="text-align: left;">varchar(30)</td>
+<td style="text-align: left;">Número do Monobloco – AGCO</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
+<td style="text-align: left;">&quot;monobloco&quot;: &quot; AAAT0012PCC002382&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">/prodDet/prod/serieComercial/</td>
+<td style="text-align: left;">varchar(20)</td>
+<td style="text-align: left;">Código da Série Comercial - AGCO</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/check.png" alt="check" /></td>
+<td style="text-align: left;">serieComercial&quot;: &quot;4275344889&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">/tipoOp/vend/CPF</td>
+<td style="text-align: left;">varchar(11)</td>
+<td style="text-align: left;">CPF de vendedor</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
+<td style="text-align: left;">&quot;CPF&quot;: &quot;29896908085&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">/tipoOp/vend/CNPJ</td>
+<td style="text-align: left;">varchar(14)</td>
+<td style="text-align: left;">CNPJ do vendedor</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
+<td style="text-align: left;">&quot;CNPJ&quot;: &quot;95485281000312&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">/tipoOp/vend/telefone</td>
+<td style="text-align: left;">varchar(15)</td>
+<td style="text-align: left;">Número do telefone celular do vendedor</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
+<td style="text-align: left;">&quot;telefone&quot;: &quot;5199999999&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left;">/tipoOp/vend/xNome</td>
+<td style="text-align: left;">varchar(60)</td>
+<td style="text-align: left;">Nome completo do vendedor -</td>
+<td style="text-align: left;"><img src="/images/error.png" alt="error" /></td>
+<td style="text-align: left;">&quot;xNome&quot;: &quot;NOME VENDEDOR&quot;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-interface-stock">5.2. Interface Stock</h3>
+<p>Envia para a AGCO as informações de negociação do produto/monobloco em estoque. Os dados da Concessionária e do produto devem ser adicionados diretamente no endereço da API.</p>
+<p>Exemplo de JSON para interface STOCK</p>
+<table>
+<thead>
+<tr>
+<th>Endereço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://appsqa.agcoonline.com.br/portal/ddi/Stock/{Tipo_empresa}/{Cod_Dealer}/{Monobloco}/{Serie_Comercial}/{Item">https://appsqa.agcoonline.com.br/portal/ddi/Stock/{Tipo_empresa}/{Cod_Dealer}/{Monobloco}/{Serie_Comercial}/{Item</a>}/</td>
+</tr>
+</tbody>
+</table>
+<p>Body</p>
+<p><code>{"available":"S","availableCpfCnpj":"999.999.999-00"}</code> </p>
+<table>
+<thead>
+<tr>
+<th>Tipo Empresa</th>
+<th>Código Dealer</th>
+<th>Monobloco</th>
+<th>Série Comercial</th>
+<th>Item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>11571</td>
+<td>000BO3020CI0004</td>
+<td>BP03330255</td>
+<td>BP0302E1021</td>
+</tr>
+</tbody>
+</table>
+<p>Detalhe: O parâmetro token deve ser setado via Bearer para essa interface.</p>
+<table>
+<thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Inserir no header a seguinte propriedade: “Authorization: Bearer”.</td>
+<td>Authorization: Bearer <token></td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>Inserir no header a seguinte propriedade: <strong>&quot;Content-Type:application/json&quot;</strong></td>
+<td>Content-Type:application/json</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-interface-campaign">5.3. Interface Campaign</h3>
+<p>Através do método GET no DMS é possível buscar uma lista das Campanhas existentes na AGCO. </p>
+<h4 id="531-response-body">5.3.1. Response Body</h4>
+<pre><code>{
+ "data": [
+{
+  "id": "1",
+  "type": "wholegoodsCampaign",
+  "attributes": {
+    "id": 1,
+    "brand": "VT",
+    "market": "I",
+    "productType": "TA",
+    "name": "Campanha tes",
+    "models": [
+      {
+        "id": 5,
+        "idWholegoodsCampaign": 1,
+        "model": "7180KFA",
+        "updateDate": null,
+        "userLogin": "avier"
+      }
+    ],</code></pre>
+<h4 id="532-request-headers">5.3.2. Request Headers</h4>
+<pre><code>{
+    "Accept": "application/json;charset=UTF-8"
+}</code></pre>
+<p>*** Se existir a informação de CPF o campo CNPJ deve vir vazio. O mesmo acontece para o caso contrário.</p>
                     </div>
 
                     <footer>

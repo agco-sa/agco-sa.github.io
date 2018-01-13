@@ -57,14 +57,12 @@
                     </li>
 
                     
-                                        <li class="active">
+                                        <li class="">
                         <a href="https://agco-sa.github.io/ddi/codretorno.html">
                             Códigos de retorno
                         </a>
                     </li>
 
-                                        <ul class="submenu nav nav-stacked nav-pills">
-                                            </ul>
                     
                                         <li class="">
                         <a href="https://agco-sa.github.io/ddi/endpoints.html">
@@ -80,12 +78,14 @@
                     </li>
 
                     
-                                        <li class="">
+                                        <li class="active">
                         <a href="https://agco-sa.github.io/ddi/releasenotes18122017.html">
                             Release Notes 18/12/2017
                         </a>
                     </li>
 
+                                        <ul class="submenu nav nav-stacked nav-pills">
+                                            </ul>
                     
                                     </ul>
                                         
@@ -123,174 +123,49 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="dealer-data-integration">Dealer Data Integration</h1>
-<h2 id="4-cdigos-de-retorno">4. Códigos de Retorno</h2>
-<p>Ao enviar uma mensagem para o serviço, será retornado um código que varia de acordo com o resultado do processamento da mensagem AGCO. A lista de possíveis retornos, assim como as ações a serem tomadas em cada caso de erro, são descritas na tabela a seguir.</p>
-<table>
-<thead>
-<tr>
-<th>CÓDIGO</th>
-<th>STATUS</th>
-<th>DESCRIÇÃO</th>
-<th>AÇÃO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>201</td>
-<td>Sucesso</td>
-<td>Dados criados com sucesso</td>
-<td>-</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Erro</td>
-<td>Requisição inválida</td>
-<td>Rever formato dos dados enviados. Exemplo: Header incompleto, formato JSON incorreto, campos obrigatórios faltando, etc)</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Erro</td>
-<td>Usuário não autorizado</td>
-<td>Verificar usuário e senha. Valores válidos corretamente convertidos em base64 no header.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Erro</td>
-<td>Endereço não encontrado</td>
-<td>Revisar URL de acesso ao serviço.</td>
-</tr>
-<tr>
-<td>422</td>
-<td>Erro</td>
-<td>Dados inválidos</td>
-<td>Entrar em contato com o DSS</td>
-</tr>
-</tbody>
-</table>
-<p>Referência: <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a></p>
-<h3 id="41-validao-de-dados">4.1. Validação de dados</h3>
-<p>Todos os dados enviados devem passar pelas validações abaixo. Caso os critérios não sejam atendidos será retornado um erro <strong>422</strong>.
-Neste caso, os dados incorretos devem ser corrigidos antes de serem re-enviados.</p>
-<table>
-<thead>
-<tr>
-<th>ERRO</th>
-<th>DESCRIÇÃO</th>
-<th>TAG PAI</th>
-<th>EXEMPLO DE ERRO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>CNPJ do emitente não existe na base</td>
-<td>NFe/infNFe/emit</td>
-<td>&quot;CNPJ&quot;: &quot;99999999999999” <em>(CNPJ da filial deve existir na base)</em></td>
-</tr>
-<tr>
-<td>2</td>
-<td>Informe apenas uma das opções: CPF ou CNPJ do destinatário</td>
-<td>NFe/infNFe/dest</td>
-<td>&quot;CPF&quot;: &quot;11111111111”, &quot;CNPJ&quot;: &quot;99999999999999” <em>(somente um dos dois deve ser enviado)</em></td>
-</tr>
-<tr>
-<td>3</td>
-<td>O CNPJ do destinatário precisa ser válido</td>
-<td>NFe/infNFe/dest</td>
-<td>&quot;CNPJ&quot;: &quot;55555” <em>(CNPJ deve ser válido)</em></td>
-</tr>
-<tr>
-<td>4</td>
-<td>O CPF do destinatário precisa ser válido</td>
-<td>NFe/infNFe/dest</td>
-<td>&quot;CPF&quot;: &quot;777” <em>(CPF deve ser válido)</em></td>
-</tr>
-<tr>
-<td>5</td>
-<td>Informe apenas uma das opções: CPF ou CNPJ do emissor</td>
-<td>NFe/infNFe/emit</td>
-<td>&quot;CPF&quot;: &quot;11111111111”, &quot;CNPJ&quot;: &quot;99999999999999” <em>(somente um dos dois deve ser enviado)</em></td>
-</tr>
-<tr>
-<td>6</td>
-<td>O CNPJ do emitente precisa ser válido</td>
-<td>NFe/infNFe/emit</td>
-<td>&quot;CNPJ&quot;: &quot;55555” <em>(CNPJ deve ser válido)</em></td>
-</tr>
-<tr>
-<td>7</td>
-<td>O CPF do emitente precisa ser válido</td>
-<td>NFe/infNFe/emit</td>
-<td>&quot;CPF&quot;: &quot;777” <em>(CPF deve ser válido)</em></td>
-</tr>
-<tr>
-<td>8</td>
-<td>O produto enviado não existe no estoque</td>
-<td>ddi/prodDet/prod</td>
-<td>&quot;codigoItem&quot;: &quot;42754F0913D&quot;, &quot;serieComercial&quot;: &quot;4275344889&quot;, &quot;monobloco&quot;: &quot; AAAT0012PCC002382&quot; <em>(produto deve existir no estoque da filial)</em></td>
-</tr>
-<tr>
-<td>9</td>
-<td>O tipo da nota fiscal não é válido</td>
-<td>NFe/infNFe/ide</td>
-<td>&quot;tpNF&quot;: 9 <em>(deve ser 0 ou 1)</em></td>
-</tr>
-<tr>
-<td>10</td>
-<td>O tipo da operação não é válido</td>
-<td>ddi</td>
-<td>&quot;tipoOp&quot;: 9 <em>(deve ser 1, 4 ou 5)</em></td>
-</tr>
-<tr>
-<td>11</td>
-<td>A data de emissão deve ser válida e menor do que a data atual</td>
-<td>NFe/infNFe/ide</td>
-<td>&quot;dhEmi&quot;: &quot;2099-01-01T00:00:00.000Z&quot; <em>(data deve ser menor que a atual)</em></td>
-</tr>
-<tr>
-<td>12</td>
-<td>Município do destinatário não existe na base</td>
-<td>NFe/infNFe/dest /enderDest</td>
-<td>&quot;cMun&quot;: 111111 <em>(código do município deve existir na base)</em></td>
-</tr>
-<tr>
-<td>13</td>
-<td>Produto não pode ser devolvido</td>
-<td>ddi/prodDet/prod</td>
-<td>&quot;codigoItem&quot;: &quot;42754F0913D&quot;, &quot;serieComercial&quot;: &quot;4275344889&quot;, &quot;monobloco&quot;: &quot; AAAT0012PCC002382&quot; <em>(produto não está com status disponível para devolução)</em></td>
-</tr>
-<tr>
-<td>14</td>
-<td>CNPJ do destinatário não existe na nota</td>
-<td>NFe/infNFe/dest</td>
-<td>&quot;CNPJ&quot;: &quot;” <em>(CNPJ está vazio ou não existe a tag)</em></td>
-</tr>
-<tr>
-<td>15</td>
-<td>CNPJ do emitente não existe na nota</td>
-<td>NFe/infNFe/emit</td>
-<td>&quot;CNPJ&quot;: &quot;” <em>(CNPJ está vazio ou não existe a tag)</em></td>
-</tr>
-<tr>
-<td>16</td>
-<td>CNPJ da nota é diferente do CNPJ da concessionária</td>
-<td>NFe/infNFe/dest ou NFe/infNFe/emit</td>
-<td>&quot;CNPJ&quot;: &quot;99999999999999” <em>(CNPJ enviado é diferente do CNPJ que está com o produto em estoque)</em></td>
-</tr>
-<tr>
-<td>17</td>
-<td>CNPJ do destinatário não existe na base</td>
-<td>NFe/infNFe/dest</td>
-<td>&quot;CNPJ&quot;: &quot;99999999999999” <em>(CNPJ enviado não existe na base)</em></td>
-</tr>
-<tr>
-<td>18</td>
-<td>Produtos duplicados na nota fiscal</td>
-<td>ddi/prodDet/prod</td>
-<td>&quot;codigoItem&quot;: &quot;42754F0913D&quot;, &quot;serieComercial&quot;: &quot;4275344889&quot;, &quot;monobloco&quot;: &quot; AAAT0012PCC002382&quot; <em>(produto aparece duas vezes na mesma nota fiscal)</em></td>
-</tr>
-</tbody>
-</table>
+<h1 id="release-notes---18-dez-2017">Release Notes - 18 Dez 2017</h1>
+<h2 id="o-que-temos-de-novo">O que temos de novo?</h2>
+<ul>
+<li>Inclusão campo Campanha</li>
+<li>Inclusão campo XMLFile</li>
+</ul>
+<h2 id="objetivo">Objetivo</h2>
+<p>Para que seja contemplada a inclusão/seleção da Campanha inserida na tela de Cadastro de Nota Fiscal na tela de &quot;Consulta Estoque &gt; Cadastrar Nota Fiscal&quot;, reflita as mesmas informações, estamos incluindo os campos para informar Campanha e o XML da Nota Fiscal no endpoint 'DealerNfe'.</p>
+<h2 id="incluso-quotddicampaignquot-">Inclusão &quot;ddi/campaign&quot; ?</h2>
+<pre><code>  "ddi": {
+    "campaign": {
+        "active": true,
+        "beginDate": "2017-11-23",
+        "brand": "MF",
+        "endDate": "2017-12-28",
+        "id": 43,
+        "market": "I",
+        "models": [
+            {
+                "id": 107,
+                "idWholegoodsCampaign": 43,
+                "model": "71804K",
+                "updaDate": null,
+                "userLogin": "loginuser"
+            }
+        ],
+        "name": "Teste_Aug",
+        "productType": "TA"
+    },</code></pre>
+<h2 id="incluso-quotxmlfilequot">Inclusão &quot;XMLFile&quot;</h2>
+<pre><code>"XMLFile": {
+    "base64": "",
+    "filename": "43150495437281000312550030000301351002205802-nfe.xml",
+    "filesize": 8013,
+    "filetype": "text/xml"
+},</code></pre>
+<h2 id="api-changes">API Changes</h2>
+<blockquote>
+<ul>
+<li>ddi/campaign</li>
+<li>XMLFile</li>
+</ul>
+</blockquote>
                     </div>
 
                     <footer>
