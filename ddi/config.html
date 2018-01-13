@@ -74,6 +74,13 @@
 
                     
                                         <li class="">
+                        <a href="https://agco-sa.github.io/ddi/regrasProcesso.html">
+                            Regras e Processos
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
                         <a href="https://agco-sa.github.io/ddi/releasenotes18122017.html">
                             Release Notes 18/12/2017
                         </a>
@@ -116,23 +123,46 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="dealer-data-integration">Dealer Data Integration</h1>
-<h2 id="configurao">Configuração</h2>
+<h2 id="2-configurao">2. Configuração</h2>
 <p>O serviço é oferecido como uma interface com chamadas REST e que trafega conteúdo JSON. Ele está disponibilizado nos ambientes abaixo.</p>
 <table>
 <thead>
 <tr>
 <th>Ambiente</th>
+<th>Interface</th>
 <th>URL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Teste</td>
+<td>DealerNfe</td>
 <td><a href="https://appsqa.agcoonline.com.br/ddi/DealerNFe">https://appsqa.agcoonline.com.br/ddi/DealerNFe</a></td>
 </tr>
 <tr>
+<td>Teste</td>
+<td>Campaign</td>
+<td><a href="https://appsqa.agcoonline.com.br/api/ddi/campaign">https://appsqa.agcoonline.com.br/api/ddi/campaign</a></td>
+</tr>
+<tr>
+<td>Teste</td>
+<td>Stock</td>
+<td><a href="https://appsqa.agcoonline.com.br/portal/ddi/Stock/{Tipo_empresa}/{Codigo_Concessionaria}/{Monobloco}/{Item/Modelo">https://appsqa.agcoonline.com.br/portal/ddi/Stock/{Tipo_empresa}/{Codigo_Concessionaria}/{Monobloco}/{Item/Modelo</a>}/</td>
+</tr>
+<tr>
 <td>Produção</td>
-<td><a href="https://apps.agcoonline.com.br/ddi/DealerNFe">https://apps.agcoonline.com.br/ddi/DealerNFe</a></td>
+<td>DealerNfe</td>
+<td><a href="https://apps.agcoonline.com.br/ddi/DealerNfe">https://apps.agcoonline.com.br/ddi/DealerNfe</a></td>
+</tr>
+<tr>
+<td>Produção</td>
+<td>Campaign</td>
+<td><a href="https://apps.agcoonline.com.br/api/ddi/campaign">https://apps.agcoonline.com.br/api/ddi/campaign</a></td>
+</tr>
+<tr>
+<td>Produção</td>
+<td>Stock</td>
+<td><a href="https://appsqa.agcoonline.com.br/portal/ddi/Stock/{Tipo_empresa}/{Codigo_Concessionaria}/{Monobloco}/{Item/Modelo">https://appsqa.agcoonline.com.br/portal/ddi/Stock/{Tipo_empresa}/{Codigo_Concessionaria}/{Monobloco}/{Item/Modelo</a>}/</td>
 </tr>
 </tbody>
 </table>

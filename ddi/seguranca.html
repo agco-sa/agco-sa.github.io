@@ -74,6 +74,13 @@
 
                     
                                         <li class="">
+                        <a href="https://agco-sa.github.io/ddi/regrasProcesso.html">
+                            Regras e Processos
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
                         <a href="https://agco-sa.github.io/ddi/releasenotes18122017.html">
                             Release Notes 18/12/2017
                         </a>
@@ -116,16 +123,59 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="dealer-data-integration">Dealer Data Integration</h1>
-<h2 id="segurana">Segurança</h2>
+<h2 id="3-segurana">3. Segurança</h2>
 <p>A fim de garantir a segurança das informações transmitidas, todas as chamadas devem ser feitas com SSL.
-Além da criptografia da comunicação, o uso da API exige que as chamadas sejam autenticadas. O modo de autenticação é o Basic Auth, e ele é feito através do uso de headers nas chamadas das operações.
-Além das informações de segurança, mais headers são especificados conforme a tabela a seguir.</p>
+Além da criptografia da comunicação, o uso da API exige que as chamadas sejam autenticadas através do padrão BasicAuth, e ele é realizado através do uso de headers nas chamadas das operações. Além das informações de segurança, mais headers são especificados conforme a tabela a seguir.</p>
+<h3 id="31-como-gerar-o-token">3.1 Como gerar o token</h3>
+<p>Para gerar o token deve-se enviar uma requisição POST para a URL:</p>
 <table>
 <thead>
 <tr>
-<th>PROPRIEDADE</th>
-<th>DESCRIÇÃO</th>
-<th>EXEMPLO</th>
+<th>Ambiente</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teste</td>
+<td><a href="https://appsqa.agcoonline.com.br/SecurityApi/Token">https://appsqa.agcoonline.com.br/SecurityApi/Token</a></td>
+</tr>
+<tr>
+<td>Produção</td>
+<td><a href="https://appsqa.agcoonline.com.br/SecurityApi/Token">https://appsqa.agcoonline.com.br/SecurityApi/Token</a></td>
+</tr>
+</tbody>
+</table>
+<p>Com as seguintes informações de cabeçalho:</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Informação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-OpenAM-Username</td>
+<td>Usuário</td>
+</tr>
+<tr>
+<td>X-OpenAM-Password</td>
+<td>Senha</td>
+</tr>
+</tbody>
+</table>
+<p>Caso a requisição seja realizada com sucesso, o servidor de autenticação enviará o código HTTP 200 (OK) e o corpo da resposta com o token, como exemplificado abaixo:</p>
+<pre><code> "tokenId": "&lt;TOKEN&gt;",
+ "successUrl": ""</code></pre>
+<p>Caso contrário o servidor irá responder com um código HTTP 400 (Bad Request) ou 401 (Unauthorized), sem corpo na resposta.
+Após o recebimento do token, o mesmo deverá ser enviado em todas as requisições para o serviço do DDI através do seguinte cabeçalho:</p>
+<table>
+<thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Exemplo</th>
 </tr>
 </thead>
 <tbody>
@@ -141,6 +191,9 @@ Além das informações de segurança, mais headers são especificados conforme 
 </tr>
 </tbody>
 </table>
+<h3 id="32-observaes">3.2 Observações</h3>
+<p>O token gerado poderá ser invalidado conforme regras internas, como tempo de ociosiodade (tempo após o último uso). Caso isso aconteça, é responsabilidade da aplicação do cliente gerar um novo token e continuar o processo.
+O código de resposta que será enviado pela aplicação VMI caso o token tenha sido invalidado será o código HTTP 401 (Unauthorized).</p>
                     </div>
 
                     <footer>
