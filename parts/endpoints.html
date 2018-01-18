@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGCO South America APIs</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic'
+          rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://agco-sa.github.io/css/theme.css" type="text/css"/>
+    <link rel="stylesheet" href="https://agco-sa.github.io/css/theme-fixes.css" type="text/css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+    <!--
+    <link rel="stylesheet" href="https://agco-sa.github.io/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    -->
+</head>
+<body class="wy-body-for-nav">
+
+    <div class="wy-grid-for-nav">
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-nav-search">
+                <a href="https://agco-sa.github.io/" class="fa fa-home"> AGCO South America APIs</a>
+            </div>
+
+            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="https://agco-sa.github.io/conta.html">
+                                Solicitando uma conta
+                            </a>
+                        </li>
+                        
+                                        
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="https://agco-sa.github.io/ddi/index.html">
+                                DDI
+                            </a>
+                        </li>
+                        
+                                        
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="https://agco-sa.github.io/vmi/index.html">
+                                VMI
+                            </a>
+                        </li>
+                        
+                                        
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="https://agco-sa.github.io/parts/index.html">
+                                Parts
+                            </a>
+                        </li>
+                        
+                                <ul class="submenu nav nav-stacked nav-pills">
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/config.html">
+                            Configuração
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/seguranca.html">
+                            Segurança
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/retornos.html">
+                            Códigos de Retorno
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/padroeslistas.html">
+                            Padrões e Listas
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/regrasprocesso.html">
+                            Regras e Processos
+                        </a>
+                    </li>
+
+                    
+                                        <li class="active">
+                        <a href="https://agco-sa.github.io/parts/endpoints.html">
+                            Endpoints
+                        </a>
+                    </li>
+
+                                        <ul class="submenu nav nav-stacked nav-pills">
+                                            </ul>
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/telasrelatorios.html">
+                            Telas e Relatórios
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/historico.html">
+                            Histórico
+                        </a>
+                    </li>
+
+                    
+                                    </ul>
+                                        
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="https://agco-sa.github.io/politicas.html">
+                                Políticas
+                            </a>
+                        </li>
+                        
+                                        
+                                    </ul>
+            </div>
+            &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+                        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                <a href="https://agco-sa.github.io/">AGCO South America APIs</a>
+            </nav>
+
+
+                        <div class="wy-nav-content">
+                <div class="rst-content">
+					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
+                    <div role="main" class="document">
+                        <h1 id="argentina-parts">Argentina Parts</h1>
+<h2 id="7-endpoints">7. Endpoints</h2>
+<p>The AGCO Parts API has six endpoints available for retriving part information such as details, pricing, availability information, taxes and supersession.</p>
+<h3 id="71-parts-api---search">7.1. Parts API - Search</h3>
+<p>This endpoint can be used to retrieve a list of possible AGCO parts based on a query text which will be compared to AGCO database part numbers or description.</p>
+<h4 id="711-request">7.1.1 Request</h4>
+<p>GET /parts</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Parameter Type</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Authorization Token (Using OAuth2) - See Security for Details</td>
+<td>Header</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>Bearer <Token></td>
+</tr>
+<tr>
+<td>dealerId</td>
+<td>Dealer identifier from AGCO internal systems.</td>
+<td>Query</td>
+<td>No</td>
+<td>Number</td>
+<td>Blank (null)</td>
+<td>1481682</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Query</td>
+<td>No</td>
+<td>String</td>
+<td>Dealer default language</td>
+<td>pt-BR</td>
+</tr>
+<tr>
+<td>query</td>
+<td>Input text query to search on database.</td>
+<td>Query</td>
+<td>No</td>
+<td>Query</td>
+<td>Blank (null)</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>page[size]</td>
+<td>Maximum number of items desired to be returned on each page.</td>
+<td>Query</td>
+<td>No</td>
+<td>Number</td>
+<td>10</td>
+<td>100</td>
+</tr>
+<tr>
+<td>page[number]</td>
+<td>Desired page</td>
+<td>Query</td>
+<td>No</td>
+<td>Number</td>
+<td>1</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<strong>Request Example:</strong> GET /parts?dealerId=1481682&amp;query=3012224X1&amp;lang=en-EN</p>
+<h4 id="712-response">7.1.2 Response</h4>
+<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<pre><code>{
+    "data": [
+        {
+            "id": "3012224X1",
+            "description": "HEXAGON FLANGE BOLT M20 X 130 (2.5) ISO 8.8 ZN",
+            "descriptionLanguage": "en"
+        }
+    ],
+    "meta": {
+        "currentPage": 1,
+        "nextPage": null,
+        "totalPages": 1,
+        "totalItems": 1
+    }
+}</code></pre>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Parent ID</th>
+<th>Field</th>
+<th>Description</th>
+<th>Required</th>
+<th>Data Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>N/A</td>
+<td>id</td>
+<td>Part number.</td>
+<td>Yes</td>
+<td>String</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>N/A</td>
+<td>description</td>
+<td>Part description.</td>
+<td>Yes</td>
+<td>String</td>
+<td>HEXAGON M20</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>N/A</td>
+<td>descriptionLanguage</td>
+<td>Language of the description.</td>
+<td>Yes</td>
+<td>String</td>
+<td>en</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<h3 id="72-parts-api---detail">7.2. Parts API - Detail</h3>
+<p>This endpoint is used to retrieve detailed information about a specific part number.</p>
+<h4 id="721-request">7.2.1 Request</h4>
+<p>GET /parts/<strong>{partnumber}</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Parameter Type</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Authorization Token (Using OAuth2) - See Security for Details</td>
+<td>Header</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>Bearer <Token></td>
+</tr>
+<tr>
+<td>partNumber</td>
+<td>AGCO Part Number</td>
+<td>Path</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>dealerId</td>
+<td>Dealer identifier from AGCO internal systems.</td>
+<td>Query</td>
+<td>No</td>
+<td>Number</td>
+<td>Blank (null)</td>
+<td>1481682</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Query</td>
+<td>No</td>
+<td>String</td>
+<td>Dealer default language</td>
+<td>pt-BR</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<strong>Request Example:</strong> GET /parts/3012224X1?dealerId=1481682&amp;lang=en-EN</p>
+<h4 id="722-response">7.2.2 Response</h4>
+<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<pre><code>{
+    "data": {
+        "id": "3012224X1",
+        "description": "HEXAGON FLANGE BOLT M20 X 130 (2.5) ISO 8.8 ZN",
+        "descriptionLanguage": "en",
+        "country": "BRA",
+        "weight": 0,
+        "minimumQuantity": 1,
+        "movementCode": "Criticidade Muito Baixa",
+        "fiscalCategory": "0",
+        "directShipping": false,
+        "superseded": false,
+        "additionalInfo": []
+    }
+}</code></pre>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Parent ID</th>
+<th>Field</th>
+<th>Description</th>
+<th>Required</th>
+<th>Data Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>N/A</td>
+<td>id</td>
+<td>Part number.</td>
+<td>Yes</td>
+<td>String</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>N/A</td>
+<td>description</td>
+<td>Part description.</td>
+<td>Yes</td>
+<td>String</td>
+<td>HEXAGON M20</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>N/A</td>
+<td>descriptionLanguage</td>
+<td>Language of the description.</td>
+<td>Yes</td>
+<td>String</td>
+<td>en</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>N/A</td>
+<td>country</td>
+<td>Country associated with the part description.</td>
+<td>Yes</td>
+<td>String</td>
+<td>BRA</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>N/A</td>
+<td>weight</td>
+<td>Weight in kilograms.</td>
+<td>Yes</td>
+<td>Decimal</td>
+<td>1.23456</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>N/A</td>
+<td>minimumQuantity</td>
+<td>Minimum ordering quantity of this part number.</td>
+<td>Yes</td>
+<td>Decimal</td>
+<td>1.23456</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>N/A</td>
+<td>movementCode</td>
+<td>Movement code.</td>
+<td>Yes</td>
+<td>String</td>
+<td>Criticidade Muito Baixa</td>
+</tr>
+<tr>
+<td>A08</td>
+<td>N/A</td>
+<td>fiscalCategory</td>
+<td>Fiscal Category.</td>
+<td>Yes</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>A09</td>
+<td>N/A</td>
+<td>directShipping</td>
+<td>Indicates whether this part has direct shipping or not.</td>
+<td>Yes</td>
+<td>Boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td>A10</td>
+<td>N/A</td>
+<td>superseded</td>
+<td>Indicates that this part number is obsolete and need to search for more recent replacement part number.</td>
+<td>Yes</td>
+<td>Boolean</td>
+<td>true</td>
+</tr>
+<tr>
+<td>A11</td>
+<td>N/A</td>
+<td>additionalInfo</td>
+<td>Additional Information (Optional)</td>
+<td>No</td>
+<td>Array</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>A12</td>
+<td>A11</td>
+<td>name</td>
+<td>Attribute name.</td>
+<td>No</td>
+<td>String</td>
+<td>BNDES</td>
+</tr>
+<tr>
+<td>A13</td>
+<td>A11</td>
+<td>value</td>
+<td>Attribute value.</td>
+<td>No</td>
+<td>Object</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<h3 id="73-parts-api---availability">7.3. Parts API - Availability</h3>
+<p>This endpoint is used to retrieve information about stock availability of a specific part number.</p>
+<h4 id="731-request">7.3.1 Request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/availability</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Parameter Type</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Authorization Token (Using OAuth2) - See Security for Details</td>
+<td>Header</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>Bearer <Token></td>
+</tr>
+<tr>
+<td>partNumber</td>
+<td>AGCO Part Number</td>
+<td>Path</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>dealerId</td>
+<td>Dealer identifier from AGCO internal systems.</td>
+<td>Query</td>
+<td>No</td>
+<td>Number</td>
+<td>Blank (null)</td>
+<td>1481682</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Query</td>
+<td>No</td>
+<td>String</td>
+<td>Dealer default language</td>
+<td>pt-BR</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<strong>Request Example:</strong> GET /parts/036857N1/availability?dealerId=1481682&amp;lang=en-EN</p>
+<h4 id="732-response">7.3.2 Response</h4>
+<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<pre><code>{
+    "data": {
+        "id": "036857N1",
+        "dealerId": 11571,
+        "availabilities": [
+            {
+                "warehouseCode": "REPVT06",
+                "warehouseOrder": 1,
+                "warehouseName": "REPOSIÇÃO ERNESTINA",
+                "available": false
+            },
+            {
+                "warehouseCode": "REPVT03",
+                "warehouseOrder": 2,
+                "warehouseName": "REPOSIÇÃO JUNDIAI",
+                "available": false
+            }
+        ]
+    }
+}</code></pre>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Parent ID</th>
+<th>Field</th>
+<th>Description</th>
+<th>Required</th>
+<th>Data Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>N/A</td>
+<td>id</td>
+<td>Part number.</td>
+<td>Yes</td>
+<td>String</td>
+<td>036857N1</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>N/A</td>
+<td>dealerId</td>
+<td>Dealer identifier from AGCO internal systems.</td>
+<td>Yes</td>
+<td>Number</td>
+<td>11571</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>N/A</td>
+<td>availabilities</td>
+<td>Array of availability information of each warehouse accessible by the requested dealer.</td>
+<td>Yes</td>
+<td>Array</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>A03</td>
+<td>warehouseCode</td>
+<td>Unique identifier of the retrieved warehouse.</td>
+<td>Yes</td>
+<td>String</td>
+<td>REPVT06</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>A03</td>
+<td>warehouseOrder</td>
+<td>Priority order of the retrieved warehouse.</td>
+<td>Yes</td>
+<td>Number</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>A03</td>
+<td>warehouseName</td>
+<td>Name of the retrieved warehouse.</td>
+<td>Yes</td>
+<td>String</td>
+<td>ERNESTINA</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>A03</td>
+<td>available</td>
+<td>Represents whether the part is available to be brought from this warehouse.</td>
+<td>Yes</td>
+<td>Boolean</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<h3 id="74-parts-api---price">7.4. Parts API - Price</h3>
+<p>This endpoint is used to retrieve price information of a specific part number.</p>
+<h4 id="741-request">7.4.1 Request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/price</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Parameter Type</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Authorization Token (Using OAuth2) - See Security for Details</td>
+<td>Header</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>Bearer <Token></td>
+</tr>
+<tr>
+<td>partNumber</td>
+<td>AGCO Part Number</td>
+<td>Path</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>dealerId</td>
+<td>Dealer identifier from AGCO internal systems.</td>
+<td>Query</td>
+<td>No</td>
+<td>Number</td>
+<td>Blank (null)</td>
+<td>1481682</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Query</td>
+<td>No</td>
+<td>String</td>
+<td>Dealer default language</td>
+<td>pt-BR</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<strong>Request Example:</strong> GET /parts/040665R1/price?dealerId=1481682&amp;lang=en-EN</p>
+<h4 id="742-response">7.4.2 Response</h4>
+<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<pre><code>{
+    "data": {
+        "id": "040665R1",
+        "dealerId": 11571,
+        "prices": [
+            {
+                "currency": "BRL",
+                "type": "PUBLIC",
+                "value": 82.3478,
+                "warehouseCode": "REPVT03"
+            },
+            {
+                "currency": "BRL",
+                "type": "SPECIFIC",
+                "value": 48.55,
+                "warehouseCode": "REPVT03"
+            },
+            {
+                "currency": "BRL",
+                "type": "CAMPAIGN",
+                "value": 60.45,
+                "warehouseCode": "REPVT03"
+            },
+            {
+                "currency": "BRL",
+                "type": "HARVEST",
+                "value": 60.45,
+                "warehouseCode": "REPVT03"
+            }
+        ]
+    }
+}</code></pre>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Parent ID</th>
+<th>Field</th>
+<th>Description</th>
+<th>Required</th>
+<th>Data Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>N/A</td>
+<td>id</td>
+<td>Part number.</td>
+<td>Yes</td>
+<td>String</td>
+<td>040665R1</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>N/A</td>
+<td>dealerId</td>
+<td>Dealer identifier from AGCO internal systems.</td>
+<td>Yes</td>
+<td>Number</td>
+<td>11571</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>N/A</td>
+<td>prices</td>
+<td>Array of available price information for this part number.</td>
+<td>Yes</td>
+<td>Array</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>A03</td>
+<td>currency</td>
+<td>Currency code of this price.</td>
+<td>Yes</td>
+<td>String</td>
+<td>BRL</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>A03</td>
+<td>type</td>
+<td>Price type information. (PUBLIC, SPECIFIC, CAMPAIGN or HARVEST).</td>
+<td>Yes</td>
+<td>String</td>
+<td>PUBLIC</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>A03</td>
+<td>value</td>
+<td>Price value</td>
+<td>Yes</td>
+<td>Number</td>
+<td>12.34567</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>A03</td>
+<td>warehouseCode</td>
+<td>Warehouse identification where this price data has been found.</td>
+<td>Yes</td>
+<td>String</td>
+<td>REPVT03</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<h3 id="75-parts-api---supersession">7.5. Parts API - Supersession</h3>
+<p>This endpoint is used to retrieve information if the specified part has been replaced and what the replacement parts are.</p>
+<h4 id="751-request">7.5.1 Request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/supersession</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Parameter Type</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Authorization Token (Using OAuth2) - See Security for Details</td>
+<td>Header</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>Bearer <Token></td>
+</tr>
+<tr>
+<td>partNumber</td>
+<td>AGCO Part Number</td>
+<td>Path</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>dealerId</td>
+<td>Dealer identifier from AGCO internal systems.</td>
+<td>Query</td>
+<td>No</td>
+<td>Number</td>
+<td>Blank (null)</td>
+<td>1481682</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Query</td>
+<td>No</td>
+<td>String</td>
+<td>Dealer default language</td>
+<td>pt-BR</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<strong>Request Example:</strong> GET /parts/036857N1/supersession?dealerId=1481682&amp;lang=en-EN</p>
+<h4 id="752-response">7.5.2 Response</h4>
+<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<pre><code>{
+    "data": [
+        {
+            "supersededId": "036857N1",
+            "supersededDescription": "LEVER RH / LD",
+            "supersedingId": "195910M1",
+            "supersedingDescription": "BUSH",
+            "condition": null,
+            "reversibility": "N",
+            "status": "A",
+            "supersessionDescription": "",
+            "descLang": "en",
+            "type": "CO",
+            "quantity": 1
+        },
+        {
+            "supersededId": "036857N1",
+            "supersededDescription": "LEVER RH / LD",
+            "supersedingId": "036858P1",
+            "supersedingDescription": "LEVER",
+            "condition": null,
+            "reversibility": "N",
+            "status": "A",
+            "supersessionDescription": "",
+            "descLang": "en",
+            "type": "CO",
+            "quantity": 1
+        }
+    ]
+}</code></pre>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Parent ID</th>
+<th>Field</th>
+<th>Description</th>
+<th>Required</th>
+<th>Data Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>N/A</td>
+<td>supersededId</td>
+<td>AGCO Part number</td>
+<td>Yes</td>
+<td>String</td>
+<td>036857N1</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>N/A</td>
+<td>supersededDescription</td>
+<td>AGCO Part description</td>
+<td>Yes</td>
+<td>String</td>
+<td>LEVER RH / LD</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>N/A</td>
+<td>supersedingId</td>
+<td>AGCO Substitution Part number</td>
+<td>Yes</td>
+<td>String</td>
+<td>195910M1</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>N/A</td>
+<td>supersedingDescription</td>
+<td>AGCO Substitution Part description</td>
+<td>Yes</td>
+<td>String</td>
+<td>BUSH</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>N/A</td>
+<td>condition</td>
+<td>Supersession condition</td>
+<td>Yes</td>
+<td>String</td>
+<td>null</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>N/A</td>
+<td>reversibility</td>
+<td>Supersession reversibility</td>
+<td>Yes</td>
+<td>String</td>
+<td>N</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>N/A</td>
+<td>status</td>
+<td>Supersession status</td>
+<td>Yes</td>
+<td>String</td>
+<td>A</td>
+</tr>
+<tr>
+<td>A08</td>
+<td>N/A</td>
+<td>supersessionDescription</td>
+<td>Supersession description</td>
+<td>Yes</td>
+<td>String</td>
+<td>Test</td>
+</tr>
+<tr>
+<td>A09</td>
+<td>N/A</td>
+<td>descLang</td>
+<td>Language of the description</td>
+<td>Yes</td>
+<td>String</td>
+<td>en</td>
+</tr>
+<tr>
+<td>A10</td>
+<td>N/A</td>
+<td>type</td>
+<td>Supersession type</td>
+<td>Yes</td>
+<td>String</td>
+<td>CO</td>
+</tr>
+<tr>
+<td>A11</td>
+<td>N/A</td>
+<td>quantity</td>
+<td>Supersession quantity</td>
+<td>Yes</td>
+<td>Number</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<h3 id="76-parts-api---tax">7.6. Parts API - Tax</h3>
+<p>This endpoint is used to retrieve tax information of a specific part number.</p>
+<h4 id="761-request">7.6.1 Request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/taxes</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Parameter Type</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Authorization Token (Using OAuth2) - See Security for Details</td>
+<td>Header</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>Bearer <Token></td>
+</tr>
+<tr>
+<td>partNumber</td>
+<td>AGCO Part Number</td>
+<td>Path</td>
+<td>No</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>dealerId</td>
+<td>Dealer identifier from AGCO internal systems.</td>
+<td>Query</td>
+<td>No</td>
+<td>Number</td>
+<td>Blank (null)</td>
+<td>1481682</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Query</td>
+<td>No</td>
+<td>String</td>
+<td>Dealer default language</td>
+<td>pt-BR</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<strong>Request Example:</strong> GET /parts/3012224X1/taxes?dealerId=1481682&amp;lang=en-EN</p>
+<h4 id="762-response">7.6.2 Response</h4>
+<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<pre><code>{
+    "data": {
+        "partNumber": "3012224X1",
+        "taxClassification": "0",
+        "taxes": [
+            {
+                "name": "IPI",
+                "currency": "BRL",
+                "value": 10
+            },
+            {
+                "name": "PISCOFINS",
+                "currency": "BRL",
+                "value": 27.25
+            }
+        ]
+    }
+}</code></pre>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Parent ID</th>
+<th>Field</th>
+<th>Description</th>
+<th>Required</th>
+<th>Data Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>N/A</td>
+<td>partNumber</td>
+<td>Part number</td>
+<td>Yes</td>
+<td>String</td>
+<td>036857N1</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>N/A</td>
+<td>taxClassification</td>
+<td>Tax classification</td>
+<td>Yes</td>
+<td>String</td>
+<td>0</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>N/A</td>
+<td>taxes</td>
+<td>Array of taxes information for this part number</td>
+<td>Yes</td>
+<td>Array</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>A03</td>
+<td>name</td>
+<td>Tax unique identifier</td>
+<td>Yes</td>
+<td>String</td>
+<td>IPI</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>A03</td>
+<td>currency</td>
+<td>Tax currency</td>
+<td>Yes</td>
+<td>String</td>
+<td>BRL</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>A03</td>
+<td>value</td>
+<td>Tax value</td>
+<td>Yes</td>
+<td>Number</td>
+<td>27.50</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+                    </div>
+
+                    <footer>
+                        <hr/>
+                                                    <div role="contentinfo">
+                                <p>
+                                    Find AGCO South America APIs on <a href="https://github.com/agco-sa/agco-sa">GitHub</a>.
+                                </p>
+                            </div>
+                                                Built with <a href="http://couscous.io/">Couscous</a> using a <a href="https://github.com/CouscousPHP/Template-ReadTheDocs">theme</a> based on <a href="https://readthedocs.org/">Read the Docs</a>.
+                    </footer>
+
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="https://agco-sa.github.io/js/theme.js"></script>
+
+    <script>
+        $(function() {
+            // Syntax highlighting
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+
+</body>
+</html>

@@ -50,66 +50,6 @@
                             </a>
                         </li>
                         
-                                <ul class="submenu nav nav-stacked nav-pills">
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/config.html">
-                            Configuração
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/seguranca.html">
-                            Segurança
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/retornos.html">
-                            Códigos de Retorno
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/padroeslistas.html">
-                            Padrões e Listas
-                        </a>
-                    </li>
-
-                    
-                                        <li class="active">
-                        <a href="https://agco-sa.github.io/vmi/regrasprocesso.html">
-                            Regras e Processos
-                        </a>
-                    </li>
-
-                                        <ul class="submenu nav nav-stacked nav-pills">
-                                            </ul>
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/endpoints.html">
-                            Endpoints
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/telasrelatorios.html">
-                            Telas e Relatórios
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/historico.html">
-                            Histórico
-                        </a>
-                    </li>
-
-                    
-                                    </ul>
                                         
                                             <li class="toctree-l1 ">
                             <a class="reference internal "
@@ -118,6 +58,66 @@
                             </a>
                         </li>
                         
+                                <ul class="submenu nav nav-stacked nav-pills">
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/config.html">
+                            Configuração
+                        </a>
+                    </li>
+
+                    
+                                        <li class="active">
+                        <a href="https://agco-sa.github.io/parts/seguranca.html">
+                            Segurança
+                        </a>
+                    </li>
+
+                                        <ul class="submenu nav nav-stacked nav-pills">
+                                            </ul>
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/retornos.html">
+                            Códigos de Retorno
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/padroeslistas.html">
+                            Padrões e Listas
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/regrasprocesso.html">
+                            Regras e Processos
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/endpoints.html">
+                            Endpoints
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/telasrelatorios.html">
+                            Telas e Relatórios
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/historico.html">
+                            Histórico
+                        </a>
+                    </li>
+
+                    
+                                    </ul>
                                         
                                             <li class="toctree-l1 ">
                             <a class="reference internal "
@@ -144,51 +144,76 @@
                 <div class="rst-content">
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
-                        <h1 id="vendor-management-inventory-integration">Vendor Management Inventory Integration</h1>
-<h2 id="6-regras-do-processo-de-integrao">6. Regras do processo de integração</h2>
-<p>Essa sessão contém as regras que devem ser utilizadas para enviar a primeira carga dos dados e para a configuração dos eventos que devem disparar novas mensagens.
-As mensagens de cargas não tem ordem para envio, assim como não é necessário esperar a primeira carga finalizar para enviar as mensagens do dia.</p>
+                        <h1 id="argentina-parts">Argentina Parts</h1>
+<h2 id="3-segurana">3. Segurança</h2>
+<p>A fim de garantir a segurança das informações transmitidas, todas as chamadas devem ser feitas com SSL/TLS.<br/>
+Além da criptografia da comunicação, o uso da API exige que as chamadas sejam autenticadas através de token utilizando-se do padrão OAuth2.</p>
+<h3 id="31-como-gerar-o-token">3.1. Como gerar o token</h3>
+<p>Para gerar o token deve-se enviar uma requisição POST para a URL:</p>
 <table>
 <thead>
 <tr>
-<th>Interface</th>
-<th>Primeira carga</th>
-<th>Cargas direcionadas a eventos</th>
+<th>Ambiente</th>
+<th>URL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>DMS-01</td>
-<td>Enviar posição atual dos itens que estão disponível com pedidos em aberto, itens reservados ou retornados.</td>
-<td>Deve ser disparada quando um item tiver movimentação.</td>
+<td>Teste</td>
+<td><a href="https://appsqa.agcoonline.com.br/SecurityApi/Token">https://appsqa.agcoonline.com.br/SecurityApi/Token</a></td>
 </tr>
 <tr>
-<td>DMS-02</td>
-<td>Enviar todas as peças que já tiveram alguma movimentação.</td>
-<td>Deve ser disparada quando um item tiver uma primeira compra, uma primeira data de disponibilidade ou a peça for atualizada nos campos definidos para o contrato.</td>
-</tr>
-<tr>
-<td>DMS-03</td>
-<td>Enviar todos os pedidos de compra feitos para a AGCO ou outros fornecedores nos últimos 6 meses. As transferências entre filiais devem ser enviadas, mas as vendas para concessionárias da rede não.</td>
-<td>Deve ser disparado quando uma compra para a AGCO ou outros fornecedores for feita e sempre que sofrer uma alteração. Caso uma nova linha seja incluída no pedido a mesma deve ser enviada. As transferências entre filiais devem ser enviadas, mas as vendas para concessionárias da rede não.</td>
-</tr>
-<tr>
-<td>DMS-04</td>
-<td>Enviar os últimos 36 meses de pedidos/vendas (balcão e oficina) e devoluções. As transferências entre filiais devem ser enviadas, mas as vendas para concessionárias da rede não.</td>
-<td>Deve ser disparada quando uma venda e/ou pedido de venda for aberto e salvo (balcão e oficina) ou devolução for realizada para um cliente final e sempre que essas informações sofrerem uma alteração. Caso uma nova linha seja incluída no pedido a mesma deve ser enviada. As transferências entre filiais devem ser enviadas, mas as vendas para concessionárias da rede não.</td>
-</tr>
-<tr>
-<td>DMS-05</td>
-<td>N/A</td>
-<td>Deve ser disparada quando for registrada uma venda perdida por falta de estoque.</td>
-</tr>
-<tr>
-<td>DMS-06</td>
-<td>Enviar todos os clientes ativos nos últimos 36 meses. Sendo ativos todos aqueles que realizaram compra, devolução, orçamentos ou gerarem uma venda perdida na concessionária.</td>
-<td>Deve ser disparada quando um cliente realizar alguma movimentação como compra, devolução, orçamento ou gerar uma venda perdida na concessionária.</td>
+<td>Produção</td>
+<td><a href="https://apps.agcoonline.com.br/SecurityApi/Token">https://apps.agcoonline.com.br/SecurityApi/Token</a></td>
 </tr>
 </tbody>
 </table>
+<p>Com as seguintes informações no cabeçalho:</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Informação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-OpenAM-Username</td>
+<td>usuário</td>
+</tr>
+<tr>
+<td>X-OpenAM-Password</td>
+<td>senha</td>
+</tr>
+</tbody>
+</table>
+<p>Caso a requisição seja efetuada com sucesso, o servidor de autenticação enviará o código HTTP 200 (OK) e o corpo da resposta com o token, como exemplificado abaixo:</p>
+<pre><code>{
+  "tokenId": "&lt;TOKEN&gt;",
+  "successUrl": ""
+}</code></pre>
+<p>Caso contrário o servidor irá responder com um código HTTP 400 (Bad Request) ou 401 (Unauthorized), sem corpo na resposta.<br/>
+Após o recebimento do token, o mesmo deverá ser enviado em todas as requisições para o serviço do VMI através do seguinte cabeçalho:</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Informação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>Bearer &lt;TOKEN></td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-observaes">3.2. Observações</h3>
+<p>O token gerado poderá ser invalidado conforme regras internas, como tempo de ociosidade (tempo após o último uso). Caso isso aconteça, é responsabilidade da aplicação cliente gerar um novo token e continuar com o processo. O código de resposta que será enviado pela aplicação VMI caso o token tenha sido invalidado será o código HTTP 401 (Unauthorized).</p>
                     </div>
 
                     <footer>
