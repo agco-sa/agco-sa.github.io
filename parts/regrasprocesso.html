@@ -50,66 +50,6 @@
                             </a>
                         </li>
                         
-                                <ul class="submenu nav nav-stacked nav-pills">
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/config.html">
-                            Configuração
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/seguranca.html">
-                            Segurança
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/retornos.html">
-                            Códigos de Retorno
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/padroeslistas.html">
-                            Padrões e Listas
-                        </a>
-                    </li>
-
-                    
-                                        <li class="active">
-                        <a href="https://agco-sa.github.io/vmi/regrasprocesso.html">
-                            Regras e Processos
-                        </a>
-                    </li>
-
-                                        <ul class="submenu nav nav-stacked nav-pills">
-                                            </ul>
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/endpoints.html">
-                            Endpoints
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/telasrelatorios.html">
-                            Telas e Relatórios
-                        </a>
-                    </li>
-
-                    
-                                        <li class="">
-                        <a href="https://agco-sa.github.io/vmi/historico.html">
-                            Histórico
-                        </a>
-                    </li>
-
-                    
-                                    </ul>
                                         
                                             <li class="toctree-l1 ">
                             <a class="reference internal "
@@ -118,6 +58,66 @@
                             </a>
                         </li>
                         
+                                <ul class="submenu nav nav-stacked nav-pills">
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/config.html">
+                            Configuração
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/seguranca.html">
+                            Segurança
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/retornos.html">
+                            Códigos de Retorno
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/padroeslistas.html">
+                            Padrões e Listas
+                        </a>
+                    </li>
+
+                    
+                                        <li class="active">
+                        <a href="https://agco-sa.github.io/parts/regrasprocesso.html">
+                            Regras e Processos
+                        </a>
+                    </li>
+
+                                        <ul class="submenu nav nav-stacked nav-pills">
+                                            </ul>
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/endpoints.html">
+                            Endpoints
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/telasrelatorios.html">
+                            Telas e Relatórios
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
+                        <a href="https://agco-sa.github.io/parts/historico.html">
+                            Histórico
+                        </a>
+                    </li>
+
+                    
+                                    </ul>
                                         
                                             <li class="toctree-l1 ">
                             <a class="reference internal "
@@ -144,48 +144,47 @@
                 <div class="rst-content">
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
-                        <h1 id="vendor-management-inventory-integration">Vendor Management Inventory Integration</h1>
+                        <h1 id="argentina-parts">Argentina Parts</h1>
 <h2 id="6-regras-do-processo-de-integrao">6. Regras do processo de integração</h2>
-<p>Essa sessão contém as regras que devem ser utilizadas para enviar a primeira carga dos dados e para a configuração dos eventos que devem disparar novas mensagens.
-As mensagens de cargas não tem ordem para envio, assim como não é necessário esperar a primeira carga finalizar para enviar as mensagens do dia.</p>
+<p>As apis abaixo retornam dados de peças, como detalhes, preço, disponibilidade, substituição, impostos:</p>
 <table>
 <thead>
 <tr>
-<th>Interface</th>
-<th>Primeira carga</th>
-<th>Cargas direcionadas a eventos</th>
+<th>Api</th>
+<th>Descrição</th>
+<th>Disponível em</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>DMS-01</td>
-<td>Enviar posição atual dos itens que estão disponível com pedidos em aberto, itens reservados ou retornados.</td>
-<td>Deve ser disparada quando um item tiver movimentação.</td>
+<td>Search</td>
+<td>Efetua a busca de peça por seu identificador ou descrição, mesmo que informado parcialmente.</td>
+<td>Dez/2017</td>
 </tr>
 <tr>
-<td>DMS-02</td>
-<td>Enviar todas as peças que já tiveram alguma movimentação.</td>
-<td>Deve ser disparada quando um item tiver uma primeira compra, uma primeira data de disponibilidade ou a peça for atualizada nos campos definidos para o contrato.</td>
+<td>Detail</td>
+<td>Apresenta os detalhes de peça, como peso, quantidade mínima, entre outros.</td>
+<td>Dez/2017</td>
 </tr>
 <tr>
-<td>DMS-03</td>
-<td>Enviar todos os pedidos de compra feitos para a AGCO ou outros fornecedores nos últimos 6 meses. As transferências entre filiais devem ser enviadas, mas as vendas para concessionárias da rede não.</td>
-<td>Deve ser disparado quando uma compra para a AGCO ou outros fornecedores for feita e sempre que sofrer uma alteração. Caso uma nova linha seja incluída no pedido a mesma deve ser enviada. As transferências entre filiais devem ser enviadas, mas as vendas para concessionárias da rede não.</td>
+<td>Price</td>
+<td>Exibe preço público ou específico e respectivas campanhas atribuídas à peça, caso o concessionário possua esta atribuição.</td>
+<td>Dez/2017</td>
 </tr>
 <tr>
-<td>DMS-04</td>
-<td>Enviar os últimos 36 meses de pedidos/vendas (balcão e oficina) e devoluções. As transferências entre filiais devem ser enviadas, mas as vendas para concessionárias da rede não.</td>
-<td>Deve ser disparada quando uma venda e/ou pedido de venda for aberto e salvo (balcão e oficina) ou devolução for realizada para um cliente final e sempre que essas informações sofrerem uma alteração. Caso uma nova linha seja incluída no pedido a mesma deve ser enviada. As transferências entre filiais devem ser enviadas, mas as vendas para concessionárias da rede não.</td>
+<td>Supersession</td>
+<td>Consulta detalhes de peça substituta, como condição, reversibilidade, entre outros.</td>
+<td>Dez/2017</td>
 </tr>
 <tr>
-<td>DMS-05</td>
-<td>N/A</td>
-<td>Deve ser disparada quando for registrada uma venda perdida por falta de estoque.</td>
+<td>Tax</td>
+<td>Exibe taxas que são aplicadas na peça, como IPI, PIS COFINS, entre outros.</td>
+<td>Fev/2018</td>
 </tr>
 <tr>
-<td>DMS-06</td>
-<td>Enviar todos os clientes ativos nos últimos 36 meses. Sendo ativos todos aqueles que realizaram compra, devolução, orçamentos ou gerarem uma venda perdida na concessionária.</td>
-<td>Deve ser disparada quando um cliente realizar alguma movimentação como compra, devolução, orçamento ou gerar uma venda perdida na concessionária.</td>
+<td>Availability</td>
+<td>Apresenta se há ou não disponibilidade da peça em estoque nos warehouses configurados para o concessionário.</td>
+<td>Dez/2017</td>
 </tr>
 </tbody>
 </table>
