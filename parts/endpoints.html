@@ -145,85 +145,20 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="argentina-parts">Argentina Parts</h1>
-<h2 id="7-endpoints">7. Endpoints</h2>
-<p>The AGCO Parts API has six endpoints available for retriving part information such as details, pricing, availability information, taxes and supersession.</p>
-<h3 id="71-parts-api---search">7.1. Parts API - Search</h3>
-<p>This endpoint can be used to retrieve a list of possible AGCO parts based on a query text which will be compared to AGCO database part numbers or description.</p>
-<h4 id="711-request">7.1.1 Request</h4>
-<p>GET /parts</p>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Parameter Type</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Default Value</strong></th>
-<th><strong>Example</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Authorization</td>
-<td>Authorization Token (Using OAuth2) - See Security for Details</td>
-<td>Header</td>
-<td>No</td>
-<td>String</td>
-<td>Blank (null)</td>
-<td>Bearer <Token></td>
-</tr>
-<tr>
-<td>dealerId</td>
-<td>Dealer identifier from AGCO internal systems.</td>
-<td>Query</td>
-<td>No</td>
-<td>Number</td>
-<td>Blank (null)</td>
-<td>1481682</td>
-</tr>
-<tr>
-<td>lang</td>
-<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
-<td>Query</td>
-<td>No</td>
-<td>String</td>
-<td>Dealer default language</td>
-<td>pt-BR</td>
-</tr>
-<tr>
-<td>query</td>
-<td>Input text query to search on database.</td>
-<td>Query</td>
-<td>No</td>
-<td>Query</td>
-<td>Blank (null)</td>
-<td>3012224X1</td>
-</tr>
-<tr>
-<td>page[size]</td>
-<td>Maximum number of items desired to be returned on each page.</td>
-<td>Query</td>
-<td>No</td>
-<td>Number</td>
-<td>10</td>
-<td>100</td>
-</tr>
-<tr>
-<td>page[number]</td>
-<td>Desired page</td>
-<td>Query</td>
-<td>No</td>
-<td>Number</td>
-<td>1</td>
-<td>10</td>
-</tr>
-</tbody>
-</table>
-<p><br />
-<strong>Request Example:</strong> GET /parts?dealerId=1481682&amp;query=3012224X1&amp;lang=en-EN</p>
-<h4 id="712-response">7.1.2 Response</h4>
-<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<h2 id="6-endpoints">6. Endpoints</h2>
+<p>A AGCO Parts API possui 6 endpoints disponíves para busca de informações relativas a peças de reposição como:</p>
+<ul>
+<li>Details</li>
+<li>Price</li>
+<li>Availability</li>
+<li>Taxes</li>
+<li>Search</li>
+<li>Supersession</li>
+</ul>
+<h3 id="61-interface---search">6.1. Interface - Search</h3>
+<p>Este endpoint pode ser usado para retornar uma lista de possíveis peças de reposições da AGCO, baseado numa consulta de texto, ao qual será comparado à base de dados de partnumbers ou descriçoes da AGCO.</p>
+<h4 id="611-response">6.1.1 Response</h4>
+<p>O exemplo a seguir representa a resposta do pedido acima, se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": [
         {
@@ -239,108 +174,170 @@
         "totalItems": 1
     }
 }</code></pre>
+<h4 id="612-especificao-dos-atributos">6.1.2 Especificação dos atributos</h4>
 <table>
 <thead>
 <tr>
-<th>ID</th>
-<th>Parent ID</th>
-<th>Field</th>
-<th>Description</th>
-<th>Required</th>
-<th>Data Type</th>
-<th>Example</th>
+<th><strong>ID</strong></th>
+<th><strong>Campo</strong></th>
+<th><strong>Pai</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Regra</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>A01</td>
-<td>N/A</td>
-<td>id</td>
-<td>Part number.</td>
-<td>Yes</td>
-<td>String</td>
-<td>3012224X1</td>
+<td>data</td>
+<td>Raiz</td>
+<td>Tag raiz Lista</td>
+<td></td>
+<td>Sim</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>A02</td>
-<td>N/A</td>
-<td>description</td>
-<td>Part description.</td>
-<td>Yes</td>
+<td>id</td>
+<td>A01</td>
 <td>String</td>
-<td>HEXAGON M20</td>
+<td>Número da peça</td>
+<td>Sim</td>
+<td>3012224X1</td>
 </tr>
 <tr>
 <td>A03</td>
-<td>N/A</td>
-<td>descriptionLanguage</td>
-<td>Language of the description.</td>
-<td>Yes</td>
+<td>description</td>
+<td>A01</td>
 <td>String</td>
+<td>Descrição da peça</td>
+<td>Sim</td>
+<td>HEXAGON M20</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>descriptionLanguage</td>
+<td>A01</td>
+<td>String</td>
+<td>Linguagem da descrição</td>
+<td>Sim</td>
 <td>en</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>meta</td>
+<td>Raiz</td>
+<td>Tag raiz</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>currentPage</td>
+<td>A5</td>
+<td>integer</td>
+<td>Número da página</td>
+<td>Sim</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>nextPage</td>
+<td>A5</td>
+<td>integer</td>
+<td>Próxima página</td>
+<td>Não</td>
+<td>null</td>
+</tr>
+<tr>
+<td>A08</td>
+<td>totalPages</td>
+<td>A5</td>
+<td>integer</td>
+<td>Total de páginas</td>
+<td>Sim</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A09</td>
+<td>totalItems</td>
+<td>A5</td>
+<td>integer</td>
+<td>Total de itens da busca</td>
+<td>Sim</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
-<p><br /></p>
-<h3 id="72-parts-api---detail">7.2. Parts API - Detail</h3>
-<p>This endpoint is used to retrieve detailed information about a specific part number.</p>
-<h4 id="721-request">7.2.1 Request</h4>
-<p>GET /parts/<strong>{partnumber}</strong></p>
+<h4 id="613-exemplo-de-request">6.1.3 Exemplo de request</h4>
+<p>GET /parts
+GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={lang}</p>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Parameter Type</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Default Value</strong></th>
-<th><strong>Example</strong></th>
+<th><strong>Parâmetro</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Tipo de parâmetro</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Tipo de dado</strong></th>
+<th><strong>Valor padrão</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Authorization</td>
-<td>Authorization Token (Using OAuth2) - See Security for Details</td>
-<td>Header</td>
-<td>No</td>
-<td>String</td>
-<td>Blank (null)</td>
-<td>Bearer <Token></td>
-</tr>
-<tr>
-<td>partNumber</td>
-<td>AGCO Part Number</td>
-<td>Path</td>
-<td>No</td>
-<td>String</td>
-<td>Blank (null)</td>
-<td>3012224X1</td>
-</tr>
-<tr>
 <td>dealerId</td>
-<td>Dealer identifier from AGCO internal systems.</td>
+<td>Identificaçao do Dealer conforme sistema da AGCO</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>Number</td>
 <td>Blank (null)</td>
 <td>1481682</td>
 </tr>
 <tr>
 <td>lang</td>
-<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Linguagem ao qual pode retornar com: pt-BR, es-AR, en-EN</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>String</td>
 <td>Dealer default language</td>
 <td>pt-BR</td>
 </tr>
+<tr>
+<td>query</td>
+<td>Insira consulta de texto para pesquisar no banco de dados</td>
+<td>Query</td>
+<td>Não</td>
+<td>Query</td>
+<td>Blank (null)</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>Página[item]</td>
+<td>Máximo de número de item desejado para retornar por página</td>
+<td>Query</td>
+<td>Não</td>
+<td>Number</td>
+<td>10</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Página[número]</td>
+<td>Página desejada</td>
+<td>Query</td>
+<td>Não</td>
+<td>Number</td>
+<td>1</td>
+<td>10</td>
+</tr>
 </tbody>
 </table>
-<p><br />
-<strong>Request Example:</strong> GET /parts/3012224X1?dealerId=1481682&amp;lang=en-EN</p>
-<h4 id="722-response">7.2.2 Response</h4>
-<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<h3 id="62-interface---detail">6.2. Interface - Detail</h3>
+<p>Esse endpoint é utilizado para recuperar informações detalhadas sobre um partnumber específico:</p>
+<h4 id="621-response">6.2.1 Response</h4>
+<p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": {
         "id": "3012224X1",
@@ -356,198 +353,195 @@
         "additionalInfo": []
     }
 }</code></pre>
+<h4 id="622-especificao-de-atributos">6.2.2 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
-<th>ID</th>
-<th>Parent ID</th>
-<th>Field</th>
-<th>Description</th>
-<th>Required</th>
-<th>Data Type</th>
-<th>Example</th>
+<th><strong>ID</strong></th>
+<th><strong>Campo</strong></th>
+<th><strong>Pai</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Regra</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>A01</td>
-<td>N/A</td>
-<td>id</td>
-<td>Part number.</td>
-<td>Yes</td>
-<td>String</td>
-<td>3012224X1</td>
+<td>B01</td>
+<td>data</td>
+<td>Raiz</td>
+<td>Tag raiz</td>
+<td>Sim</td>
 </tr>
 <tr>
-<td>A02</td>
-<td>N/A</td>
-<td>description</td>
-<td>Part description.</td>
-<td>Yes</td>
-<td>String</td>
-<td>HEXAGON M20</td>
-</tr>
-<tr>
-<td>A03</td>
-<td>N/A</td>
-<td>descriptionLanguage</td>
-<td>Language of the description.</td>
-<td>Yes</td>
-<td>String</td>
-<td>en</td>
-</tr>
-<tr>
-<td>A04</td>
-<td>N/A</td>
-<td>country</td>
-<td>Country associated with the part description.</td>
-<td>Yes</td>
-<td>String</td>
-<td>BRA</td>
-</tr>
-<tr>
-<td>A05</td>
-<td>N/A</td>
-<td>weight</td>
-<td>Weight in kilograms.</td>
-<td>Yes</td>
-<td>Decimal</td>
-<td>1.23456</td>
-</tr>
-<tr>
-<td>A06</td>
-<td>N/A</td>
-<td>minimumQuantity</td>
-<td>Minimum ordering quantity of this part number.</td>
-<td>Yes</td>
-<td>Decimal</td>
-<td>1.23456</td>
-</tr>
-<tr>
-<td>A07</td>
-<td>N/A</td>
-<td>movementCode</td>
-<td>Movement code.</td>
-<td>Yes</td>
-<td>String</td>
-<td>Criticidade Muito Baixa</td>
-</tr>
-<tr>
-<td>A08</td>
-<td>N/A</td>
-<td>fiscalCategory</td>
-<td>Fiscal Category.</td>
-<td>Yes</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>A09</td>
-<td>N/A</td>
-<td>directShipping</td>
-<td>Indicates whether this part has direct shipping or not.</td>
-<td>Yes</td>
-<td>Boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>A10</td>
-<td>N/A</td>
-<td>superseded</td>
-<td>Indicates that this part number is obsolete and need to search for more recent replacement part number.</td>
-<td>Yes</td>
-<td>Boolean</td>
-<td>true</td>
-</tr>
-<tr>
-<td>A11</td>
-<td>N/A</td>
+<td>B02</td>
 <td>additionalInfo</td>
-<td>Additional Information (Optional)</td>
-<td>No</td>
-<td>Array</td>
-<td>[]</td>
+<td>B01</td>
+<td>Lista</td>
+<td>Informações adicionais</td>
+<td>Não</td>
+<td>&quot;Informações adicionais a incluir&quot;</td>
 </tr>
 <tr>
-<td>A12</td>
-<td>A11</td>
+<td>B03</td>
 <td>name</td>
-<td>Attribute name.</td>
-<td>No</td>
+<td>B01</td>
 <td>String</td>
+<td>Nome do atributo</td>
+<td>Não</td>
 <td>BNDES</td>
 </tr>
 <tr>
-<td>A13</td>
-<td>A11</td>
+<td>B04</td>
 <td>value</td>
-<td>Attribute value.</td>
-<td>No</td>
+<td>B01</td>
 <td>Object</td>
+<td>Valor do atributo</td>
+<td>Não</td>
 <td>true</td>
+</tr>
+<tr>
+<td>B05</td>
+<td>country</td>
+<td>B01</td>
+<td>String</td>
+<td>País associado com a descrição</td>
+<td>Sim</td>
+<td>BRA</td>
+</tr>
+<tr>
+<td>B06</td>
+<td>description</td>
+<td>B01</td>
+<td>String</td>
+<td>Descrição da peça</td>
+<td>Sim</td>
+<td>HEXAGON M20</td>
+</tr>
+<tr>
+<td>B07</td>
+<td>descriptionLanguage</td>
+<td>B01</td>
+<td>String</td>
+<td>Linguagem da descrição</td>
+<td>Sim</td>
+<td>en</td>
+</tr>
+<tr>
+<td>B08</td>
+<td>directShipping</td>
+<td>B01</td>
+<td>Boolean</td>
+<td>Indica se esta parte tem transporte direto ou não</td>
+<td>Sim</td>
+<td>false</td>
+</tr>
+<tr>
+<td>B09</td>
+<td>fiscalCategory</td>
+<td>B01</td>
+<td>String</td>
+<td>Categoria fiscal</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>B10</td>
+<td>id</td>
+<td>B01</td>
+<td>String</td>
+<td>Part number</td>
+<td>Sim</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>B11</td>
+<td>minimunQuantity</td>
+<td>B01</td>
+<td>Decimal</td>
+<td>Quantidade mínima de pedidos deste número de peça</td>
+<td>Sim</td>
+<td>1.23456</td>
+</tr>
+<tr>
+<td>B12</td>
+<td>movementCode</td>
+<td>B01</td>
+<td>String</td>
+<td>Codigo do Movimento</td>
+<td>Sim</td>
+<td>Criticidade Muito Baixa</td>
+</tr>
+<tr>
+<td>B13</td>
+<td>superseded</td>
+<td>B01</td>
+<td>Boolean</td>
+<td>Indica que este número de peça é obsoleto e precisa procurar o número de peça de substituição mais recente</td>
+<td>Sim</td>
+<td>true</td>
+</tr>
+<tr>
+<td>B14</td>
+<td>weigth</td>
+<td>B01</td>
+<td>Decimal</td>
+<td>Peso em Kg</td>
+<td>Sim</td>
+<td>1.23456</td>
 </tr>
 </tbody>
 </table>
-<p><br /></p>
-<h3 id="73-parts-api---availability">7.3. Parts API - Availability</h3>
-<p>This endpoint is used to retrieve information about stock availability of a specific part number.</p>
-<h4 id="731-request">7.3.1 Request</h4>
-<p>GET /parts/<strong>{partnumber}</strong>/availability</p>
+<h4 id="623-exemplo-de-request">6.2.3 Exemplo de request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>
+GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Parameter Type</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Default Value</strong></th>
-<th><strong>Example</strong></th>
+<th><strong>Parâmetro</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Tipo de parâmetro</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Tipo de dado</strong></th>
+<th><strong>Valor padrão</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Authorization</td>
-<td>Authorization Token (Using OAuth2) - See Security for Details</td>
-<td>Header</td>
-<td>No</td>
-<td>String</td>
-<td>Blank (null)</td>
-<td>Bearer <Token></td>
-</tr>
 <tr>
 <td>partNumber</td>
 <td>AGCO Part Number</td>
 <td>Path</td>
-<td>No</td>
+<td>Não</td>
 <td>String</td>
 <td>Blank (null)</td>
 <td>3012224X1</td>
 </tr>
 <tr>
 <td>dealerId</td>
-<td>Dealer identifier from AGCO internal systems.</td>
+<td>Identificador do Dealer no sistema AGCO</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>Number</td>
 <td>Blank (null)</td>
 <td>1481682</td>
 </tr>
 <tr>
 <td>lang</td>
-<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Linguagem que deve ser retornado: pt-BR, es-AR, en-EN</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>String</td>
 <td>Dealer default language</td>
 <td>pt-BR</td>
 </tr>
 </tbody>
 </table>
-<p><br />
-<strong>Request Example:</strong> GET /parts/036857N1/availability?dealerId=1481682&amp;lang=en-EN</p>
-<h4 id="732-response">7.3.2 Response</h4>
-<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<h3 id="63-interface---availability">6.3. Interface - Availability</h3>
+<p>Este endpoint é utilizado para recuperar informações sobre a disponibilidade de estoque de um número de peça específico.</p>
+<h4 id="631-response">6.3.1 Response</h4>
+<p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": {
         "id": "036857N1",
@@ -568,111 +562,109 @@
         ]
     }
 }</code></pre>
+<h4 id="632-especificao-de-atributos">6.3.2 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
-<th>ID</th>
-<th>Parent ID</th>
-<th>Field</th>
-<th>Description</th>
-<th>Required</th>
-<th>Data Type</th>
-<th>Example</th>
+<th><strong>ID</strong></th>
+<th><strong>Campo</strong></th>
+<th><strong>Pai</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Regra</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>A01</td>
-<td>N/A</td>
-<td>id</td>
-<td>Part number.</td>
-<td>Yes</td>
-<td>String</td>
-<td>036857N1</td>
+<td>C01</td>
+<td>data</td>
+<td>Raiz</td>
+<td>Tag raiz</td>
+<td>Sim</td>
 </tr>
 <tr>
-<td>A02</td>
-<td>N/A</td>
-<td>dealerId</td>
-<td>Dealer identifier from AGCO internal systems.</td>
-<td>Yes</td>
-<td>Number</td>
-<td>11571</td>
-</tr>
-<tr>
-<td>A03</td>
-<td>N/A</td>
+<td>C02</td>
 <td>availabilities</td>
-<td>Array of availability information of each warehouse accessible by the requested dealer.</td>
-<td>Yes</td>
+<td>C01</td>
 <td>Array</td>
+<td>Lista</td>
+<td>Array da informação de disponibilidade de cada warehouse acessível pelo revendedor solicitado</td>
 <td>[]</td>
 </tr>
 <tr>
-<td>A04</td>
-<td>A03</td>
+<td>C03</td>
+<td>available</td>
+<td>C02</td>
+<td>Boolean</td>
+<td>Representa se a peça está disponível para ser comprada deste warehouse</td>
+<td>Sim</td>
+<td>true</td>
+</tr>
+<tr>
+<td>C04</td>
 <td>warehouseCode</td>
-<td>Unique identifier of the retrieved warehouse.</td>
-<td>Yes</td>
+<td>C02</td>
 <td>String</td>
+<td>Identificador único do armazém retornado</td>
+<td>Sim</td>
 <td>REPVT06</td>
 </tr>
 <tr>
-<td>A05</td>
-<td>A03</td>
-<td>warehouseOrder</td>
-<td>Priority order of the retrieved warehouse.</td>
-<td>Yes</td>
-<td>Number</td>
-<td>1</td>
-</tr>
-<tr>
-<td>A06</td>
-<td>A03</td>
+<td>C05</td>
 <td>warehouseName</td>
-<td>Name of the retrieved warehouse.</td>
-<td>Yes</td>
+<td>C02</td>
 <td>String</td>
+<td>Nome das warehouse retornadas</td>
+<td>Sim</td>
 <td>ERNESTINA</td>
 </tr>
 <tr>
-<td>A07</td>
-<td>A03</td>
-<td>available</td>
-<td>Represents whether the part is available to be brought from this warehouse.</td>
-<td>Yes</td>
+<td>C06</td>
+<td>warehouseOrder</td>
+<td>C02</td>
+<td>Number</td>
+<td>Ordem de prioridade do warehouse retornado</td>
+<td>Sim</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C07</td>
+<td>dealerId</td>
+<td>C01</td>
+<td>Number</td>
+<td>Identificador do Dealer no Sistema AGCO</td>
+<td>Sim</td>
+<td>11571</td>
+</tr>
+<tr>
+<td>C08</td>
+<td>id</td>
+<td>C01</td>
 <td>Boolean</td>
+<td>Representa se a peça está disponível para ser comprada deste warehouse</td>
+<td>Sim</td>
 <td>true</td>
 </tr>
 </tbody>
 </table>
-<p><br /></p>
-<h3 id="74-parts-api---price">7.4. Parts API - Price</h3>
-<p>This endpoint is used to retrieve price information of a specific part number.</p>
-<h4 id="741-request">7.4.1 Request</h4>
-<p>GET /parts/<strong>{partnumber}</strong>/price</p>
+<h4 id="633-exemplo-de-request">6.3.3 Exemplo de request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/availability
+GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;lang={lang}</p>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Parameter Type</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Default Value</strong></th>
-<th><strong>Example</strong></th>
+<th><strong>Parâmetro</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Tipo de parâmetro</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Tipo de dado</strong></th>
+<th><strong>Valor padrão</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Authorization</td>
-<td>Authorization Token (Using OAuth2) - See Security for Details</td>
-<td>Header</td>
-<td>No</td>
-<td>String</td>
-<td>Blank (null)</td>
-<td>Bearer <Token></td>
-</tr>
 <tr>
 <td>partNumber</td>
 <td>AGCO Part Number</td>
@@ -702,10 +694,10 @@
 </tr>
 </tbody>
 </table>
-<p><br />
-<strong>Request Example:</strong> GET /parts/040665R1/price?dealerId=1481682&amp;lang=en-EN</p>
-<h4 id="742-response">7.4.2 Response</h4>
-<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<h3 id="64-interface---price">6.4. Interface - Price</h3>
+<p>Este endpoint é utilizado para recuperar informações de preço de um número de peça específico.</p>
+<h4 id="641-response">6.4.1 Response</h4>
+<p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": {
         "id": "040665R1",
@@ -738,144 +730,142 @@
         ]
     }
 }</code></pre>
+<h4 id="642-especificao-de-atributos">6.4.2 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
-<th>ID</th>
-<th>Parent ID</th>
-<th>Field</th>
-<th>Description</th>
-<th>Required</th>
-<th>Data Type</th>
-<th>Example</th>
+<th><strong>ID</strong></th>
+<th><strong>Campo</strong></th>
+<th><strong>Pai</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Regra</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>A01</td>
-<td>N/A</td>
-<td>id</td>
-<td>Part number.</td>
-<td>Yes</td>
-<td>String</td>
-<td>040665R1</td>
+<td>D01</td>
+<td>data</td>
+<td>Raiz</td>
+<td>Tag raiz</td>
 </tr>
 <tr>
-<td>A02</td>
-<td>N/A</td>
+<td>D02</td>
 <td>dealerId</td>
-<td>Dealer identifier from AGCO internal systems.</td>
-<td>Yes</td>
+<td>D01</td>
 <td>Number</td>
+<td>Identificador do Dealer no sistema AGCO</td>
+<td>Sim</td>
 <td>11571</td>
 </tr>
 <tr>
-<td>A03</td>
-<td>N/A</td>
+<td>D03</td>
+<td>id</td>
+<td>D01</td>
+<td>String</td>
+<td>Identificador da peça no sistema da AGCO</td>
+<td>Sim</td>
+<td>040665R1</td>
+</tr>
+<tr>
+<td>D04</td>
 <td>prices</td>
-<td>Array of available price information for this part number.</td>
-<td>Yes</td>
-<td>Array</td>
+<td>D01</td>
+<td>Lista</td>
+<td>Array com informação de preços disponíveisle para peça</td>
+<td>Sim</td>
 <td>[]</td>
 </tr>
 <tr>
-<td>A04</td>
-<td>A03</td>
+<td>D05</td>
 <td>currency</td>
-<td>Currency code of this price.</td>
-<td>Yes</td>
+<td>D04</td>
 <td>String</td>
+<td>Código da moeda para peça selecionada</td>
+<td>Sim</td>
 <td>BRL</td>
 </tr>
 <tr>
-<td>A05</td>
-<td>A03</td>
+<td>D06</td>
 <td>type</td>
-<td>Price type information. (PUBLIC, SPECIFIC, CAMPAIGN or HARVEST).</td>
-<td>Yes</td>
+<td>D04</td>
 <td>String</td>
+<td>Informação de tipo de peça: Pública, Específica, Campanha, Safra</td>
+<td>Sim</td>
 <td>PUBLIC</td>
 </tr>
 <tr>
-<td>A06</td>
-<td>A03</td>
+<td>D07</td>
 <td>value</td>
-<td>Price value</td>
-<td>Yes</td>
+<td>D04</td>
 <td>Number</td>
+<td>Preço da peça</td>
+<td>Sim</td>
 <td>12.34567</td>
 </tr>
 <tr>
-<td>A07</td>
-<td>A03</td>
+<td>D08</td>
 <td>warehouseCode</td>
-<td>Warehouse identification where this price data has been found.</td>
-<td>Yes</td>
+<td>D04</td>
 <td>String</td>
+<td>Identificação do warehouse onde esses dados de preço foram encontrados</td>
+<td>Sim</td>
 <td>REPVT03</td>
 </tr>
 </tbody>
 </table>
-<p><br /></p>
-<h3 id="75-parts-api---supersession">7.5. Parts API - Supersession</h3>
-<p>This endpoint is used to retrieve information if the specified part has been replaced and what the replacement parts are.</p>
-<h4 id="751-request">7.5.1 Request</h4>
-<p>GET /parts/<strong>{partnumber}</strong>/supersession</p>
+<h4 id="643-exemplo-request">6.4.3 Exemplo Request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/price
+GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lang}</p>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Parameter Type</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Default Value</strong></th>
-<th><strong>Example</strong></th>
+<th><strong>Parâmetro</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Tipo de parâmetro</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Tipo de dado</strong></th>
+<th><strong>Valor padrão</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Authorization</td>
-<td>Authorization Token (Using OAuth2) - See Security for Details</td>
-<td>Header</td>
-<td>No</td>
-<td>String</td>
-<td>Blank (null)</td>
-<td>Bearer <Token></td>
-</tr>
-<tr>
 <td>partNumber</td>
-<td>AGCO Part Number</td>
+<td>Identificador da peça no sistema AGCO</td>
 <td>Path</td>
-<td>No</td>
+<td>Não</td>
 <td>String</td>
 <td>Blank (null)</td>
 <td>3012224X1</td>
 </tr>
 <tr>
 <td>dealerId</td>
-<td>Dealer identifier from AGCO internal systems.</td>
+<td>Identificador do Dealer no sistema AGCO</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>Number</td>
 <td>Blank (null)</td>
 <td>1481682</td>
 </tr>
 <tr>
 <td>lang</td>
-<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Idioma que os dados devem ser devolvidos: pt-BR, es-AR, en-EN</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>String</td>
 <td>Dealer default language</td>
 <td>pt-BR</td>
 </tr>
 </tbody>
 </table>
-<p><br />
-<strong>Request Example:</strong> GET /parts/036857N1/supersession?dealerId=1481682&amp;lang=en-EN</p>
-<h4 id="752-response">7.5.2 Response</h4>
-<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<p><br /></p>
+<h3 id="65-interface---supersession">6.5. Interface - Supersession</h3>
+<p>Este endpoint é utilizado para recuperar informações se a parte especificada foi substituída e quais são as peças de reposição.</p>
+<h4 id="651-response">6.5.1 Response</h4>
+<p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": [
         {
@@ -906,180 +896,178 @@
         }
     ]
 }</code></pre>
+<h4 id="652-especificao-de-atributos">6.5.2 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
-<th>ID</th>
-<th>Parent ID</th>
-<th>Field</th>
-<th>Description</th>
-<th>Required</th>
-<th>Data Type</th>
-<th>Example</th>
+<th><strong>ID</strong></th>
+<th><strong>Campo</strong></th>
+<th><strong>Pai</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Regra</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>A01</td>
-<td>N/A</td>
-<td>supersededId</td>
-<td>AGCO Part number</td>
-<td>Yes</td>
-<td>String</td>
-<td>036857N1</td>
+<td>E01</td>
+<td>data</td>
+<td>Raiz</td>
+<td>Tag raiz Lista</td>
+<td>Sim</td>
 </tr>
 <tr>
-<td>A02</td>
-<td>N/A</td>
-<td>supersededDescription</td>
-<td>AGCO Part description</td>
-<td>Yes</td>
-<td>String</td>
-<td>LEVER RH / LD</td>
-</tr>
-<tr>
-<td>A03</td>
-<td>N/A</td>
-<td>supersedingId</td>
-<td>AGCO Substitution Part number</td>
-<td>Yes</td>
-<td>String</td>
-<td>195910M1</td>
-</tr>
-<tr>
-<td>A04</td>
-<td>N/A</td>
-<td>supersedingDescription</td>
-<td>AGCO Substitution Part description</td>
-<td>Yes</td>
-<td>String</td>
-<td>BUSH</td>
-</tr>
-<tr>
-<td>A05</td>
-<td>N/A</td>
+<td>E02</td>
 <td>condition</td>
-<td>Supersession condition</td>
-<td>Yes</td>
+<td>E01</td>
 <td>String</td>
+<td>Condição da substituição</td>
+<td>Sim</td>
 <td>null</td>
 </tr>
 <tr>
-<td>A06</td>
-<td>N/A</td>
-<td>reversibility</td>
-<td>Supersession reversibility</td>
-<td>Yes</td>
-<td>String</td>
-<td>N</td>
-</tr>
-<tr>
-<td>A07</td>
-<td>N/A</td>
-<td>status</td>
-<td>Supersession status</td>
-<td>Yes</td>
-<td>String</td>
-<td>A</td>
-</tr>
-<tr>
-<td>A08</td>
-<td>N/A</td>
-<td>supersessionDescription</td>
-<td>Supersession description</td>
-<td>Yes</td>
-<td>String</td>
-<td>Test</td>
-</tr>
-<tr>
-<td>A09</td>
-<td>N/A</td>
+<td>E03</td>
 <td>descLang</td>
-<td>Language of the description</td>
-<td>Yes</td>
+<td>E01</td>
 <td>String</td>
+<td>Linguagem da descrição</td>
+<td>Sim</td>
 <td>en</td>
 </tr>
 <tr>
-<td>A10</td>
-<td>N/A</td>
-<td>type</td>
-<td>Supersession type</td>
-<td>Yes</td>
+<td>E04</td>
+<td>reversibility</td>
+<td>E01</td>
 <td>String</td>
+<td>Reversão da substituição</td>
+<td>Sim</td>
+<td>N</td>
+</tr>
+<tr>
+<td>E05</td>
+<td>status</td>
+<td>E01</td>
+<td>String</td>
+<td>Status da substituição</td>
+<td>Sim</td>
+<td>A</td>
+</tr>
+<tr>
+<td>E06</td>
+<td>supersededId</td>
+<td>E01</td>
+<td>String</td>
+<td>Substituição do partnumber AGCO</td>
+<td>Sim</td>
+<td>195910M1</td>
+</tr>
+<tr>
+<td>E07</td>
+<td>supersededDescription</td>
+<td>E01</td>
+<td>String</td>
+<td>Descrição partnumber AGCO</td>
+<td>Sim</td>
+<td>LEVER RH / LD</td>
+</tr>
+<tr>
+<td>E08</td>
+<td>supersedingDescription</td>
+<td>E01</td>
+<td>String</td>
+<td>Descrição do partnumber AGCO</td>
+<td>Sim</td>
+<td>BUSH</td>
+</tr>
+<tr>
+<td>E09</td>
+<td>supersedingId</td>
+<td>E01</td>
+<td>String</td>
+<td>Identificador do partnumber de substituição</td>
+<td>Sim</td>
+<td>195910M1</td>
+</tr>
+<tr>
+<td>E10</td>
+<td>supersessionDescription</td>
+<td>E01</td>
+<td>String</td>
+<td>Descrição da substituição</td>
+<td>Sim</td>
+<td>Test</td>
+</tr>
+<tr>
+<td>E11</td>
+<td>type</td>
+<td>E01</td>
+<td>String</td>
+<td>Tipo de substituição</td>
+<td>Sim</td>
 <td>CO</td>
 </tr>
 <tr>
-<td>A11</td>
-<td>N/A</td>
+<td>E12</td>
 <td>quantity</td>
-<td>Supersession quantity</td>
-<td>Yes</td>
-<td>Number</td>
+<td>E01</td>
+<td>number</td>
+<td>Quantidade</td>
+<td>Sim</td>
 <td>1</td>
 </tr>
 </tbody>
 </table>
-<p><br /></p>
-<h3 id="76-parts-api---tax">7.6. Parts API - Tax</h3>
-<p>This endpoint is used to retrieve tax information of a specific part number.</p>
-<h4 id="761-request">7.6.1 Request</h4>
-<p>GET /parts/<strong>{partnumber}</strong>/taxes</p>
+<h4 id="653-exemplo-de-request">6.5.3 Exemplo de request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/supersession
+GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=en-EN</p>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Parameter Type</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Default Value</strong></th>
-<th><strong>Example</strong></th>
+<th><strong>Parâmetro</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Tipo de parâmetro</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Tipo de dado</strong></th>
+<th><strong>Valor padrão</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Authorization</td>
-<td>Authorization Token (Using OAuth2) - See Security for Details</td>
-<td>Header</td>
-<td>No</td>
-<td>String</td>
-<td>Blank (null)</td>
-<td>Bearer <Token></td>
-</tr>
-<tr>
 <td>partNumber</td>
-<td>AGCO Part Number</td>
+<td>Identificador da peça no Sistema AGCO</td>
 <td>Path</td>
-<td>No</td>
+<td>Não</td>
 <td>String</td>
 <td>Blank (null)</td>
 <td>3012224X1</td>
 </tr>
 <tr>
 <td>dealerId</td>
-<td>Dealer identifier from AGCO internal systems.</td>
+<td>Identificador do Dealer no Sistema AGCO</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>Number</td>
 <td>Blank (null)</td>
 <td>1481682</td>
 </tr>
 <tr>
 <td>lang</td>
-<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Linguagem com que deve retornar: pt-BR, es-AR, en-EN</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>String</td>
-<td>Dealer default language</td>
+<td>Linguagem padrão do Dealer</td>
 <td>pt-BR</td>
 </tr>
 </tbody>
 </table>
-<p><br />
-<strong>Request Example:</strong> GET /parts/3012224X1/taxes?dealerId=1481682&amp;lang=en-EN</p>
-<h4 id="762-response">7.6.2 Response</h4>
-<p>The following example represents the response of the above request if it has has been processed successfully:</p>
+<h3 id="66-interface---taxes">6.6. Interface - Taxes</h3>
+<p>Este endpoint é utilizado para recuperar informações fiscais de um número de peça específico.</p>
+<h4 id="661-response">6.6.1 Response</h4>
+<p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": {
         "partNumber": "3012224X1",
@@ -1098,76 +1086,129 @@
         ]
     }
 }</code></pre>
+<h4 id="662-especificao-de-atributos">6.6.2 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
-<th>ID</th>
-<th>Parent ID</th>
-<th>Field</th>
-<th>Description</th>
-<th>Required</th>
-<th>Data Type</th>
-<th>Example</th>
+<th><strong>ID</strong></th>
+<th><strong>Campo</strong></th>
+<th><strong>Pai</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Regra</strong></th>
+<th><strong>Exemplo</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>A01</td>
-<td>N/A</td>
-<td>partNumber</td>
-<td>Part number</td>
-<td>Yes</td>
+<td>F01</td>
+<td>data</td>
+<td>Raiz</td>
+<td>Tag raiz</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>F02</td>
+<td>partnumber</td>
+<td>F01</td>
 <td>String</td>
+<td>Número da peça</td>
+<td>Sim</td>
 <td>036857N1</td>
 </tr>
 <tr>
-<td>A02</td>
-<td>N/A</td>
+<td>F03</td>
 <td>taxClassification</td>
-<td>Tax classification</td>
-<td>Yes</td>
+<td>F01</td>
 <td>String</td>
+<td>Classificação de taxas</td>
+<td>Sim</td>
 <td>0</td>
 </tr>
 <tr>
-<td>A03</td>
-<td>N/A</td>
+<td>F04</td>
 <td>taxes</td>
-<td>Array of taxes information for this part number</td>
-<td>Yes</td>
-<td>Array</td>
+<td>F01</td>
+<td>Lista</td>
+<td>Conjunto de informação de taxas do partnumber</td>
+<td>Sim</td>
 <td>[]</td>
 </tr>
 <tr>
-<td>A04</td>
-<td>A03</td>
-<td>name</td>
-<td>Tax unique identifier</td>
-<td>Yes</td>
-<td>String</td>
-<td>IPI</td>
-</tr>
-<tr>
-<td>A05</td>
-<td>A03</td>
+<td>F05</td>
 <td>currency</td>
-<td>Tax currency</td>
-<td>Yes</td>
+<td>F04</td>
 <td>String</td>
+<td>Moeda</td>
+<td>Sim</td>
 <td>BRL</td>
 </tr>
 <tr>
-<td>A06</td>
-<td>A03</td>
+<td>F06</td>
+<td>name</td>
+<td>F04</td>
+<td>String</td>
+<td>Identificador exclusivo de taxas</td>
+<td>Sim</td>
+<td>IPI</td>
+</tr>
+<tr>
+<td>F07</td>
 <td>value</td>
-<td>Tax value</td>
-<td>Yes</td>
+<td>F04</td>
 <td>Number</td>
+<td>Valor</td>
+<td>Sim</td>
 <td>27.50</td>
 </tr>
 </tbody>
 </table>
-<p><br /></p>
+<h4 id="663-exemplo-de-request">6.6.3 Exemplo de request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/taxes
+GET /parts/<strong>{partNumber}</strong>/taxes?dealerId={dealerId}&amp;lang={lang}</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parâmetro</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Tipo de parâmetro</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Tipo de dado</strong></th>
+<th><strong>Valor padrão</strong></th>
+<th><strong>Exemplo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>partNumber</td>
+<td>AGCO Part Number</td>
+<td>Path</td>
+<td>Não</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>dealerId</td>
+<td>Identificador do Dealter no sistema AGCO</td>
+<td>Query</td>
+<td>Não</td>
+<td>Number</td>
+<td>Blank (null)</td>
+<td>1481682</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>Idioma que os dados devem ser devolvidos: pt-BR, es-AR, en-EN</td>
+<td>Query</td>
+<td>Não</td>
+<td>String</td>
+<td>Idioma padrão da Concessionária</td>
+<td>pt-BR</td>
+</tr>
+</tbody>
+</table>
                     </div>
 
                     <footer>
