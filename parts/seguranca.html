@@ -154,6 +154,7 @@ Além da criptografia da comunicação, o uso da API exige que as chamadas sejam
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <p>Com as seguintes informações no cabeçalho:</p>
 <table>
 <thead>
@@ -173,6 +174,7 @@ Além da criptografia da comunicação, o uso da API exige que as chamadas sejam
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <p>Caso a requisição seja efetuada com sucesso, o servidor de autenticação enviará o código HTTP 200 (OK) e o corpo da resposta com o token, como exemplificado abaixo:</p>
 <pre><code>{
   "tokenId": "&lt;TOKEN&gt;",
@@ -198,6 +200,7 @@ Após o recebimento do token, o mesmo deverá ser enviado em todas as requisiç�
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h3 id="32-observaes">3.2. Observações</h3>
 <p>O token gerado poderá ser invalidado conforme regras internas, como tempo de ociosidade (tempo após o último uso). Caso isso aconteça, é responsabilidade da aplicação cliente gerar um novo token e continuar com o processo. O código de resposta que será enviado pela aplicação VMI caso o token tenha sido invalidado será o código HTTP 401 (Unauthorized).</p>
                     </div>
