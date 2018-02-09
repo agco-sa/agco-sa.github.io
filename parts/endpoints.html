@@ -134,13 +134,14 @@
 <h2 id="6-endpoints">6. Endpoints</h2>
 <p>A AGCO Parts API possui 6 endpoints disponíves para busca de informações relativas a peças de reposição como:</p>
 <ul>
-<li>Details</li>
-<li>Price</li>
-<li>Availability</li>
-<li>Taxes</li>
-<li>Search</li>
-<li>Supersession</li>
+<li><strong>Details</strong></li>
+<li><strong>Price</strong></li>
+<li><strong>Availability</strong></li>
+<li><strong>Taxes</strong></li>
+<li><strong>Search</strong></li>
+<li><strong>Supersession</strong></li>
 </ul>
+<p></br></p>
 <h3 id="61-interface---search">6.1. Interface - Search</h3>
 <p>Este endpoint pode ser usado para retornar uma lista de possíveis peças de reposições da AGCO, baseado numa consulta de texto, ao qual será comparado à base de dados de partnumbers ou descriçoes da AGCO.</p>
 <h4 id="611-response">6.1.1 Response</h4>
@@ -170,7 +171,6 @@
 <th><strong>Tipo</strong></th>
 <th><strong>Descrição</strong></th>
 <th><strong>Obrigatório</strong></th>
-<th><strong>Regra</strong></th>
 <th><strong>Exemplo</strong></th>
 </tr>
 </thead>
@@ -182,7 +182,6 @@
 <td>Tag raiz Lista</td>
 <td></td>
 <td>Sim</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -218,6 +217,8 @@
 <td>Raiz</td>
 <td>Tag raiz</td>
 <td>Não</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>A06</td>
@@ -257,6 +258,7 @@
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h4 id="613-exemplo-de-request">6.1.3 Exemplo de request</h4>
 <p>GET /parts
 GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={lang}</p>
@@ -320,6 +322,7 @@ GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={la
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h3 id="62-interface---detail">6.2. Interface - Detail</h3>
 <p>Esse endpoint é utilizado para recuperar informações detalhadas sobre um partnumber específico:</p>
 <h4 id="621-response">6.2.1 Response</h4>
@@ -349,7 +352,6 @@ GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={la
 <th><strong>Tipo</strong></th>
 <th><strong>Descrição</strong></th>
 <th><strong>Obrigatório</strong></th>
-<th><strong>Regra</strong></th>
 <th><strong>Exemplo</strong></th>
 </tr>
 </thead>
@@ -360,6 +362,8 @@ GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={la
 <td>Raiz</td>
 <td>Tag raiz</td>
 <td>Sim</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>B02</td>
@@ -431,6 +435,7 @@ GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={la
 <td>String</td>
 <td>Categoria fiscal</td>
 <td>Sim</td>
+<td></td>
 </tr>
 <tr>
 <td>B10</td>
@@ -479,6 +484,7 @@ GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={la
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h4 id="623-exemplo-de-request">6.2.3 Exemplo de request</h4>
 <p>GET /parts/<strong>{partnumber}</strong>
 GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
@@ -524,6 +530,7 @@ GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h3 id="63-interface---availability">6.3. Interface - Availability</h3>
 <p>Este endpoint é utilizado para recuperar informações sobre a disponibilidade de estoque de um número de peça específico.</p>
 <h4 id="631-response">6.3.1 Response</h4>
@@ -558,7 +565,6 @@ GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
 <th><strong>Tipo</strong></th>
 <th><strong>Descrição</strong></th>
 <th><strong>Obrigatório</strong></th>
-<th><strong>Regra</strong></th>
 <th><strong>Exemplo</strong></th>
 </tr>
 </thead>
@@ -568,7 +574,9 @@ GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
 <td>data</td>
 <td>Raiz</td>
 <td>Tag raiz</td>
+<td></td>
 <td>Sim</td>
+<td></td>
 </tr>
 <tr>
 <td>C02</td>
@@ -635,6 +643,7 @@ GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h4 id="633-exemplo-de-request">6.3.3 Exemplo de request</h4>
 <p>GET /parts/<strong>{partnumber}</strong>/availability
 GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;lang={lang}</p>
@@ -680,6 +689,7 @@ GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;la
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h3 id="64-interface---price">6.4. Interface - Price</h3>
 <p>Este endpoint é utilizado para recuperar informações de preço de um número de peça específico.</p>
 <h4 id="641-response">6.4.1 Response</h4>
@@ -726,7 +736,6 @@ GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;la
 <th><strong>Tipo</strong></th>
 <th><strong>Descrição</strong></th>
 <th><strong>Obrigatório</strong></th>
-<th><strong>Regra</strong></th>
 <th><strong>Exemplo</strong></th>
 </tr>
 </thead>
@@ -736,6 +745,9 @@ GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;la
 <td>data</td>
 <td>Raiz</td>
 <td>Tag raiz</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>D02</td>
@@ -802,6 +814,7 @@ GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;la
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h4 id="643-exemplo-request">6.4.3 Exemplo Request</h4>
 <p>GET /parts/<strong>{partnumber}</strong>/price
 GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lang}</p>
@@ -892,7 +905,6 @@ GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lan
 <th><strong>Tipo</strong></th>
 <th><strong>Descrição</strong></th>
 <th><strong>Obrigatório</strong></th>
-<th><strong>Regra</strong></th>
 <th><strong>Exemplo</strong></th>
 </tr>
 </thead>
@@ -902,7 +914,9 @@ GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lan
 <td>data</td>
 <td>Raiz</td>
 <td>Tag raiz Lista</td>
+<td></td>
 <td>Sim</td>
+<td></td>
 </tr>
 <tr>
 <td>E02</td>
@@ -1005,6 +1019,7 @@ GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lan
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h4 id="653-exemplo-de-request">6.5.3 Exemplo de request</h4>
 <p>GET /parts/<strong>{partnumber}</strong>/supersession
 GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=en-EN</p>
@@ -1050,6 +1065,7 @@ GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h3 id="66-interface---taxes">6.6. Interface - Taxes</h3>
 <p>Este endpoint é utilizado para recuperar informações fiscais de um número de peça específico.</p>
 <h4 id="661-response">6.6.1 Response</h4>
@@ -1082,7 +1098,6 @@ GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=
 <th><strong>Tipo</strong></th>
 <th><strong>Descrição</strong></th>
 <th><strong>Obrigatório</strong></th>
-<th><strong>Regra</strong></th>
 <th><strong>Exemplo</strong></th>
 </tr>
 </thead>
@@ -1092,7 +1107,9 @@ GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=
 <td>data</td>
 <td>Raiz</td>
 <td>Tag raiz</td>
+<td></td>
 <td>Sim</td>
+<td></td>
 </tr>
 <tr>
 <td>F02</td>
@@ -1110,7 +1127,7 @@ GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=
 <td>String</td>
 <td>Classificação de taxas</td>
 <td>Sim</td>
-<td>0</td>
+<td>0(zero)</td>
 </tr>
 <tr>
 <td>F04</td>
@@ -1150,6 +1167,7 @@ GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=
 </tr>
 </tbody>
 </table>
+<p></br></p>
 <h4 id="663-exemplo-de-request">6.6.3 Exemplo de request</h4>
 <p>GET /parts/<strong>{partnumber}</strong>/taxes
 GET /parts/<strong>{partNumber}</strong>/taxes?dealerId={dealerId}&amp;lang={lang}</p>
@@ -1195,6 +1213,7 @@ GET /parts/<strong>{partNumber}</strong>/taxes?dealerId={dealerId}&amp;lang={lan
 </tr>
 </tbody>
 </table>
+<p></br></p>
                     </div>
 
                     <footer>
