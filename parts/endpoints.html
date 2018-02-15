@@ -144,122 +144,7 @@
 <p></br></p>
 <h3 id="61-interface---search">6.1. Interface - Search</h3>
 <p>Este endpoint pode ser usado para retornar uma lista de possíveis peças de reposições da AGCO, baseado numa consulta de texto, ao qual será comparado à base de dados de partnumbers ou descriçoes da AGCO.</p>
-<h4 id="611-response">6.1.1 Response</h4>
-<p>O exemplo a seguir representa a resposta do pedido acima, se ele tiver sido processado com sucesso:</p>
-<pre><code>{
-    "data": [
-        {
-            "id": "3012224X1",
-            "description": "HEXAGON FLANGE BOLT M20 X 130 (2.5) ISO 8.8 ZN",
-            "descriptionLanguage": "en"
-        }
-    ],
-    "meta": {
-        "currentPage": 1,
-        "nextPage": null,
-        "totalPages": 1,
-        "totalItems": 1
-    }
-}</code></pre>
-<h4 id="612-especificao-dos-atributos">6.1.2 Especificação dos atributos</h4>
-<table>
-<thead>
-<tr>
-<th><strong>ID</strong></th>
-<th><strong>Campo</strong></th>
-<th><strong>Pai</strong></th>
-<th><strong>Tipo</strong></th>
-<th><strong>Descrição</strong></th>
-<th><strong>Obrigatório</strong></th>
-<th><strong>Exemplo</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A01</td>
-<td>data</td>
-<td>Raiz</td>
-<td>Tag raiz Lista</td>
-<td></td>
-<td>Sim</td>
-<td></td>
-</tr>
-<tr>
-<td>A02</td>
-<td>id</td>
-<td>A01</td>
-<td>String</td>
-<td>Número da peça</td>
-<td>Sim</td>
-<td>3012224X1</td>
-</tr>
-<tr>
-<td>A03</td>
-<td>description</td>
-<td>A01</td>
-<td>String</td>
-<td>Descrição da peça</td>
-<td>Sim</td>
-<td>HEXAGON M20</td>
-</tr>
-<tr>
-<td>A04</td>
-<td>descriptionLanguage</td>
-<td>A01</td>
-<td>String</td>
-<td>Linguagem da descrição</td>
-<td>Sim</td>
-<td>en</td>
-</tr>
-<tr>
-<td>A05</td>
-<td>meta</td>
-<td>Raiz</td>
-<td>Tag raiz</td>
-<td>Não</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>A06</td>
-<td>currentPage</td>
-<td>A5</td>
-<td>integer</td>
-<td>Número da página</td>
-<td>Sim</td>
-<td>1</td>
-</tr>
-<tr>
-<td>A07</td>
-<td>nextPage</td>
-<td>A5</td>
-<td>integer</td>
-<td>Próxima página</td>
-<td>Não</td>
-<td>null</td>
-</tr>
-<tr>
-<td>A08</td>
-<td>totalPages</td>
-<td>A5</td>
-<td>integer</td>
-<td>Total de páginas</td>
-<td>Sim</td>
-<td>1</td>
-</tr>
-<tr>
-<td>A09</td>
-<td>totalItems</td>
-<td>A5</td>
-<td>integer</td>
-<td>Total de itens da busca</td>
-<td>Sim</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<p></br></p>
-<h4 id="613-exemplo-de-request">6.1.3 Exemplo de request</h4>
+<h4 id="611-exemplo-de-request">6.1.1 Exemplo de request</h4>
 <p>GET /parts
 GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={lang}</p>
 <table>
@@ -323,9 +208,170 @@ GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={la
 </tbody>
 </table>
 <p></br></p>
+<h4 id="612-response">6.1.2 Response</h4>
+<p>O exemplo a seguir representa a resposta do pedido acima, se ele tiver sido processado com sucesso:</p>
+<pre><code>{
+    "data": [
+        {
+            "id": "3012224X1",
+            "description": "HEXAGON FLANGE BOLT M20 X 130 (2.5) ISO 8.8 ZN",
+            "descriptionLanguage": "en"
+        }
+    ],
+    "meta": {
+        "currentPage": 1,
+        "nextPage": null,
+        "totalPages": 1,
+        "totalItems": 1
+    }
+}</code></pre>
+<h4 id="613-especificao-dos-atributos">6.1.3 Especificação dos atributos</h4>
+<table>
+<thead>
+<tr>
+<th><strong>ID</strong></th>
+<th><strong>Campo</strong></th>
+<th><strong>Pai</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Exemplo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A01</td>
+<td>data</td>
+<td>Raiz</td>
+<td>Tag raiz Lista</td>
+<td></td>
+<td>Sim</td>
+<td></td>
+</tr>
+<tr>
+<td>A02</td>
+<td>id</td>
+<td>A01</td>
+<td>String</td>
+<td>Número da peça</td>
+<td>Sim</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>description</td>
+<td>A01</td>
+<td>String</td>
+<td>Descrição da peça</td>
+<td>Sim</td>
+<td>HEXAGON M20</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>descriptionLanguage</td>
+<td>A01</td>
+<td>String</td>
+<td>Linguagem da descrição</td>
+<td>Sim</td>
+<td>en</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>meta</td>
+<td>Raiz</td>
+<td>Tag raiz</td>
+<td></td>
+<td>Não</td>
+<td></td>
+</tr>
+<tr>
+<td>A06</td>
+<td>currentPage</td>
+<td>A5</td>
+<td>integer</td>
+<td>Número da página</td>
+<td>Sim</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>nextPage</td>
+<td>A5</td>
+<td>integer</td>
+<td>Próxima página</td>
+<td>Não</td>
+<td>null</td>
+</tr>
+<tr>
+<td>A08</td>
+<td>totalPages</td>
+<td>A5</td>
+<td>integer</td>
+<td>Total de páginas</td>
+<td>Sim</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A09</td>
+<td>totalItems</td>
+<td>A5</td>
+<td>integer</td>
+<td>Total de itens da busca</td>
+<td>Sim</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p></br></p>
 <h3 id="62-interface---detail">6.2. Interface - Detail</h3>
 <p>Esse endpoint é utilizado para recuperar informações detalhadas sobre um partnumber específico:</p>
-<h4 id="621-response">6.2.1 Response</h4>
+<h4 id="621-exemplo-de-request">6.2.1 Exemplo de request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>
+GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parâmetro</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Tipo de parâmetro</strong></th>
+<th><strong>Obrigatório</strong></th>
+<th><strong>Tipo de dado</strong></th>
+<th><strong>Valor padrão</strong></th>
+<th><strong>Exemplo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>partNumber</td>
+<td>AGCO Part Number</td>
+<td>Path</td>
+<td>Sim</td>
+<td>String</td>
+<td>Blank (null)</td>
+<td>3012224X1</td>
+</tr>
+<tr>
+<td>dealerId</td>
+<td>Identificador do Dealer no sistema AGCO</td>
+<td>Query</td>
+<td>Não</td>
+<td>Number</td>
+<td>Blank (null)</td>
+<td>1481682</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>Linguagem que deve ser retornado: pt-BR, es-AR, en-EN</td>
+<td>Query</td>
+<td>Não</td>
+<td>String</td>
+<td>Dealer default language</td>
+<td>pt-BR</td>
+</tr>
+</tbody>
+</table>
+<p></br></p>
+<h4 id="622-response">6.2.2 Response</h4>
 <p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": {
@@ -342,7 +388,7 @@ GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={la
         "additionalInfo": []
     }
 }</code></pre>
-<h4 id="622-especificao-de-atributos">6.2.2 Especificação de atributos</h4>
+<h4 id="623-especificao-de-atributos">6.2.3 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
@@ -485,9 +531,11 @@ GET /parts?dealerId=<strong>{dealerId}</strong>&amp;query=3012224X1&amp;lang={la
 </tbody>
 </table>
 <p></br></p>
-<h4 id="623-exemplo-de-request">6.2.3 Exemplo de request</h4>
-<p>GET /parts/<strong>{partnumber}</strong>
-GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
+<h3 id="63-interface---availability">6.3. Interface - Availability</h3>
+<p>Este endpoint é utilizado para recuperar informações sobre a disponibilidade de estoque de um número de peça específico.</p>
+<h4 id="631-exemplo-de-request">6.3.1 Exemplo de request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/availability
+GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;lang={lang}</p>
 <table>
 <thead>
 <tr>
@@ -505,25 +553,25 @@ GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
 <td>partNumber</td>
 <td>AGCO Part Number</td>
 <td>Path</td>
-<td>Não</td>
+<td>Sim</td>
 <td>String</td>
 <td>Blank (null)</td>
 <td>3012224X1</td>
 </tr>
 <tr>
 <td>dealerId</td>
-<td>Identificador do Dealer no sistema AGCO</td>
+<td>Dealer identifier from AGCO internal systems</td>
 <td>Query</td>
-<td>Não</td>
+<td>No</td>
 <td>Number</td>
 <td>Blank (null)</td>
 <td>1481682</td>
 </tr>
 <tr>
 <td>lang</td>
-<td>Linguagem que deve ser retornado: pt-BR, es-AR, en-EN</td>
+<td>Language which data should be returned (pt-BR, es-AR, en-EN)</td>
 <td>Query</td>
-<td>Não</td>
+<td>No</td>
 <td>String</td>
 <td>Dealer default language</td>
 <td>pt-BR</td>
@@ -531,9 +579,7 @@ GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
 </tbody>
 </table>
 <p></br></p>
-<h3 id="63-interface---availability">6.3. Interface - Availability</h3>
-<p>Este endpoint é utilizado para recuperar informações sobre a disponibilidade de estoque de um número de peça específico.</p>
-<h4 id="631-response">6.3.1 Response</h4>
+<h4 id="632-response">6.3.2 Response</h4>
 <p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": {
@@ -555,7 +601,7 @@ GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
         ]
     }
 }</code></pre>
-<h4 id="632-especificao-de-atributos">6.3.2 Especificação de atributos</h4>
+<h4 id="633-especificao-de-atributos">6.3.3 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
@@ -644,9 +690,11 @@ GET /parts/<strong>{partNumber}</strong>?dealerId={dealerId}&amp;lang={lang}</p>
 </tbody>
 </table>
 <p></br></p>
-<h4 id="633-exemplo-de-request">6.3.3 Exemplo de request</h4>
-<p>GET /parts/<strong>{partnumber}</strong>/availability
-GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;lang={lang}</p>
+<h3 id="64-interface---price">6.4. Interface - Price</h3>
+<p>Este endpoint é utilizado para recuperar informações de preço de um número de peça específico.</p>
+<h4 id="641-exemplo-request">6.4.1 Exemplo Request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/price
+GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lang}</p>
 <table>
 <thead>
 <tr>
@@ -662,37 +710,35 @@ GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;la
 <tbody>
 <tr>
 <td>partNumber</td>
-<td>AGCO Part Number</td>
+<td>Identificador da peça no sistema AGCO</td>
 <td>Path</td>
-<td>No</td>
+<td>Sim</td>
 <td>String</td>
 <td>Blank (null)</td>
 <td>3012224X1</td>
 </tr>
 <tr>
 <td>dealerId</td>
-<td>Dealer identifier from AGCO internal systems.</td>
+<td>Identificador do Dealer no sistema AGCO</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>Number</td>
 <td>Blank (null)</td>
 <td>1481682</td>
 </tr>
 <tr>
 <td>lang</td>
-<td>Language which data should be returned (pt-BR, es-AR, en-EN).</td>
+<td>Idioma que os dados devem ser devolvidos: pt-BR, es-AR, en-EN</td>
 <td>Query</td>
-<td>No</td>
+<td>Não</td>
 <td>String</td>
 <td>Dealer default language</td>
 <td>pt-BR</td>
 </tr>
 </tbody>
 </table>
-<p></br></p>
-<h3 id="64-interface---price">6.4. Interface - Price</h3>
-<p>Este endpoint é utilizado para recuperar informações de preço de um número de peça específico.</p>
-<h4 id="641-response">6.4.1 Response</h4>
+<p><br /></p>
+<h4 id="642-response">6.4.2 Response</h4>
 <p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": {
@@ -726,7 +772,7 @@ GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;la
         ]
     }
 }</code></pre>
-<h4 id="642-especificao-de-atributos">6.4.2 Especificação de atributos</h4>
+<h4 id="643-especificao-de-atributos">6.4.3 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
@@ -815,9 +861,11 @@ GET /parts/<strong>{partNumber}</strong>/availability?dealerId={dealerId}&amp;la
 </tbody>
 </table>
 <p></br></p>
-<h4 id="643-exemplo-request">6.4.3 Exemplo Request</h4>
-<p>GET /parts/<strong>{partnumber}</strong>/price
-GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lang}</p>
+<h3 id="65-interface---supersession">6.5. Interface - Supersession</h3>
+<p>Este endpoint é utilizado para recuperar informações se a parte especificada foi substituída e quais são as peças de reposição.</p>
+<h4 id="651-exemplo-de-request">6.5.1 Exemplo de request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/supersession
+GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=en-EN</p>
 <table>
 <thead>
 <tr>
@@ -833,16 +881,16 @@ GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lan
 <tbody>
 <tr>
 <td>partNumber</td>
-<td>Identificador da peça no sistema AGCO</td>
+<td>Identificador da peça no Sistema AGCO</td>
 <td>Path</td>
-<td>Não</td>
+<td>Sim</td>
 <td>String</td>
 <td>Blank (null)</td>
 <td>3012224X1</td>
 </tr>
 <tr>
 <td>dealerId</td>
-<td>Identificador do Dealer no sistema AGCO</td>
+<td>Identificador do Dealer no Sistema AGCO</td>
 <td>Query</td>
 <td>Não</td>
 <td>Number</td>
@@ -851,19 +899,17 @@ GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lan
 </tr>
 <tr>
 <td>lang</td>
-<td>Idioma que os dados devem ser devolvidos: pt-BR, es-AR, en-EN</td>
+<td>Linguagem com que deve retornar: pt-BR, es-AR, en-EN</td>
 <td>Query</td>
 <td>Não</td>
 <td>String</td>
-<td>Dealer default language</td>
+<td>Linguagem padrão do Dealer</td>
 <td>pt-BR</td>
 </tr>
 </tbody>
 </table>
-<p><br /></p>
-<h3 id="65-interface---supersession">6.5. Interface - Supersession</h3>
-<p>Este endpoint é utilizado para recuperar informações se a parte especificada foi substituída e quais são as peças de reposição.</p>
-<h4 id="651-response">6.5.1 Response</h4>
+<p></br></p>
+<h4 id="652-response">6.5.2 Response</h4>
 <p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": [
@@ -895,7 +941,7 @@ GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lan
         }
     ]
 }</code></pre>
-<h4 id="652-especificao-de-atributos">6.5.2 Especificação de atributos</h4>
+<h4 id="653-especificao-de-atributos">6.5.3 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
@@ -1020,9 +1066,11 @@ GET /parts/<strong>{partNumber}</strong>/price?dealerId={dealerId}&amp;lang={lan
 </tbody>
 </table>
 <p></br></p>
-<h4 id="653-exemplo-de-request">6.5.3 Exemplo de request</h4>
-<p>GET /parts/<strong>{partnumber}</strong>/supersession
-GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=en-EN</p>
+<h3 id="66-interface---taxes">6.6. Interface - Taxes</h3>
+<p>Este endpoint é utilizado para recuperar informações fiscais de um número de peça específico.</p>
+<h4 id="661-exemplo-de-request">6.6.1 Exemplo de request</h4>
+<p>GET /parts/<strong>{partnumber}</strong>/taxes
+GET /parts/<strong>{partNumber}</strong>/taxes?dealerId={dealerId}&amp;lang={lang}</p>
 <table>
 <thead>
 <tr>
@@ -1038,16 +1086,16 @@ GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=
 <tbody>
 <tr>
 <td>partNumber</td>
-<td>Identificador da peça no Sistema AGCO</td>
+<td>AGCO Part Number</td>
 <td>Path</td>
-<td>Não</td>
+<td>Sim</td>
 <td>String</td>
 <td>Blank (null)</td>
 <td>3012224X1</td>
 </tr>
 <tr>
 <td>dealerId</td>
-<td>Identificador do Dealer no Sistema AGCO</td>
+<td>Identificador do Dealter no sistema AGCO</td>
 <td>Query</td>
 <td>Não</td>
 <td>Number</td>
@@ -1056,19 +1104,17 @@ GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=
 </tr>
 <tr>
 <td>lang</td>
-<td>Linguagem com que deve retornar: pt-BR, es-AR, en-EN</td>
+<td>Idioma que os dados devem ser devolvidos: pt-BR, es-AR, en-EN</td>
 <td>Query</td>
 <td>Não</td>
 <td>String</td>
-<td>Linguagem padrão do Dealer</td>
+<td>Idioma padrão da Concessionária</td>
 <td>pt-BR</td>
 </tr>
 </tbody>
 </table>
 <p></br></p>
-<h3 id="66-interface---taxes">6.6. Interface - Taxes</h3>
-<p>Este endpoint é utilizado para recuperar informações fiscais de um número de peça específico.</p>
-<h4 id="661-response">6.6.1 Response</h4>
+<h4 id="662-response">6.6.2 Response</h4>
 <p>O exemplo a seguir representa a resposta do pedido acima se ele tiver sido processado com sucesso:</p>
 <pre><code>{
     "data": {
@@ -1088,7 +1134,7 @@ GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=
         ]
     }
 }</code></pre>
-<h4 id="662-especificao-de-atributos">6.6.2 Especificação de atributos</h4>
+<h4 id="663-especificao-de-atributos">6.6.3 Especificação de atributos</h4>
 <table>
 <thead>
 <tr>
@@ -1164,52 +1210,6 @@ GET /parts/<strong>{partnumber}</strong>/supersession?dealerId=1481682&amp;lang=
 <td>Valor</td>
 <td>Sim</td>
 <td>27.50</td>
-</tr>
-</tbody>
-</table>
-<p></br></p>
-<h4 id="663-exemplo-de-request">6.6.3 Exemplo de request</h4>
-<p>GET /parts/<strong>{partnumber}</strong>/taxes
-GET /parts/<strong>{partNumber}</strong>/taxes?dealerId={dealerId}&amp;lang={lang}</p>
-<table>
-<thead>
-<tr>
-<th><strong>Parâmetro</strong></th>
-<th><strong>Descrição</strong></th>
-<th><strong>Tipo de parâmetro</strong></th>
-<th><strong>Obrigatório</strong></th>
-<th><strong>Tipo de dado</strong></th>
-<th><strong>Valor padrão</strong></th>
-<th><strong>Exemplo</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>partNumber</td>
-<td>AGCO Part Number</td>
-<td>Path</td>
-<td>Não</td>
-<td>String</td>
-<td>Blank (null)</td>
-<td>3012224X1</td>
-</tr>
-<tr>
-<td>dealerId</td>
-<td>Identificador do Dealter no sistema AGCO</td>
-<td>Query</td>
-<td>Não</td>
-<td>Number</td>
-<td>Blank (null)</td>
-<td>1481682</td>
-</tr>
-<tr>
-<td>lang</td>
-<td>Idioma que os dados devem ser devolvidos: pt-BR, es-AR, en-EN</td>
-<td>Query</td>
-<td>Não</td>
-<td>String</td>
-<td>Idioma padrão da Concessionária</td>
-<td>pt-BR</td>
 </tr>
 </tbody>
 </table>
