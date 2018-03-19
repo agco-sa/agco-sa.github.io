@@ -80,12 +80,14 @@
                     </li>
 
                     
-                                        <li class="">
+                                        <li class="active">
                         <a href="https://agco-sa.github.io/parts/padroeslistas.html">
                             Padrões e Listas
                         </a>
                     </li>
 
+                                        <ul class="submenu nav nav-stacked nav-pills">
+                                            </ul>
                     
                                         <li class="">
                         <a href="https://agco-sa.github.io/parts/regrasprocesso.html">
@@ -136,29 +138,90 @@
 					<div><p><img src="/images/agco-logo.png" alt="AGCO Logo" /></p></div>
                     <div role="main" class="document">
                         <h1 id="argentina-parts">Argentina Parts</h1>
-<h2 id="8-histrico-de-alteraes">8. Histórico de alterações</h2>
-<p>Os versionamentos realizados neste documento foram os seguintes:</p>
+<h2 id="5-padres-e-lista-de-valores">5. Padrões e lista de valores</h2>
+<p>Essa sessão contém os padrões e lista de valores utilizados no contrato de dados.</p>
+<h3 id="51-padres-utilizados-no-campos">5.1. Padrões utilizados no campos</h3>
+<p>Abaixo estão os padrões existentes no contrato de dados.</p>
 <table>
 <thead>
 <tr>
-<th>Versão</th>
-<th>Alteração</th>
-<th>Data</th>
+<th>Código</th>
+<th>Padrão</th>
+<th>Exemplo</th>
+<th>Referência</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1.0</td>
-<td>Elaboração do documento</td>
-<td>20/11/2017</td>
-</tr>
-<tr>
-<td>1.1</td>
-<td>Atualização dos endpoints</td>
-<td>28/11/2017</td>
+<td>P001</td>
+<td>ISO 3166-2</td>
+<td>&quot;pt-BR&quot;</td>
+<td>No final da url <a href="https://www.iso.org/obp/ui/#iso:code:3166">https://www.iso.org/obp/ui/#iso:code:3166</a>: coloque o código do país da ISO 3166-2.<br/> Exemplo: <a href="https://www.iso.org/obp/ui/#iso:code:3166:BR">https://www.iso.org/obp/ui/#iso:code:3166:BR</a></td>
 </tr>
 </tbody>
 </table>
+<p><br/></p>
+<h3 id="52-lista-de-valores">5.2. Lista de valores</h3>
+<p>Abaixo estão as listas de valores utilizadas em alguns campos no contrato de dados.</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Valores</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V001</td>
+<td>pt-BR<br>es-AR</td>
+<td>Se não informado o parâmetro 'lang' o sistema detecta a localização do Dealer para definir linguagem</td>
+</tr>
+<tr>
+<td>V002</td>
+<td>pt<br/>es<br/>en</td>
+<td>pt = Português<br/>es = Espanhol<br/>en = Inglês<br/></td>
+</tr>
+<tr>
+<td>V003</td>
+<td>Y<br/>N</td>
+<td>Y = Yes<br/>N = No</td>
+</tr>
+<tr>
+<td>V004</td>
+<td>A<br/>B<br/>D<br/>vazio<br/>null</td>
+<td>A = Ativa<br/>B = Broken<br/>D = Desativada<br/>&quot; &quot;<br/>null</td>
+</tr>
+<tr>
+<td>V005</td>
+<td>SP<br/>SI<br/>IN<br/>CO<br/>CS<br/>SS</td>
+<td>SP = Simples Parcial<br/>SI = Simples<br/>IN = Informativa<br/>CO = Composta</br>CS = Composta Seletiva<br/>SS = Simples Seletiva</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<h3 id="53-regras">5.3. Regras</h3>
+<p>Abaixo estão as regras aplicadas em alguns campos do contrato de dados</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Regra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R001</td>
+<td>Quando parâmetro &quot;null&quot; retorna vazio</td>
+</tr>
+<tr>
+<td>R002</td>
+<td>Quando não for encontrado nenhum registro retorna vazio</td>
+</tr>
+</tbody>
+</table>
+<h4 id="531-fluxo-e-regras-tipos-de-substituies">5.3.1. Fluxo e regras tipos de substituições</h4>
+<p><img src="https://github.com/agco-sa/site-md-src/blob/parts/images/tipos-substituicoes.png" alt="Fluxo Tipos Substituições" /></p>
                     </div>
 
                     <footer>
