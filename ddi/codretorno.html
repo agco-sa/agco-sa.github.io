@@ -67,6 +67,13 @@
                                             </ul>
                     
                                         <li class="">
+                        <a href="https://agco-sa.github.io/ddi/padroeslistas.html">
+                            Padrões e Listas
+                        </a>
+                    </li>
+
+                    
+                                        <li class="">
                         <a href="https://agco-sa.github.io/ddi/endpoints.html">
                             Endpoints
                         </a>
@@ -296,6 +303,30 @@ Neste caso, os dados incorretos devem ser corrigidos antes de serem re-enviados.
 <td>Produtos duplicados na nota fiscal</td>
 <td>ddi/prodDet/prod</td>
 <td>&quot;codigoItem&quot;: &quot;42754F0913D&quot;, &quot;serieComercial&quot;: &quot;4275344889&quot;, &quot;monobloco&quot;: &quot; AAAT0012PCC002382&quot; <em>(produto aparece duas vezes na mesma nota fiscal)</em></td>
+</tr>
+<tr>
+<td>19</td>
+<td>CNPJ não existe na base</td>
+<td>NFe/infNFe/emitNFe/infNFe/dest</td>
+<td>&quot;CNPJ&quot;: &quot;02050252” (CNPJ não está cadastrado na AGCO)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>O Xml da nota é obrigatório ao informar uma campanha</td>
+<td>xml</td>
+<td>Informação de campanha informada, mas XML não foi informado</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Nota Fiscal já cadastrada</td>
+<td>NFe/infNFe/ide</td>
+<td>&quot;nNF&quot;: 14253 (nota fiscal já está informada com base no CNPJ, número da nota e série)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Já existe uma nota fiscal mais recente no sistema para esse produto.</td>
+<td>NFe/infNFe/ide</td>
+<td>&quot;dhEmi&quot;: &quot;2018-01-01T00:00:00.000Z&quot; (se já existir uma nota para o produto a nova nota deve ter data maior do que a data da nota anterior)</td>
 </tr>
 </tbody>
 </table>
